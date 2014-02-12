@@ -2,7 +2,7 @@
 require("include/header_meta.php");
 require("include/menu.php");
 include("include/banniere.php");
-include("include/connect.php");
+include("include/connect.php"); 
 ?>
 
 <?php
