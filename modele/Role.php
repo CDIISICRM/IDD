@@ -16,6 +16,11 @@ class Role implements DAO{
         $this->nomRole = $nomRole;
     }
 
+    public function setNomRole($nomRole) {
+        $this->nomRole = $nomRole;
+    }
+
+        
     public function ajouter($mysqli) {
         $sql = "INSERT INTO roles (nomRole) VALUES('".$this->nomRole."')";
         $mysqli->query($sql);
@@ -47,11 +52,14 @@ class Role implements DAO{
     }
 
     public function modifier($mysqli) {
+        $sql =  "UPDATE roles SET nomRole = '".$this->nomRole."' WHERE id = ".$this->id;
+        $mysqli->query($sql);
         
     }
 
     public function supprimer($mysqli) {
-        
+        $sql = "DELETE FROM roles WHERE id = ".$this->id;
+        $mysqli->query($sql);
     }
 
 }
