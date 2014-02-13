@@ -3,14 +3,24 @@ require("include/header_meta.php");
 require("include/menu.php");
 include("include/banniere.php");
 include("include/connect.php"); 
-include('modele/Role.php');
+include("./modele/Role.php");
 ?>
 
 <?php
 	//
+        $con = new ConnectToDb();
+        $mysqli = $con->getConnect();
+        //$role = new Role("nouveauRole");
+        //$role->ajouter($mysqli);
         
-        $role = new Role("nouveauRole");
-        $role->ajouter();
+        //$role = new Role();
+        //$role->chercher($mysqli, 3);
+        //var_dump($role);
+        
+        $role = new Role();
+        $lesRoles = $role->listerTout($mysqli);
+        var_dump($lesRoles);
+        
 ?>
 
 	<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu odio eu velit tincidunt cursus quis sodales mauris. Vestibulum egestas ultrices auctor. Duis adipiscing <a href="index.html">click here &gt;&gt;</a></h4>

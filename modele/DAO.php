@@ -2,11 +2,11 @@
 
 interface DAO{
     
-    public function ajouter();
-    public function modifier();
-    public function supprimer();
-    public function listerTout();
-    public function chercher(int $id);
+    public function ajouter($mysqli);
+    public function modifier($mysqli);
+    public function supprimer($mysqli);
+    public function listerTout($mysqli);
+    public function chercher($mysqli, $id);
 
 
 }

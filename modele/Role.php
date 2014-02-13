@@ -1,7 +1,7 @@
 <?php
 
 
-include '/include/connect.php';
+
 
 include 'DAO.php';
 
@@ -16,28 +16,41 @@ class Role implements DAO{
         $this->nomRole = $nomRole;
     }
 
-    public function ajouter() {
-        $sql = "INSERT INTO roles.nomRole VALUES(".$this->nomRole.")";
-        $connect = new ConnectToDb();
-        $mysqli = $connect->getConnect();
+    public function ajouter($mysqli) {
+        $sql = "INSERT INTO roles (nomRole) VALUES('".$this->nomRole."')";
         $mysqli->query($sql);
         
+    }
+
+    public function chercher($mysqli, $id) {
+        $sql = "SELECT * FROM roles WHERE id = ".$id;
+        $res = $mysqli->query($sql);
+        $table = $res->fetch_row();
+        $this->id = $table['0'];
+        $this->nomRole = $table['1'];
+        return $this;
         
     }
 
-    public function chercher(int $id) {
+    public function listerTout($mysqli) {
+        $lesRoles = array();
+        $sql = "SELECT * FROM roles";
+        $res = $mysqli->query($sql);
+        
+        while($row = $res->fetch_array()){
+            $unRole = new Role();
+            $unRole->id = $row['0'];
+            $unRole->nomRole = $row['1'];
+            $lesRoles[] = $unRole;
+        }
+        return $lesRoles;
+    }
+
+    public function modifier($mysqli) {
         
     }
 
-    public function listerTout() {
-        
-    }
-
-    public function modifier() {
-        
-    }
-
-    public function supprimer() {
+    public function supprimer($mysqli) {
         
     }
 
