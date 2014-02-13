@@ -1,16 +1,6 @@
 <?php
-
 namespace modele;
-class Role implements DAO{
-
-    private $id;
-    private $nomRole;
-
-    public function __construct($id=0, $nomRole=""){
-        $this->id = $id;
-        $this->nomRole = $nomRole;
-    }
-
+class Personne implements DAO{
     public function ajouter($object) {
         
     }
@@ -28,8 +18,7 @@ class Role implements DAO{
     }
 
     public function supprimer($id) {
-        $this->id = $id;
+        
     }
 
 }
-?>
