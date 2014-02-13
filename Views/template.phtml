@@ -1,0 +1,176 @@
+<?php
+class Template
+	{
+	public function __construct()
+		{
+		}
+		
+	public function Header($titre = "Migration Co-Developpement Alsace Association")
+		{
+		return '
+		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+		<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<meta charset="UTF-8">
+			<title>'.$titre.'</title>
+			<link rel="stylesheet" href="css/style.css" type="text/css">
+		</head>';
+		}
+		
+	public function Menu($linkListe = false)
+		{
+		if($linkListe != false && isArray($linkListe))
+			{
+			$content = '
+					<div id="header">
+						<div id="logo">
+							<a href="index.html"><img src="images/logo.png" alt="LOGO"></a>
+						</div>
+						<form action="index.html" method="post" class="searchbar">
+							<input type="text" value="Search" onFocus="this.select();" onMouseUp="return false;">
+							<input type="submit" value="Go">
+						</form>
+						<ul id="navigation">';
+			foreach($linkListe AS $link => $titre)
+				{
+				$content .= '
+				<li>
+					<a href="'.$link.'">'.$titre.'</a>
+				</li>
+				';
+				}
+			$content .= '</ul></div>';
+			return $content;
+			}
+		else
+			{
+			return '
+					<div id="header">
+						<div id="logo">
+							<a href="index.html"><img src="images/logo.png" alt="LOGO"></a>
+						</div>
+						<form action="index.html" method="post" class="searchbar">
+							<input type="text" value="Search" onFocus="this.select();" onMouseUp="return false;">
+							<input type="submit" value="Go">
+						</form>
+						<ul id="navigation">
+							<li class="selected">
+								<a href="index.html">Accueil & Présentation</a>
+							</li>
+							<li>
+								<a href="about.html">Réalisations</a>
+							</li>
+							<li>
+								<a href="blog.html">Presse et partenaires</a>
+							</li>
+							<li>
+								<a href="contact.html">Contact</a>
+							</li>
+						</ul>
+					</div>
+			';
+			}
+			
+		public function Banniere()
+			{
+			return '
+				<div id="adbox">
+					<img src="images/glider.jpg" alt="Img" height="444" width="630">
+					<div class="info">
+						<h1>MCDA Qui somme nous?</h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu ante in enim hendrerit lobortis sit amet eget magna. Fusce tincidunt, dolor ut tempor pharetra, dolor turpis volutpat neque, non consectetur est arcu in velit. Maecenas in rutrum quam. Duis mauris nisi, aliquet sit amet pellentesque id, vulputate id nunc. Morbi viverra rutrum faucibus. Nam sit amet nunc vitae nisi suscipit consequat hendrerit sed metus. Quisque ac tellus eget enim posuere elementum. Sed id justo elit. Etiam et sapien
+						</p>
+						<a href="index.html" class="more">Click here for more</a>
+					</div>
+				</div>
+			';
+			}
+		
+		public function Footer()
+			{
+			return '
+					<div id="footer">
+						<div>
+						<!--	<ul id="links">
+								<li>
+									<h4>Heading placeholder</h4>
+									<ul>
+										<li>
+											<a href="index.html">Link Extra Title 1</a>
+										</li>
+										<li>
+											<a href="index.html">Link Extra Title 1</a>
+										</li>
+										<li>
+											<a href="index.html">Link Extra Title 1</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h4>Heading placeholder</h4>
+									<ul>
+										<li>
+											<a href="index.html">Link Title 1</a>
+										</li>
+										<li>
+											<a href="index.html">Link Title 2</a>
+										</li>
+										<li>
+											<a href="index.html">Link Title 3</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h4>Heading placeholder</h4>
+									<ul>
+										<li>
+											<a href="index.html">Link Extra Title 1</a>
+										</li>
+										<li>
+											<a href="index.html">Link Extra Title 1</a>
+										</li>
+										<li>
+											<a href="index.html">Link Extra Title 1</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h4>Social Links</h4>
+									<ul id="connect">
+										<li>
+											<a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter">Twitter</a>
+										</li>
+										<li>
+											<a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook">Facebook</a>
+										</li>
+										<li>
+											<a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus">Google +</a>
+										</li>
+									</ul>
+								</li>
+							</ul>-->
+							<!-- /#links -->
+							<p class="footnote">
+								© Copyright 2014 mcda-asso.com  Projet web r&eacute;alis&eacute; au C.R. de Mulhouse par <a href="#" title="Developpeur web" target="_blank">L.HAEFFLINGER</a>, <a href="#" target="_blank">A HIRTZ </a>, <a href="#" target="_blank" >G.BUREL</a>, <a href="#" target="_blank">B DEROUIN </a>, <a href="#" target="_blank" >R.AHAJARI</a> <a href="#" target="_blank">F.GARCIA</a> <a href="#" target="_blank" >F.LUNEAU</a> <a href="#" target="_blank">C. MANSCOUR</a> sous la direction de Franck CHATELOT responsable projet</p>
+							</p>
+						</div>
+					</div>
+					<!-- /#footer -->
+			';
+			}
+			
+		public function afficherTemplate($content = false)
+			{
+			return $this->Header().'<body><div id="page">'.		$this->Menu()
+			$this->Banniere()
+			<div id="contents">
+			
+			$this->Footer()
+				</div>
+				<!-- /#page -->
+			</body>
+			</html>';
+			}
+		}
+  ?>
