@@ -2,11 +2,11 @@
 
 interface DAO{
     
-    public function ajouter($object);
-    public function modifier($object);
-    public function supprimer($id);
+    public function ajouter();
+    public function modifier();
+    public function supprimer();
     public function listerTout();
-    public function remplir($id);
+    public function chercher(int $id);
 
 
 }

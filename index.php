@@ -3,17 +3,14 @@ require("include/header_meta.php");
 require("include/menu.php");
 include("include/banniere.php");
 include("include/connect.php"); 
+include('modele/Role.php');
 ?>
 
 <?php
-	$req = "SELECT titre, texte, img, extension FROM contenus WHERE id=1";
-	$res = $mysqli->query($req);
-	$table = $res->fetch_assoc();
-	$img = $table["img"].'.'.$table["extension"];
-
-	echo "<h1>".utf8_encode($table["titre"])."</h1>";
-	echo '<div class="section"><p>'.utf8_encode($table["texte"]).'</p></div>';
-	echo '<img src='.$img.' alt="action association" style="float: left; border: 0;" \>';
+	//
+        
+        $role = new Role("nouveauRole");
+        $role->ajouter();
 ?>
 
 	<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu odio eu velit tincidunt cursus quis sodales mauris. Vestibulum egestas ultrices auctor. Duis adipiscing <a href="index.html">click here &gt;&gt;</a></h4>

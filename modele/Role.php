@@ -1,17 +1,31 @@
 <?php
 
-namespace modele;
+
+include '/include/connect.php';
+
+include 'DAO.php';
+
 class Role implements DAO{
 
     private $id;
     private $nomRole;
+   
 
-    public function __construct($id=0, $nomRole=""){
+    public function __construct( $nomRole="", $id=null){
         $this->id = $id;
         $this->nomRole = $nomRole;
     }
 
-    public function ajouter($object) {
+    public function ajouter() {
+        $sql = "INSERT INTO roles.nomRole VALUES(".$this->nomRole.")";
+        $connect = new ConnectToDb();
+        $mysqli = $connect->getConnect();
+        $mysqli->query($sql);
+        
+        
+    }
+
+    public function chercher(int $id) {
         
     }
 
@@ -19,16 +33,12 @@ class Role implements DAO{
         
     }
 
-    public function modifier($object) {
+    public function modifier() {
         
     }
 
-    public function remplir($id) {
+    public function supprimer() {
         
-    }
-
-    public function supprimer($id) {
-        $this->id = $id;
     }
 
 }
