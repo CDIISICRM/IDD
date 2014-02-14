@@ -56,11 +56,7 @@ if(is_file('Controllers/'.$controller.'.Controller.php'))
 /* FIN*/
 
 
-?>
-
-	<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu odio eu velit tincidunt cursus quis sodales mauris. Vestibulum egestas ultrices auctor. Duis adipiscing <a href="index.html">click here &gt;&gt;</a></h4>
-			
-            
+?>   
 
 
 <?php 
