@@ -1,23 +1,37 @@
 <?php
-namespace modele;
+include './DAO.php';
 class Personne implements DAO{
-    public function ajouter($object) {
+    private $id;
+    private $nom;
+    private $prenom;
+    private $metier;
+    private $idRole;
+    
+    function __construct($nom, $prenom, $metier, $idRole, $id=0) {
+        $this->id = $id;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->metier = $metier;
+        $this->idRole = $idRole;
+    }
+
+    public function ajouter($mysqli) {
+        $sql = "INSERT INTO personnes (nom, prenom, metier, idRole) VALUES('".$nom."', '".$prenom."', '".$metier."', ".$idRole.")";
+    }
+
+    public function chercher($mysqli, $id) {
         
     }
 
-    public function listerTout() {
+    public function listerTout($mysqli) {
         
     }
 
-    public function modifier($object) {
+    public function modifier($mysqli) {
         
     }
 
-    public function remplir($id) {
-        
-    }
-
-    public function supprimer($id) {
+    public function supprimer($mysqli) {
         
     }
 
