@@ -7,6 +7,7 @@ include("./modele/Role.php");
 ?>
 
 <?php
+
 	//
         $con = new ConnectToDb();
         $mysqli = $con->getConnect();
@@ -29,6 +30,32 @@ include("./modele/Role.php");
         //$role = new Role();
         //$role->chercher($mysqli, 9);
         //$role->supprimer($mysqli);
+
+/* Traitement des requetes $_GET */
+$controller = 'Presentation';
+$action = 'index';
+$id = '';
+if(!empty($_GET['controller']))
+	{
+	$controller = $_GET['controller'];
+	if(!empty($_GET['action']))
+		{
+		$action = $_GET['action'];
+		if(!empty($_GET['id']))
+			$id = $_GET['id'];
+		}
+	}
+//On inclut le fichier s'il existe et s'il est spécifié
+if(is_file('Controllers/'.$controller.'.Controller.php'))
+	{
+	include 'Controllers/'.$controller.'.Controller.php';
+	$class = $controller."Controller";
+	$objet = new $class($mysqli);
+	$objet->$action($id);
+	}
+/* FIN*/
+
+
 ?>
 
 	<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu odio eu velit tincidunt cursus quis sodales mauris. Vestibulum egestas ultrices auctor. Duis adipiscing <a href="index.html">click here &gt;&gt;</a></h4>

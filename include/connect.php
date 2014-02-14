@@ -9,6 +9,8 @@
                 if ($this->mysqli->connect_errno) {
                     echo "Echec lors de la connexion à MySQL : (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
                 }
+                else
+					$this->mysqli->query("SET CHARACTER SET UTF8");
                 
                 
             }
