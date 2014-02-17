@@ -1,5 +1,5 @@
 <?php
-include './DAO.php';
+include("DAO.php");
 class Personne implements DAO{
     private $id;
     private $nom;
@@ -17,6 +17,9 @@ class Personne implements DAO{
 
     public function ajouter($mysqli) {
         $sql = "INSERT INTO personnes (nom, prenom, metier, idRole) VALUES('".$nom."', '".$prenom."', '".$metier."', ".$idRole.")";
+        $mysqli::query($sql);
+        var_dump($mysqli::insert_id);
+        
     }
 
     public function chercher($mysqli, $id) {

@@ -4,6 +4,8 @@ require("./include/menu.php");
 include("./include/banniere.php");
 include("./include/connect.php"); 
 include("./modele/Role.php");
+include("./modele/Personne.php");
+
 ?>
 
 <?php
@@ -30,6 +32,9 @@ include("./modele/Role.php");
         //$role = new Role();
         //$role->chercher($mysqli, 9);
         //$role->supprimer($mysqli);
+        
+        $personne = new Personne("Pierrot", "Lalune", "Artiste", 8);
+        $personne->ajouter($mysqli);
 
 /* Traitement des requetes $_GET */
 $controller = 'Presentation';
