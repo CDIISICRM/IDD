@@ -62,11 +62,16 @@ include("include/connect.php");
  	$connection = Connect::getInstance();
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	$projet = 2;
 	if(isset($_GET['projet']))
 		$projet = $_GET['projet'];
 	
 	$rq = "SELECT id,nom,objectifs,etatActuel,date_debut,photo_proj1,photo_proj2 FROM projets WHERE id=".$projet;
+=======
+	
+	$rq = "SELECT id,nom,objectifs,etatActuel,date_debut,photo_proj1,photo_proj2 FROM projets WHERE id=2  ";
+>>>>>>> 92746776c30bb9cb5dd7a20cca42cd2d314a8adb
 =======
 	
 	$rq = "SELECT id,nom,objectifs,etatActuel,date_debut,photo_proj1,photo_proj2 FROM projets WHERE id=2  ";
