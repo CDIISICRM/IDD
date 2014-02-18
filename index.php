@@ -8,7 +8,6 @@ include("include/connect.php");
 <?php
  $connection = Connect::getInstance();
 	$req = "SELECT titre, texte, img, extension FROM contenus WHERE id=1";
-	
 	$res = $connection->query($req); 
 	$table = $res->fetch_assoc();
 	$img = $table["img"].'.'.$table["extension"];

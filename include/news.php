@@ -1,8 +1,9 @@
 		<ul id="categories" class="section">
 		<?php
-		$rq= "select `date_debut`, `nom`, `objectifs` from `projets` order by `date_debut` desc limit 3";
+		$rq= "SELECT date_debut, nom, objectifs FROM projets ORDER BY date_debut DESC LIMIT 3";
 		$table= $connection->query($rq);
-		while( $row=$table-> fetch_row())
+                
+		while( $row=$table->fetch_row())
 			{
 			echo "<li><h5>".formatDate($row[0])."</h5>";
 			echo "<p>".$row[1]."</p></li>";
