@@ -35,6 +35,7 @@ include("./modele/Personne.php");
         
         $personne = new Personne(null, null, null, null, null);
         $personne->chercher($mysqli, 8);
+        var_dump($personne);
 
 /* Traitement des requetes $_GET */
 $controller = 'Presentation';

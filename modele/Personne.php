@@ -30,9 +30,13 @@ class Personne implements DAO{
         $sql = "SELECT * FROM personnes WHERE id = ".$id;
         $res = $mysqli->query($sql);
         $row = $res->fetch_row();
-        var_dump($row);
-        $this->id = $row['0'];
-        //TODO
+        
+        $this->id = $row[0];
+        $this->nom = $row[1];
+        $this->prenom = $row[2];
+        $this->email = $row[3];
+        $this->idRole = $row[4];
+        $this->metier = $row[5];
     }
 
     public function listerTout($mysqli) {
