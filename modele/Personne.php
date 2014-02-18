@@ -40,7 +40,16 @@ class Personne implements DAO{
     }
 
     public function listerTout($mysqli) {
-        
+        $lesPersonnes = array();
+        $sql = "SELECT * FROM personnes ";
+        $res = $mysqli->query($sql);
+        while($row = $res->fetch_array()){
+            
+            $unePersonne = new Personne($row[1], $row[2], $row[5], $row[3], $row[4], $row[0]);
+            $lesPersonnes[] = $unePersonne;
+            
+        }
+        return $lesPersonnes;
     }
 
     public function modifier($mysqli) {

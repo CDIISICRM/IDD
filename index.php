@@ -33,9 +33,13 @@ include("./modele/Personne.php");
         //$role->chercher($mysqli, 9);
         //$role->supprimer($mysqli);
         
-        $personne = new Personne(null, null, null, null, null);
-        $personne->chercher($mysqli, 8);
-        var_dump($personne);
+        //$personne = new Personne(null, null, null, null, null);
+        //$personne->chercher($mysqli, 8);
+        //var_dump($personne);
+        
+        //$personne = new Personne(null, null, null, null, null);
+        //$lesPersonnes = $personne->listerTout($mysqli);
+        //var_dump($lesPersonnes);
 
 /* Traitement des requetes $_GET */
 $controller = 'Presentation';
