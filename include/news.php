@@ -1,5 +1,6 @@
 		<ul id="categories" class="section">
 		<?php
+
 		$rq= "select `id`, `date_debut`, `nom`, `objectifs` from `projets` order by `date_debut` desc limit 3";
 		$table= $connection->query($rq);
 		while( $row=$table-> fetch_row())
@@ -10,6 +11,9 @@
 				<a href="detail_projet.php?projet='.$row[0].'">'.$row[1].'</a>"
 			</p>
 			</li>';
+
+		
+
 			}			
 		?>
 			<!--li>

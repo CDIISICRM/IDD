@@ -4,9 +4,9 @@
     class Connect{
     
     private static $mysqli = null;
-    private  $host='localhost';
-    private  $user='root';
-    private  $pass='';
+    private  $host='localhost:3306';
+    private  $user='mcdaassomag';
+    private  $pass='mcdaassomag';
     private  $base='mcdaassomag';
     
     private function __construct() {}
