@@ -1,45 +1,30 @@
 <?php
-require("./include/header_meta.php");
-require("./include/menu.php");
-include("./include/banniere.php");
-include("./include/connect.php"); 
-include("./modele/Role.php");
-include("./modele/Personne.php");
-
+require("include/header_meta.php");
+require("include/menu.php");
+include("include/banniere.php");
+include("include/connect.php");
 ?>
 
 <?php
+ $connection = Connect::getInstance();
+	$req = "SELECT titre, texte, img, extension FROM contenus WHERE id=1";
+	
+	$res = $connection->query($req); 
+	$table = $res->fetch_assoc();
+	$img = $table["img"].'.'.$table["extension"];
 
-	//
-        $con = new ConnectToDb();
-        $mysqli = $con->getConnect();
-        //$role = new Role("nouveauRole");
-        //$role->ajouter($mysqli);
-        
-        //$role = new Role();
-        //$role->chercher($mysqli, 3);
-        //var_dump($role);
-        
-        //$role = new Role();
-        //$lesRoles = $role->listerTout($mysqli);
-        //var_dump($lesRoles);
-        
-        //$role = new Role();
-        //$role->chercher($mysqli, 9);
-        //$role->setNomRole("roleModifié");
-        //$role->modifier($mysqli);
-        
-        //$role = new Role();
-        //$role->chercher($mysqli, 9);
-        //$role->supprimer($mysqli);
-        
-        //$personne = new Personne(null, null, null, null, null);
-        //$personne->chercher($mysqli, 8);
-        //var_dump($personne);
-        
-        //$personne = new Personne(null, null, null, null, null);
-        //$lesPersonnes = $personne->listerTout($mysqli);
-        //var_dump($lesPersonnes);
+	echo "<h1>".stripslashes($table["titre"])."</h1>";
+
+	echo '<div class="section"><p style="text-align:justify" ><img src='.$img.' alt="action association" style="float: left; border: 0; margin-right:10px ; margin-bottom:10px" \>'.stripslashes($table["texte"]).'</p></div>';
+	
+?>
+
+	<!--<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu odio eu velit tincidunt cursus quis sodales mauris. Vestibulum egestas ultrices auctor. Duis adipiscing <a href="index.html">click here &gt;&gt;</a></h4>-->
+			 
+            
+
+
+<?php 
 
 /* Traitement des requetes $_GET */
 $controller = 'Presentation';
@@ -64,25 +49,6 @@ if(is_file('Controllers/'.$controller.'.Controller.php'))
 	$objet->$action($id);
 	}
 /* FIN*/
-
-
-?>   
-
-
-<?php 
-
-/*$filesname= "numero.txt";
-
-$id=fopen($filesname, "rw");
-$lecture=fread($id,50);
-fclose($id);
-//echo($lecture);
-$tab=explode("=",$lecture);
-$num= $tab[1]+1;
-$newchaine= $tab[0]."=".$num;
-$id=fopen($filesname, "w");
-if(flock($id,2)){
-	fwrite($id,$newchaine);	*/
 
 
 
