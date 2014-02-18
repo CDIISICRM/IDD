@@ -13,7 +13,7 @@
 
         static public final function getInstance() {
         if (is_null(self::$mysqli)){
-              self::$mysqli=new mysqli("mysql51-113.perso", "mcdaassomag", "B82mhsp7", "mcdaassomag");
+              self::$mysqli=new mysqli("192.168.1.170:3306", "mcdaassomag", "mcdaassomag", "mcdaassomag");
               if(self::$mysqli->connect_errno) 
               {    
                   echo "Echec de la connection".self::$mysqli->connect_errno."  ".self::$mysqli->connect_error;
