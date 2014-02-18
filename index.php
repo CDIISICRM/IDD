@@ -1,4 +1,5 @@
 <?php
+//include début de page par Michel
 require("include/header_meta.php");
 require("include/menu.php");
 include("include/banniere.php");
