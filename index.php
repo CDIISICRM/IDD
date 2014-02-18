@@ -33,8 +33,8 @@ include("./modele/Personne.php");
         //$role->chercher($mysqli, 9);
         //$role->supprimer($mysqli);
         
-        $personne = new Personne("Pierrot", "Lalune", "Artiste", 8);
-        $personne->ajouter($mysqli);
+        $personne = new Personne(null, null, null, null, null);
+        $personne->chercher($mysqli, 8);
 
 /* Traitement des requetes $_GET */
 $controller = 'Presentation';
