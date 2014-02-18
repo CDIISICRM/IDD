@@ -221,15 +221,15 @@ p a:hover {
 .section h4 a:hover {
 	color: #d75229;
 }
-/** Adbox **/
-#adbox {
+/** intro **/
+#intro {
 	display: inline-block;
 	height: 444px;
 	width: 100%;
 	margin: 0 0 30px;
 	position: relative;
 }
-#adbox > div.info {
+#intro > div.info {
 	background: url(../images/bg-adboxInfo.jpg) no-repeat right top;
 	height: 404px;
 	width: 290px;

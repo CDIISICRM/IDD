@@ -1,5 +1,5 @@
 <div id="contents">
-	<div id="adbox">
+	<div id="intro">
 		
 		<img src="./images/glider.jpg" alt="Img" height="444" width="630"/>
 		<div class="info">
@@ -8,4 +8,4 @@
 			<a href="index.html" class="more">Click here for more</a>
 		</div>
 	</div>
-<!-- /#adbox -->
+<!-- /#intro -->
