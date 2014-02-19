@@ -3,11 +3,11 @@
 include_once('Modele.DAO.php');
 
 class Partenaire implements DAO{
-    private $id;
-    private $nom;
-    private $siteInternet;
-    private $logo;
-    private $sygle;
+    public $id;
+    public $nom;
+    public $siteInternet;
+    public $logo;
+    public $sygle;
     
     function __construct($nom, $siteInternet, $logo,$sygle, $id=0) {
         $this->id = $id;
@@ -42,11 +42,11 @@ class Partenaire implements DAO{
         $res = $mysqli->query($sql);
         while($row = $res->fetch_array()){
             
-            $unPartenaire = new Personne($row[1], $row[2], $row[4], $row[3], $row[0]);
+            $unPartenaire = new Partenaire($row[1], $row[2], $row[4], $row[3], $row[0]);
             $lesPartenaires[] = $unPartenaire;
             
         }
-        return $lesPersonnes;
+        return $lesPartenaires;
     }
 
     public function modifier($mysqli) {
