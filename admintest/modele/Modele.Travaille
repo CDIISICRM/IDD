@@ -1,0 +1,40 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+class Travaille implements DAO{
+    private $idPersonne;
+    private $idProjet;
+    private $dateDebut;
+    private $dateFin;
+            
+    function __construct() {
+        
+    }
+
+    public function ajouter($mysqli) {
+        
+    }
+
+    public function chercher($mysqli, $id) {
+        
+    }
+
+    public function listerTout($mysqli) {
+        
+    }
+
+    public function modifier($mysqli) {
+        
+    }
+
+    public function supprimer($mysqli) {
+        
+    }
+
+}
+
