@@ -6,7 +6,7 @@
 		$table= $connection->query($rq);
 		while( $row=$table-> fetch_row())
 			{
-			echo "<li><h5>".formatDate($row[0])."</h5>";
+			echo "<li><h5>".formatDate($row[1])."</h5>";
 			echo '
 			<p>
 				<a href="detail_projet.php?projet='.$row[0].'">'.$row[2].'</a>
