@@ -1,0 +1,46 @@
+<h1>Supprimer un enregistrement</h1>
+
+<form id="form1" method="post">
+	<table>
+		<tr>
+			<td>Id : </td>
+			<td><input type="text" id="id" name="id" readonly="true" value="<?php echo $this->viewData['personne']->getId();?>"/>
+			</td>
+		</tr>
+		<tr>	<td>Designation : </td>
+			<td>
+			<input type="text" id="nom" name="nom" readonly="true" value="<?php echo $this->viewData['personne']->getNom();?>"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Prix Unitaire : </td>
+			<td>
+				<input type="text" id="prenom" readonly="true" name="prenom" value="<?php 
+				echo $this->viewData['personne']->getPrenom();?>"/>(DH)
+			</td>
+		</tr>
+		<tr>
+			<td>Tva : </td>
+			<td>
+				<input type="text" id="mail" readonly="true" name="mail" value="<?php echo $this->viewData['personne']->getMail();?>"/>
+			</td>
+		</tr>
+		<tr>    <td>Famille : </td>
+			<td>
+				<input type="text" id="role" readonly="true" name="role" value="<?php 
+                                foreach($this->viewData['listRoles'] as $cat)
+                                    if($cat['id'] == $this->viewData['personne']->getRole())
+						echo $cat['role'];
+				?>"/>
+			</td>
+		</tr>
+                <tr>	<td>Metier : </td>
+			<td>
+				<input type="text" id="metier" readonly="true" name="metier" value="<?php echo $this->viewData['personne']->getMetier();?>"/>
+			</td>
+		</tr>
+		<tr><td colspan='2'><input type="submit" value= "  Supprimer  " />
+		</td></tr>
+	</table>
+</form>
+<a href="?controler=Produit">Retour</a>

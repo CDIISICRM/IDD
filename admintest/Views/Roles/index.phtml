@@ -1,0 +1,21 @@
+<h1>Listes de Roles</h1>
+<table>
+	<tr>
+		<th>idRole</th><th>nomRole</th>
+		<th>Suppression</th><th>Modification</th>
+	</tr>
+	<?php 
+		//On récupère la liste a partir de viewData
+                $listeRoles = $this->viewData['listRoles'];
+                if ($listeRoles)
+		foreach($this->viewData['listRoles'] as $role) :
+			echo'<tr><td>'.$role['id'].'</td>
+                                <td>'.$role['nomRole'].'</td>
+				 <td><a href="?controler=Roles&action=modifier&id='.$role['id'].'">Modifier</a></td>
+				 <td><a href="?controler=Roles&action=supprimer&id='.$role['id'].'">Supprimer</a></td></tr>';
+		endforeach;
+                else echo '\n La liste de rôles est vide \n';
+	?>
+</table>
+<a href="?controler=Roles&action=ajouter">Ajouter un nouveau role</a>
+

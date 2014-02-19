@@ -1,0 +1,18 @@
+<h1>Supprimer un rôle</h1>
+
+<form id="form1" method="post">
+	<table>
+		<tr>	<td>Identifiant : </td>
+			<td><input type="text" id="idRole" name="idRole" readonly="true" value="<?php echo $this->viewData['Role']->getId(); ?>"/>
+			</td>
+		</tr>
+		<tr>	<td>Nom du rôle : </td>
+			<td>
+			<input type="text" id="nomRole" name="nomRole" readonly="true" value="<?php echo $this->viewData['Role']->getNomRole();?>"/>
+			</td>
+		</tr>
+		<tr><td colspan='2'><input type="submit" value= "  Supprimer  " />
+		</td></tr>
+	</table>
+</form>
+<a href="?controler=Roles">Annulation</a>

@@ -1,0 +1,33 @@
+<h1>Listes de Personnes</h1>
+<table border="1">
+	<tr>
+		<th>id</th><th>Nom</th>
+                <th>Prénom</th><th>mail</th><th>Role</th>
+		<th>metier</th><th>Suppression</th>
+		<th>Modification</th>
+	</tr>
+	<?php 
+
+       $array =array();
+       
+       
+		//On récupère la liste a partir de viewData
+		foreach($this->viewData as $value) {
+                        $array = array_values($value);
+			echo'<tr><td>'.$array[0].'</td>
+			     <td>'.$array[1].'</td>
+				 <td>'.$array[2].'</td>
+				 <td>'.$array[3].'</td>
+                                . <td>'.$array[5].'</td>    
+                                  <td>'.$array[4]['nomRole'].'</td>
+				 <td><a href="?controler=Personne&action=modifier&id=
+					'.$array[0].'">Modifier</a></td>
+				 <td><a href="?controler=Personne&action=supprimer&id=
+					'.$array[0].'">Supprimer</a></td>
+				 </tr>';
+                    }   
+             
+	?>
+</table>
+<a href="?controler=Personne&action=ajouter">Ajouter une nouvelle personne</a>
+
