@@ -4,12 +4,13 @@ require_once('header.php');
 include ("modele/Modele.Partenaire.php");
 include("../include/connect.php");
 
+
 $connection = Connect::getInstance();
+$array = Partenaire::listerTout($connection);
 
+/*$partenaire= new Partenaire(NULL,NULL,NULL,NULL);
 
-$partenaire= new Partenaire(NULL,NULL,NULL,NULL);
-
-$array= $partenaire->listerTout($connection);
+$array= $partenaire->listerTout($connection);*/
 
 echo '<table border="1" cellpadding="5" cellspacing="5">';
 
