@@ -1,6 +1,6 @@
 <?php
 
-include_once './Modele.DAO.php';
+include_once('Modele.DAO.php');
 
 class Personne implements DAO{
     private $id;
@@ -19,7 +19,12 @@ class Personne implements DAO{
         $this->idRole = $idRole;
     }
 
-    public function ajouter($mysqli) {
+    
+    public function setIdRole($idRole) {
+        $this->idRole = $idRole;
+    }
+
+        public function ajouter($mysqli) {
         $sql = "INSERT INTO personnes (nom, prenom, mail, metier, idRole) VALUES('".$this->nom."', '".$this->prenom."', '".$this->email."','".$this->metier."', ".$this->idRole.")";
         $mysqli->query($sql);
         $this->id = $mysqli->insert_id;
@@ -53,6 +58,9 @@ class Personne implements DAO{
     }
 
     public function modifier($mysqli) {
+        $sql = "UPDATE personnes SET nom = '".$this->nom."', prenom = '".$this->prenom."', mail = '".$this->email."', idRole = ".$this->idRole.", metier = '".$this->metier."' WHERE id= ".$this->id;
+        $mysqli->query($sql);
+        
         
     }
 
