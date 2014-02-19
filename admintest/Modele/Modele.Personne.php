@@ -65,6 +65,8 @@ class Personne implements DAO{
     }
 
     public function supprimer($mysqli) {
+        $sql = "DELETE FROM personnes WHERE id = ".$this->id;
+        $mysqli->query($sql);
         
     }
 

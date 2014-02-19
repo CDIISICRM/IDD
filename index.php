@@ -27,6 +27,8 @@ include("admintest/Modele/Modele.Personne.php");
 //        $unePersonne->setIdRole(5);
 //        $unePersonne->modifier($connection);
         
+//        $unePersonne->supprimer($connection);
+        
 ?>
 
 	<!--<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu odio eu velit tincidunt cursus quis sodales mauris. Vestibulum egestas ultrices auctor. Duis adipiscing <a href="index.html">click here &gt;&gt;</a></h4>-->
