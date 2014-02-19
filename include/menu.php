@@ -2,24 +2,24 @@
 	<div id="page">
 		<div id="header">
 			<div id="logo">
-				<a href="index.html"><img src="images/logo.png" alt="LOGO"></a>
+				<a href="index.php"><img src="images/logo.png" alt="LOGO"></a>
 			</div>
-			<form action="index.html" method="post" class="searchbar">
+			<form action="rechercher.php" method="post" class="searchbar">
 				<input type="text" value="Search" onFocus="this.select();" onMouseUp="return false;">
 				<input type="submit" value="Go">
 			</form>
 			<ul id="navigation">
 				<li class="selected">
-					<a href="index.html">Accueil & Présentation</a>
+					<a href="index.php">Accueil & Présentation</a>
 				</li>
 				<li>
-                                    <a href="about.html">Réalisations</a>
+                    <a href="projets.php">Réalisations</a>
 				</li>
 				<li>
-					<a href="blog.html">Presse et partenaires</a>
+					<a href="presse_et_partenaire.php">Presse et partenaires</a>
 				</li>
 				<li>
-					<a href="contact.html">Contact</a>
+					<a href="contact.php">Contact</a>
 				</li>
 			</ul>
 		</div>
