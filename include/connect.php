@@ -23,7 +23,7 @@
             printf("Connect failed: %s\n", mysqli_connect_error()); 
             exit();   
         }
-		//$mysqli->query("SET CHARACTER SET UTF8");
+		self::$mysqli->set_charset("utf8");
         return self::$mysqli;     
     } 
    }
