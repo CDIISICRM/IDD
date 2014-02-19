@@ -22,10 +22,10 @@ include("admintest/Modele/Modele.Personne.php");
         
         
         
-        $unePersonne = new Personne(null, null, null, null, null);
-        $unePersonne->chercher($connection, 8);
-        $unePersonne->setIdRole(5);
-        $unePersonne->modifier($connection);
+//        $unePersonne = new Personne(null, null, null, null, null);
+//        $unePersonne->chercher($connection, 8);
+//        $unePersonne->setIdRole(5);
+//        $unePersonne->modifier($connection);
         
 ?>
 
