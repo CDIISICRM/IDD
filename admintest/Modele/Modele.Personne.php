@@ -3,12 +3,12 @@
 include_once('Modele.DAO.php');
 
 class Personne implements DAO{
-    private $id;
-    private $nom;
-    private $prenom;
-    private $metier;
-    private $email;
-    private $idRole;
+    public $id;
+    public $nom;
+    public $prenom;
+    public $metier;
+    public $email;
+    public $idRole;
     
     function __construct($nom, $prenom, $metier,$email, $idRole, $id=0) {
         $this->id = $id;
@@ -56,6 +56,9 @@ class Personne implements DAO{
         }
         return $lesPersonnes;
     }
+	
+	
+	
 
     public function modifier($mysqli) {
         $sql = "UPDATE personnes SET nom = '".$this->nom."', prenom = '".$this->prenom."', mail = '".$this->email."', idRole = ".$this->idRole.", metier = '".$this->metier."' WHERE id= ".$this->id;

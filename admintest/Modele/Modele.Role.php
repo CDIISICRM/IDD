@@ -16,6 +16,15 @@ class Role implements DAO{
         $this->nomRole = $nomRole;
     }
 
+	public function getId(){
+		return $this->id;
+	}
+	
+	public function getNomRole(){
+		return $this->nomRole;	
+	}
+	
+	
     public function setNomRole($nomRole) {
         $this->nomRole = $nomRole;
     }

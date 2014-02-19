@@ -39,10 +39,12 @@ td{color:black;font-size:11px;font-family: Verdana, Arial, Helvetica}
 			  <a href="modifaccueil.php">
               <li>Editer/Modifier rubrique accueil</li>
               </a>
-	<a href="">
-              <li>Editer/Modifier les rôles de l'association</li>
-              </a>
-			  <a href="">
+			  
+              <li>
+              <a href=" listemembre.php ">Gerer les membres de l'association</a>
+              </li>
+              
+			  <a href=" ">
               <li>rubrique  projet</li>
 			  
               </a>
@@ -57,5 +59,5 @@ td{color:black;font-size:11px;font-family: Verdana, Arial, Helvetica}
 </table>
 
 </td>
-    <td valign="top"><center><font size="1"><strong><a href="index.php">Accueil administration</a>&nbsp;|&nbsp;<a href="javascript:;" onClick="alert('Pour vous déconnecter : pour certains navigateurs,\nvous devez cliquer sur la croix de fermeture en haut à droite!!!');window.close();">Déconnexion</a><br> <hr color="black"></strong></font></center><br><br>
+    <td valign="top"><center><font size="1"><strong><a href="index.php">Accueil administration</a>&nbsp;|&nbsp;<a href="javascript:;" onClick="alert('Pour vous dconnecter : pour certains navigateurs,\nvous devez cliquer sur la croix de fermeture en haut  droite!!!');window.close();">Dconnexion</a><br> <hr color="black"></strong></font></center><br><br>
 
