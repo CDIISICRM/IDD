@@ -4,6 +4,7 @@ require("include/header_meta.php");
 require("include/menu.php");
 include("include/banniere.php");
 include("include/connect.php");
+include("admintest/Modele/Modele.Personne.php");
 ?>
 
 <?php
@@ -17,6 +18,15 @@ include("include/connect.php");
 
 	echo '<div class="section"><p style="text-align:justify" ><img src='.$img.' alt="action association" style="float: left; border: 0; margin-right:10px ; margin-bottom:10px" \>'.stripslashes($table["texte"]).'</p></div>';
 	
+        
+        
+        
+        
+//        $unePersonne = new Personne(null, null, null, null, null);
+//        $unePersonne->chercher($connection, 8);
+//        $unePersonne->setIdRole(5);
+//        $unePersonne->modifier($connection);
+        
 ?>
 
 	<!--<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu odio eu velit tincidunt cursus quis sodales mauris. Vestibulum egestas ultrices auctor. Duis adipiscing <a href="index.html">click here &gt;&gt;</a></h4>-->
