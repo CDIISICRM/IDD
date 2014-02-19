@@ -11,11 +11,53 @@ class Travaille implements DAO{
     private $idProjet;
     private $dateDebut;
     private $dateFin;
-            
-    function __construct() {
+    
+    public function getIdPersonne() {
+        return $this->idPersonne;
+    }
+
+    public function getIdProjet() {
+        return $this->idProjet;
+    }
+
+    public function getDateDebut() {
+        return $this->dateDebut;
+    }
+
+    public function getDateFin() {
+        return $this->dateFin;
+    }
+
+    public function setIdPersonne($idPersonne) {
+        $this->idPersonne = $idPersonne;
+    }
+
+    public function setIdProjet($idProjet) {
+        $this->idProjet = $idProjet;
+    }
+
+    public function setDateDebut($dateDebut) {
+        $this->dateDebut = $dateDebut;
+    }
+
+    public function setDateFin($dateFin) {
+        $this->dateFin = $dateFin;
+    }
+
+    
+    
+    
+    
+    
+    
+    
+        function __construct() {
         
     }
 
+    
+    
+    
     public function ajouter($mysqli) {
         
     }
@@ -34,6 +76,22 @@ class Travaille implements DAO{
 
     public function supprimer($mysqli) {
         
+    }
+    
+    
+    public function chercherParPersonne($mysqli, $idPersonne){
+        $lesTravaux = array();
+        $sql = "SELECT * FROM travaille WHERE idPersonne=".$idPersonne;
+        $res = $mysqli->query($sql);
+        while ($row = $res->fetch_array()){
+            $this->idPersonne = $row['idPersonne'];
+            $this->idProjet = $row['idProjet'];
+            $this->dateDebut = $row['dateDeb'];
+            $this->dateFin = $row['dateFin'];
+            
+            $lesTravaux[] = $this;
+        }
+        return 
     }
 
 }
