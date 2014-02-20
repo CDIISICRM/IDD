@@ -58,6 +58,7 @@ if(isset($_POST['valider'] ))
 			$titre1 = stripslashes($_POST['titreancien']);
 				
 			echo"<center><strong>La page d'accueil a bien &eacute;t&eacute; modifi&eacute;e</strong></center>";
+			echo '<meta http-equiv="refresh" content="2;URL=index.php">';
 			}
 		else 
 			{

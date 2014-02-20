@@ -18,8 +18,8 @@ class Partenaire implements DAO{
     }
 
         public function ajouter($mysqli) {
-        $sql = "INSERT INTO partenaires (nom, siteInternet, logo, sygle) VALUES('".$this->nom."', '".$this->siteInternet."', '".$this->logo."','".$this->metier."', ".$this->sygle.")";
-        $mysqli->query($sql);
+        $sql = "INSERT INTO partenaires (nom, siteInternet, logo, sygle) VALUES('".$this->nom."', '".$this->siteInternet."', '".$this->logo."', '".$this->sygle."')";
+		$mysqli->query($sql);
         $this->id = $mysqli->insert_id;
         
     }
@@ -36,7 +36,7 @@ class Partenaire implements DAO{
         $this->sygle = $row[3];
     }
 
-    public function listerTout($mysqli) {
+    static public function listerTout($mysqli) {
         $lesPartenaires = array();
         $sql = "SELECT * FROM partenaires ";
         $res = $mysqli->query($sql);
@@ -50,8 +50,8 @@ class Partenaire implements DAO{
     }
 
     public function modifier($mysqli) {
-        $sql = "UPDATE partenaires SET nom = '".$this->nom."', siteInternet = '".$this->siteInternet."', logo = '".$this->logo."', sygle = ".$this->sygle."' WHERE id= ".$this->id;
-        $mysqli->query($sql);
+        $sql = "UPDATE partenaires SET nom = '".$this->nom."', siteInternet = '".$this->siteInternet."', logo = '".$this->logo."', sygle = '".$this->sygle."' WHERE id=".$this->id;
+		$mysqli->query($sql);
         
         
     }
