@@ -232,16 +232,17 @@
             
             $unProjet = new Projet($row[1], $row[2], $row[4], $row[3], $row[0]);
             $lesProjet[] = $unProjet;
+        }
     }
 
     public function modifier($mysqli) {
         
-             
+           
       $rqt = 'UPDATE Projets SET nom = "'.$this->pNom.'", 
         objectifs = '.$this->pObjectifs.', etatActuel = '.$this->pEtatActuel.', 
 	dateDeb = '.$this->pDateDeb.' WHERE id = '.$this->id;
                         
-                        $mysqli->query($rqt);
+       $mysqli->query($rqt);
         
     }
 
