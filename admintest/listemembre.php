@@ -30,6 +30,10 @@ for($i=0; $i<count($array);$i++  ){
 	
 	echo"</table> ";
 
+
+echo'<a href="ajouter_membre.php" target="_self"> <input type="button" value="Ajouter un membre"></a>';
+
+
 require_once('footer.php');
 
 

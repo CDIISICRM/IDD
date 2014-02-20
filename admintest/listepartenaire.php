@@ -27,6 +27,18 @@ for($i=0; $i<count($array);$i++  ){
 	
 	echo"</table> ";
 
+
+
+echo'<a href="ajouter_partenaire.php" target="_self"> <input type="button" value="Ajouter un partenaire"></a>';
+
+
+
+
+
+
+
+
+
 require_once('footer.php');
 
 
