@@ -3,7 +3,7 @@
 
 //bonjour
 
-include './Modele.DAO.php';
+//include ('Modele.DAO.php');
 
 class Role implements DAO{
 
@@ -46,7 +46,7 @@ class Role implements DAO{
         
     }
 
-    public function listerTout($mysqli) {
+    static public function listerTout($mysqli) {
         $lesRoles = array();
         $sql = "SELECT * FROM roles";
         $res = $mysqli->query($sql);

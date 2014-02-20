@@ -1,6 +1,6 @@
 <?php
 
-include_once('Modele.DAO.php');
+//include_once('Modele.DAO.php');
 
 class Personne implements DAO{
     public $id;
@@ -45,6 +45,7 @@ class Personne implements DAO{
     }
 
     static public function listerTout($mysqli) {
+
         $lesPersonnes = array();
         $sql = "SELECT * FROM personnes ";
         $res = $mysqli->query($sql);
