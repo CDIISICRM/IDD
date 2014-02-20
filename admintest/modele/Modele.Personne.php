@@ -1,6 +1,6 @@
 <?php
 
-//include_once('Modele.DAO.php');
+require_once('Modele.DAO.php');
 
 class Personne implements DAO{
     public $id;
