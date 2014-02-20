@@ -43,9 +43,14 @@ td{color:black;font-size:11px;font-family: Verdana, Arial, Helvetica}
               <li>
               <a href=" listemembre.php ">Gerer les membres de l'association</a>
               </li>
+
+	      <li>
+              <a href=" listepartenaire.php ">Gerer les partenaires</a>
+              </li>
+
               
-			  <a href="listProjet.php">
-              <li>rubrique  projet</li>
+			  
+              <li><a href="listProjet.php">Gerer les projets</li>
 			  
               </a>
 			  <a href="formation.php">

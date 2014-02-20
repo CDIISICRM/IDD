@@ -18,9 +18,10 @@ $getid=$_GET['id'];
 /*echo"getid=".$getid;*/
 if(isset($_POST['valider'] ))
 { 
-	$personne1=new Personne($_POST['nom'],$_POST['prenom'],$_POST['metier'],$_POST['email'],$idRole,$getid);
+	$personne1=new Personne($_POST['nom'],$_POST['prenom'],$_POST['metier'],$_POST['email'],$_POST['idRole'],$getid);
 	$personne1->modifier($mysqli);
-	echo "modifié";
+	echo "<center><strong>Les modifications ont bien été enregistrées.</strong></center>";
+	echo '<meta http-equiv="refresh" content="2;URL=listemembre.php">';
 }
 else
 {	
@@ -41,11 +42,12 @@ $options = '';
 foreach($lesRoles as $unRole)
 	{
 	$selected = '';
+	//echo $personne->idRole.'<br/>';
 	if($unRole->getId() == $personne->idRole)
 		{
+		//echo $unRole->getId().' VS '.$personne->idRole.'<br/>';
 		$selected = ' selected="selected"';
 		}
-
 	$options .= '<option value="'.$unRole->getId().'"'.$selected.' >'.$unRole->getNomRole().'</option>';
 	}
 
