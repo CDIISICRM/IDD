@@ -60,7 +60,7 @@ echo"<table align='center'>
 <td>
 </td>
 <td align='left'>
-<input type='submit' name=\"valider\" value='modifier' /> 
+<input type='submit' name=\"valider\" value='ajouter' /> 
 </td>
 </tr>
 
@@ -72,6 +72,7 @@ if (isset($_POST['valider']))
 	$partenaire=new Partenaire($_POST['nom'],$_POST['site'],$_POST['sygle'],$_POST['logo']);
 	$partenaire->ajouter($mysqli);
 	echo "ajouté";
+	var_dump($partenaire);
 }
 
 ?>

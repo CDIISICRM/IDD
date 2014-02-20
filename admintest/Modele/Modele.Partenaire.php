@@ -18,8 +18,9 @@ class Partenaire implements DAO{
     }
 
         public function ajouter($mysqli) {
-        $sql = "INSERT INTO partenaires (nom, siteInternet, logo, sygle) VALUES('".$this->nom."', '".$this->siteInternet."', '".$this->logo."', ".$this->sygle.")";
-        $mysqli->query($sql);
+        $sql = "INSERT INTO partenaires (nom, siteInternet, logo, sygle) VALUES('".$this->nom."', '".$this->siteInternet."', '".$this->logo."', '".$this->sygle."')";
+        echo $sql;
+		$mysqli->query($sql);
         $this->id = $mysqli->insert_id;
         
     }
