@@ -72,7 +72,7 @@ if (isset($_POST['valider']))
 	$partenaire=new Partenaire($_POST['nom'],$_POST['site'],$_POST['sygle'],$_POST['logo']);
 	$partenaire->ajouter($mysqli);
 	echo "ajouté";
-	var_dump($partenaire);
+	
 }
 
 ?>

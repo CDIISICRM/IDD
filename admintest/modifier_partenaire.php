@@ -15,7 +15,9 @@ $getid=$_GET['id'];
 /*echo"getid=".$getid;*/
 if(isset($_POST['valider'] ))
 { 
-
+	$partenaire1=new Partenaire($_POST['nom'],$_POST['site'],$_POST['sygle'],$_POST['logo'],$getid);
+	$partenaire1->modifier($mysqli);
+	echo "modifié";
 }
 else
 {
@@ -28,7 +30,8 @@ $date=datefr($conteneur['0']);
 $titre=stripslashes($conteneur['1']);
 $texte=stripslashes($conteneur['2']);*/
 
-$Partenaire = new Partenaire(NULL,NULL,NULL,NULL,NULL);
+$Partenaire = new Partenaire(NULL,NULL,NULL,NULL,$getid);
+
 $Partenaire->chercher($mysqli, $_GET['id']);
 
 
@@ -44,7 +47,7 @@ echo"<table align='center'>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>Site Internet</font></td>
 <td align='left'>
-<input type='text' name='prenom' value=\"".$Partenaire->siteInternet."\" size='40' />
+<input type='text' name='site' value=\"".$Partenaire->siteInternet."\" size='40' />
 
 </td>
 </tr>
@@ -52,7 +55,7 @@ echo"<table align='center'>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>SIGLE</font></td>
 <td align='left'>
-<input type='text' name='prenom' value=\"".$Partenaire->sygle."\" size='40' />
+<input type='text' name='sygle' value=\"".$Partenaire->sygle."\" size='40' />
 
 </td>
 </tr>
@@ -60,7 +63,7 @@ echo"<table align='center'>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>LOGO</font></td>
 <td align='left'>
-<input type='text' name='prenom' value=\"".$Partenaire->logo."\" size='40' />
+<input type='text' name='logo' value=\"".$Partenaire->logo."\" size='40' />
 
 </td>
 </tr>
@@ -76,6 +79,7 @@ echo"<table align='center'>
 
 </form>  
 </table>";
+
 }
 ?>
 
