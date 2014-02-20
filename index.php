@@ -2,6 +2,7 @@
 //include début de page par Michel
 require("include/header_meta.php");
 require("include/menu.php");
+require_once './admintest/modele/Modele.Travaille.php';
 include("include/banniere.php");
 include("include/connect.php");
 include("admintest/Modele/Modele.Personne.php");
@@ -28,6 +29,11 @@ include("admintest/Modele/Modele.Personne.php");
 //        $unePersonne->modifier($connection);
         
 //        $unePersonne->supprimer($connection);
+        
+        $travaille = new Travaille();
+        $travaille->setIdPersonne(5);
+        $travaille->setIdProjet(2);
+        $travaille->setDateDebut(DATE_W3C);
         
 ?>
 

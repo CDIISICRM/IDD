@@ -5,6 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+require_once 'Modele.DAO.php';
 
 class Travaille implements DAO{
     private $idPersonne;
