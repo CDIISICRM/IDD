@@ -44,7 +44,7 @@ class Personne implements DAO{
         $this->metier = $row[5];
     }
 
-    public function listerTout($mysqli) {
+    static public function listerTout($mysqli) {
         $lesPersonnes = array();
         $sql = "SELECT * FROM personnes ";
         $res = $mysqli->query($sql);
