@@ -26,7 +26,7 @@ $projet= new Projet(NULL,NULL,NULL,NULL,NULL, NULL, NULL, NULL, 0);
     
     echo '<table border="1" cellpadding="5" cellspacing="5">';
 
-            for($i=0; $i<count($long));$i++  ){
+            for($i=0; $i<count($long);$i++){
                 echo "<tr> ".$long[$i]->getPNom."<tr>
                         <tr> " .$long[$i]->getPObjectifs. " <tr>
                         <tr> " .$long[$i]->getetatActuel. " <tr>
