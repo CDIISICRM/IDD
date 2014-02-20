@@ -1,5 +1,6 @@
 <?php
 
+include 'modele/Modele.DAO.php';
 require_once('header.php');
 require_once('../include/connect.php'); 
 require_once('modele/Modele.Personne.php');
@@ -17,17 +18,12 @@ $getid=$_GET['id'];
 /*echo"getid=".$getid;*/
 if(isset($_POST['valider'] ))
 { 
-
-
-	
-
-
-
+	$personne1=new Personne($_POST['nom'],$_POST['prenom'],$_POST['metier'],$_POST['email'],$idRole,$getid);
+	$personne1->modifier($mysqli);
+	echo "modifié";
 }
 else
-{
-	echo 'I am here!';
-	
+{	
 /*$rq="select date,titre,texte from evenements where id=".$_GET['id'];											
 $rquery=@mysql_db_query($base,$rq);  
 $conteneur=mysql_fetch_row($rquery);
@@ -40,6 +36,20 @@ $personne->chercher($mysqli, $_GET['id']);
 
 $leRole = new Role(NULL,NULL);
 $lesRoles = $leRole->listerTout($mysqli);
+
+$options = '';
+foreach($lesRoles as $unRole)
+	{
+	$selected = '';
+	if($unRole->getId() == $personne->idRole)
+		{
+		$selected = ' selected="selected"';
+		}
+
+	$options .= '<option value="'.$unRole->getId().'"'.$selected.' >'.$unRole->getNomRole().'</option>';
+	}
+
+
 echo"<table align='center'>
 <caption>Modifier un Membre de l'association </caption>
 <form action='modifier_membre.php?id=$getid' method='post' name='form1' enctype='multipart/form-data'>
@@ -62,7 +72,7 @@ echo"<table align='center'>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>METIER</font></td>
 <td align='left'>
-<input type='text' name='prenom' value=\"".$personne->metier."\" size='40' />
+<input type='text' name='metier' value=\"".$personne->metier."\" size='40' />
 
 </td>
 </tr>
@@ -72,7 +82,7 @@ echo"<table align='center'>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>EMAIL</font></td>
 <td align='left'>
-<input type='text' name='prenom' value=\"".$personne->email."\" size='40' />
+<input type='text' name='email' value=\"".$personne->email."\" size='40' />
 
 </td>
 </tr>
@@ -80,23 +90,8 @@ echo"<table align='center'>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>ROLE</font></td>
 <td align='left'>
-<select name=\"idRole\" id=\"idRole\">";
-
-foreach($lesRoles as $unRole){
-	
-	if(intval($unRole->getId()) == intval($personne->idRole))
-		
-		{
-			echo '<option value="'.$unRole->getId().'" selected >'.$unRole->getNomRole().'</option>';
-	
-		}
-	else
-		{
-			echo '<option value="'.$unRole->getId().'" >'.$unRole->getNomRole().'</option>';
-		}
-	
-}
-echo"
+<select name=\"idRole\" id=\"idRole\">
+	".$options."
 </select>
 
 </td>

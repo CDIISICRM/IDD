@@ -1,6 +1,7 @@
 <?php 
 
 require_once('header.php');
+include 'modele/Modele.DAO.php';
 include ("modele/Modele.Personne.php");
 include("../include/connect.php");
 
