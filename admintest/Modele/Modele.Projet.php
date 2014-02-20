@@ -220,8 +220,7 @@
 			$this->pEtatActuel = $data['etatActuel'];
                      
                  }
-                 
-               
+                
     }
 
     public static function listerTout($mysqli) {
@@ -236,11 +235,10 @@
     }
 
     public function modifier($mysqli) {
-        
-           
+          
       $rqt = 'UPDATE Projets SET nom = "'.$this->pNom.'", 
         objectifs = '.$this->pObjectifs.', etatActuel = '.$this->pEtatActuel.', 
-	dateDeb = '.$this->pDateDeb.' WHERE id = '.$this->id;
+	dateDeb = '.$this->pDateDeb.',$dateDebut='.$this->tDateDebut.',$dateFin='.$this->tDateFin.'  WHERE id = '.$this->id;
                         
        $mysqli->query($rqt);
         
