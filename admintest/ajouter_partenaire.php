@@ -71,7 +71,8 @@ if (isset($_POST['valider']))
 {
 	$partenaire=new Partenaire($_POST['nom'],$_POST['site'],$_POST['sygle'],$_POST['logo']);
 	$partenaire->ajouter($mysqli);
-	echo "ajouté";
+	echo "<center><strong>Les modifications ont bien été enregistrées.</strong></center>";
+	echo '<meta http-equiv="refresh" content="2;URL=listepartenaire.php">';
 	
 }
 

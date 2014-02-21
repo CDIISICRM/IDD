@@ -3,14 +3,27 @@
 
 //bonjour
 
-//include ('Modele.DAO.php');
+include ('Modele.DAO.php');
 
 class Role implements DAO{
 
     private $id;
     private $nomRole;
    
-
+/*	public function getId(){
+		return $this->id;
+	}
+	public function setId($value){
+		$this->id=$value;
+	}
+		public function getNomRole(){
+		return $this->nomRole;
+	}
+	public function setNomRole($value){
+		$this->nomRole=$value;
+	}
+	*/
+	
     public function __construct( $nomRole="", $id=null){
         $this->id = $id;
         $this->nomRole = $nomRole;

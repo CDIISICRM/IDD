@@ -84,7 +84,8 @@ if (isset($_POST['valider']))
 {
 	$personne=new Personne($_POST['nom'],$_POST['prenom'],$_POST['metier'],$_POST['email'],$_POST['idRole']);
 	$personne->ajouter($mysqli);
-	echo "ajouté";
+	echo "<center><strong>Les modifications ont bien été enregistrées.</strong></center>";
+	echo '<meta http-equiv="refresh" content="2;URL=listemembre.php">';
 	
 }
 
