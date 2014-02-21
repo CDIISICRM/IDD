@@ -42,13 +42,13 @@ echo"<table align='center'>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>NOM</font></td>
 <td align='left'>
-<input type='text' name='nom' value=\"".$Partenaire->nom."\" size='40' />
+<input type='text' readonly name='nom' value=\"".$Partenaire->nom."\" size='40' />
 
 
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>Site Internet</font></td>
 <td align='left'>
-<input type='text' name='site' value=\"".$Partenaire->siteInternet."\" size='40' />
+<input type='text' readonly name='site' value=\"".$Partenaire->siteInternet."\" size='40' />
 
 </td>
 </tr>
@@ -56,7 +56,7 @@ echo"<table align='center'>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>SIGLE</font></td>
 <td align='left'>
-<input type='text' name='sygle' value=\"".$Partenaire->sygle."\" size='40' />
+<input type='text' readonly name='sygle' value=\"".$Partenaire->sygle."\" size='40' />
 
 </td>
 </tr>
@@ -64,7 +64,7 @@ echo"<table align='center'>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>LOGO</font></td>
 <td align='left'>
-<input type='text' name='logo' value=\"".$Partenaire->logo."\" size='40' />
+<input type='text' readonly name='logo' value=\"".$Partenaire->logo."\" size='40' />
 
 </td>
 </tr>

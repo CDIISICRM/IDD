@@ -51,7 +51,7 @@ echo"<table align='center'>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>NOM</font></td>
 <td align='left'>
-<input type='text' name='nomRole' value=\"".$role->getNomRole()."\" size='40' />
+<input type='text' readonly  name='nomRole' value=\"".$role->getNomRole()."\" size='40' />
 
 
 <tr>
