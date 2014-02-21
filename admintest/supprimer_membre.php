@@ -12,7 +12,6 @@ require_once('modele/Modele.Role.php');
 <?php
 $mysqli = Connect::getInstance();
 
-	
 			
 $getid=$_GET['id'];
 /*echo"getid=".$getid;*/
@@ -35,6 +34,7 @@ $texte=stripslashes($conteneur['2']);*/
 $personne = new Personne(NULL,NULL,NULL,NULL,NULL, 0);
 $personne->chercher($mysqli, $_GET['id']);
 
+
 $leRole = new Role(NULL,NULL);
 $lesRoles = $leRole->listerTout($mysqli);
 
@@ -46,9 +46,10 @@ foreach($lesRoles as $unRole)
 	if($unRole->getId() == $personne->idRole)
 		{
 		//echo $unRole->getId().' VS '.$personne->idRole.'<br/>';
-		$selected = ' selected="selected"';
+		//$selected = ' selected="selected"';
+		$role=$unRole->getNomRole();
 		}
-	$options .= '<option value="'.$unRole->getId().'"'.$selected.' >'.$unRole->getNomRole().'</option>';
+	//$options .= '<option value="'.$unRole->getId().'"'.$selected.' >'.$unRole->getNomRole().'</option>';
 	}
 
 
@@ -58,14 +59,14 @@ echo"<table align='center'>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>NOM</font></td>
 <td align='left'>
-<input type='text' name='nom' value=\"".$personne->nom."\" size='40' />
+<input type='text' readonly name='nom' value=\"".$personne->nom."\" size='40' />
 
 </td>
 </tr>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>PRENOM</font></td>
 <td align='left'>
-<input type='text' name='prenom' value=\"".$personne->prenom."\" size='40' />
+<input type='text' readonly name='prenom' value=\"".$personne->prenom."\" size='40' />
 
 </td>
 </tr>
@@ -74,7 +75,7 @@ echo"<table align='center'>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>METIER</font></td>
 <td align='left'>
-<input type='text' name='metier' value=\"".$personne->metier."\" size='40' />
+<input type='text' readonly name='metier' value=\"".$personne->metier."\" size='40' />
 
 </td>
 </tr>
@@ -84,7 +85,7 @@ echo"<table align='center'>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>EMAIL</font></td>
 <td align='left'>
-<input type='text' name='email' value=\"".$personne->email."\" size='40' />
+<input type='text' readonly name='email' value=\"".$personne->email."\" size='40' />
 
 </td>
 </tr>
@@ -92,9 +93,8 @@ echo"<table align='center'>
 <tr>
 <td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>ROLE</font></td>
 <td align='left'>
-<select name=\"idRole\" id=\"idRole\">
-	".$options."
-</select>
+<input type='text' readonly name='idRole' value=\"".$role."\" size='40' />
+
 
 </td>
 </tr>
