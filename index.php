@@ -9,7 +9,7 @@ include("admintest/Modele/Modele.Personne.php");
 ?>
 
 <?php
-//coucou   c
+//coucou   et re coucou 
  $connection = Connect::getInstance();
 	$req = "SELECT titre, texte, img, extension FROM contenus WHERE id=1";
 	$res = $connection->query($req); 
