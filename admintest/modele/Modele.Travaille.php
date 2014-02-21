@@ -60,7 +60,8 @@ class Travaille implements DAO{
     
     
     public function ajouter($mysqli) {
-        $sql = "INSERT INTO travaille (idPersonne, idProjet, dateDeb, dateFin) VALUES(".$this->idPersonne.", ".$this->idProjet.", ".$this->dateDebut.", ".$this->dateFin.")";
+        $sql = "INSERT INTO travaille (idPersonne, idProjet, dateDeb, dateFin) VALUES(".$this->idPersonne.", ".$this->idProjet.", '".$this->dateDebut."', '".$this->dateFin."')";
+        
         $mysqli->query($sql);
         
     }

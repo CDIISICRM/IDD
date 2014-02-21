@@ -30,11 +30,14 @@ include("admintest/Modele/Modele.Personne.php");
         
 //        $unePersonne->supprimer($connection);
         
-        $travaille = new Travaille();
-        $travaille->setIdPersonne(5);
-        $travaille->setIdProjet(2);
-        $travaille->setDateDebut(DATE_W3C);
-        
+//        $travaille = new Travaille();
+//        $travaille->setIdPersonne(1);
+//        $travaille->setIdProjet(2);
+//        $travaille->setDateDebut(date("Y-m-d"));
+//        $travaille->setDateFin(date("Y-m-d", mktime(0,0,0,9,12,2014)));
+//        $travaille->ajouter($connection);
+        //var_dump(date("Y-m-d"));
+        //var_dump(date("Y-m-d", mktime(0,0,0,9,12,2014)));
 ?>
 
 	<!--<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu odio eu velit tincidunt cursus quis sodales mauris. Vestibulum egestas ultrices auctor. Duis adipiscing <a href="index.html">click here &gt;&gt;</a></h4>-->
