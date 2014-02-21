@@ -3,7 +3,7 @@
 
 //bonjour
 
-include ('Modele.DAO.php');
+//include ('Modele.DAO.php');
 
 class Role implements DAO{
 

@@ -1,5 +1,6 @@
 <?php 
 
+include ('modele/Modele.DAO.php');
 require_once('header.php');
 include ("modele/Modele.Role.php");
 include("../include/connect.php");
@@ -19,7 +20,7 @@ for($i=0; $i<count($array);$i++  ){
 	echo"<tr> ";
 	echo"<td>".$array[$i]->getNomRole()."  </td> ";
 	echo'<td> <a href=modifier_role.php?id='.$array[$i]->getId().' target="_self"> modifier </a></td> ';
-	
+	echo '<td> <a href=supprimer_role.php?id='.$array[$i]->getId().' target="_self"> supprimer </a></td> ';
 	echo"</tr> ";
 	}
 	
