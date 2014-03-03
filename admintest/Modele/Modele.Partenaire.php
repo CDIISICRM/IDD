@@ -29,11 +29,9 @@ class Partenaire implements DAO{
         $res = $mysqli->query($sql);
         $row = $res->fetch_row();
         
-        $this->id = $row[0];
-        $this->nom = $row[1];
-        $this->siteInternet = $row[2];
-        $this->logo = $row[4];
-        $this->sygle = $row[3];
+		$partenaire = new Personne($row[1], $row[2], $row[4], $row[3], $row[0]);
+		
+		return $partenaire;
     }
 
     static public function listerTout($mysqli) {
