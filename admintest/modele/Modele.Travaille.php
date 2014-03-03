@@ -85,7 +85,11 @@ class Travaille implements DAO{
     }
 
     public function modifier($mysqli) {
-        
+        $sql = 'UPDATE travaille SET dateDeb = "'.$this->dateDebut.'", dateFin = "'.$this->dateFin.'" '
+                . 'WHERE idProjet = '.$this->idProjet.' '
+                . 'AND idPersonne = '.$this->idPersonne;
+        $mysqli->query($sql);
+        return $mysqli->errno;
     }
 
     public function supprimer($mysqli) {
