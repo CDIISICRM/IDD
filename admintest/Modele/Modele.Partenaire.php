@@ -29,7 +29,7 @@ class Partenaire implements DAO{
         $res = $mysqli->query($sql);
         $row = $res->fetch_row();
         
-		$partenaire = new Personne($row[1], $row[2], $row[4], $row[3], $row[0]);
+		$partenaire = new Partenaire($row[1], $row[2], $row[4], $row[3], $row[0]);
 		
 		return $partenaire;
     }
