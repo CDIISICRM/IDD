@@ -61,6 +61,25 @@ class Partenaire implements DAO{
         $mysqli->query($sql);
         
     }
+    
+    public static function listerParIdProjet($mysqli, $idProjet){
+        $lesPartenaires = array();
+        $sql = 'SELECT p.nom, p.siteInternet, p.logo, p.sygle, p.id FROM partenaires AS p, agit, projets  WHERE p.id = agit.idPartenaire '
+                . 'AND projets.id = agit.idProjet '
+                . 'AND agit.idProjet = '.$idProjet;
+        $res = $mysqli->query($sql);
+        var_dump($mysqli->error);
+        while ($row = $res->fetch_array()){
+            $unPartenaire = new Partenaire(
+                    $row['nom'],
+                    $row['siteInternet'],
+                    $row['logo'],
+                    $row['sygle'],
+                    $row['id']);
+            $lesPartenaires[] = $unPartenaire;
+        }
+        return $lesPartenaires;
+    }
 
 }
 

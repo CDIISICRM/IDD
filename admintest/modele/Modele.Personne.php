@@ -77,10 +77,12 @@ class Personne implements DAO{
     
     public static function listerParIdProjet($mysqli, $idProjet){
         $lesPersonnes = array();
-        $sql = 'SELECT * FROM personnes, travaille WHERE personnes.id = travaille.idPersonne '
+        $sql = 'SELECT p.nom, p.prenom, p.metier, p.mail, p.idRole FROM personnes AS p, travaille, projets '
+                . 'WHERE p.id = travaille.idPersonne '
+                . 'AND travaille.idProjet = projets.id '
                 . 'AND travaille.idProjet = '.$idProjet;
         $res = $mysqli->query($sql);
-        
+        var_dump($res);
         while($row = $res->fetch_array()){
             $unePersonne = new Personne($row['nom'],
                     $row['prenom'],
