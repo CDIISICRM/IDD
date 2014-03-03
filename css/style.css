@@ -453,3 +453,8 @@ p a:hover {
 	text-align: center;
 	text-shadow: none;
 }
+
+/* Administration */
+th {
+	font-size: 14px;
+}
