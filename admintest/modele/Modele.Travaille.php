@@ -71,15 +71,17 @@ class Travaille implements DAO{
     }
 
     public static function listerTout($mysqli) {
-        $les
+        $lesTravaux = array();
         $sql = 'SELECT * FROM travaille ';
-        $res = $msqli->query($sql);
+        $res = $mysqli->query($sql);
         while($row = $res->fetch_array()){
             $this->idPersonne = $row['idPersonne'];
             $this->idProjet = $row['idProjet'];
             $this->dateDebut = $row['dateDeb'];
             $this->dateFin = $row['dateFin'];
+            $lesTravaux[] = $this;
         }
+        return $lesTravaux;
     }
 
     public function modifier($mysqli) {
@@ -88,6 +90,18 @@ class Travaille implements DAO{
 
     public function supprimer($mysqli) {
         
+    }
+    
+    public static function chercherParTravail($mysqli, $idPersonne, $idProjet){
+        $sql = 'SELECT * FROM travaille WHERE idPersonne = '.$idPersonne.' AND idProjet = '.$idProjet;
+        $res = $mysqli->query($sql);
+        $row = $res->fetch_array();
+        $this->idPersonne = $row['idPersonne'];
+        $this->idProjet = $row['idProjet'];
+        $this->dateDebut = $row['dateDeb'];
+        $this->dateFin = $row['dateFin'];
+        
+        return $this;
     }
     
     
