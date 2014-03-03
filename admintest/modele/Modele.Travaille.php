@@ -93,7 +93,9 @@ class Travaille implements DAO{
     }
 
     public function supprimer($mysqli) {
-        
+        $sql = 'DELETE FROM travaille WHERE idPersonne = '.$this->idPersonne.' AND idProjet = '.$this->idProjet;
+        $mysqli->query($sql);
+        return $mysqli->errno;
     }
     
     public static function chercherParTravail($mysqli, $idPersonne, $idProjet){
