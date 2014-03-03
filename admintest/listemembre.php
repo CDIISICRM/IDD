@@ -23,6 +23,7 @@ for($i=0; $i<count($array);$i++  ){
 	echo"<td>".$array[$i]->metier."  </td> ";
 	echo"<td>".$array[$i]->idRole."  </td> ";
 	echo'<td> <a href=modifier_membre.php?id='.$array[$i]->id.' target="_self">  modifier </a></td> ';
+	echo'<td> <a href=supprimer_membre.php?id='.$array[$i]->id.' target="_self">  supprimer </a></td> ';
 	
 	echo"</tr> ";
 	}
