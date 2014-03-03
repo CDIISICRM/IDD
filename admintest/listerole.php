@@ -14,7 +14,8 @@ $array = Role::listerTout($connection);
 $array= $partenaire->listerTout($connection);*/
 
 echo '<table border="1" cellpadding="5" cellspacing="5">';
-
+echo "<tr><td><b>Rôle dans l'association</b></td>
+	<td></td></tr>";
 
 for($i=0; $i<count($array);$i++  ){
 	echo"<tr> ";

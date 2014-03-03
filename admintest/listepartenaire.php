@@ -13,7 +13,12 @@ $array = Partenaire::listerTout($connection);
 $array= $partenaire->listerTout($connection);*/
 
 echo '<table border="1" cellpadding="5" cellspacing="5">';
-
+echo"<tr>
+	<td><b>Nom</b></td>
+	<td><b>Site internet</b></td>
+	<td></td>
+	<td></td>
+	</tr>";
 
 for($i=0; $i<count($array);$i++  ){
 	echo"<tr> ";
