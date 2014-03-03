@@ -3,6 +3,7 @@
 <head>
 <title>Administration</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/style.css" type="text/css">
 <style>
 A:link {color: black;text-decoration:none;} A:visited {color: black;text-decoration:none;} A:hover {color: red;text-decoration:underline;} 
 td{color:black;font-size:11px;font-family: Verdana, Arial, Helvetica}
@@ -53,7 +54,7 @@ td{color:black;font-size:11px;font-family: Verdana, Arial, Helvetica}
 
               
 			  
-              <li><a href="listProjet.php">Gerer les projets</li>
+              <li><a href="listprojet.php">Gerer les projets</li>
 			  
               </a>
 			  <a href="formation.php">
