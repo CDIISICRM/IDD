@@ -71,7 +71,15 @@ class Travaille implements DAO{
     }
 
     public static function listerTout($mysqli) {
-        
+        $les
+        $sql = 'SELECT * FROM travaille ';
+        $res = $msqli->query($sql);
+        while($row = $res->fetch_array()){
+            $this->idPersonne = $row['idPersonne'];
+            $this->idProjet = $row['idProjet'];
+            $this->dateDebut = $row['dateDeb'];
+            $this->dateFin = $row['dateFin'];
+        }
     }
 
     public function modifier($mysqli) {
