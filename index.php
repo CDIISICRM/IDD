@@ -43,8 +43,8 @@ include("admintest/modele/Modele.Projet.php");
         //var_dump(date("Y-m-d", mktime(0,0,0,9,12,2014)));
         
         
-        $unProjet = Projet::chercher($connection, 2);
-        var_dump($unProjet);
+//        $unProjet = Projet::chercher($connection, 2);
+//        var_dump($unProjet);
 ?>
 
 	<!--<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu odio eu velit tincidunt cursus quis sodales mauris. Vestibulum egestas ultrices auctor. Duis adipiscing <a href="index.html">click here &gt;&gt;</a></h4>-->
