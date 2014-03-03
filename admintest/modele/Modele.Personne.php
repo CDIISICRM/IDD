@@ -31,7 +31,7 @@ class Personne implements DAO{
         
     }
 
-    public function chercher($mysqli, $id) {
+    public static function chercher($mysqli, $id) {
         $sql = "SELECT * FROM personnes WHERE id = ".$id;
         $res = $mysqli->query($sql);
         $row = $res->fetch_row();
@@ -73,6 +73,23 @@ class Personne implements DAO{
         $sql = "DELETE FROM personnes WHERE id = ".$this->id;
         $mysqli->query($sql);
         
+    }
+    
+    public static function listerParIdProjet($mysqli, $idProjet){
+        $lesPersonnes = array();
+        $sql = 'SELECT * FROM personnes, travaille WHERE personnes.id = travaille.idPersonne '
+                . 'AND travaille.idProjet = '.$idProjet;
+        $res = $mysqli->query($sql);
+        
+        while($row = $res->fetch_array()){
+            $unePersonne = new Personne($row['nom'],
+                    $row['prenom'],
+                    $row['metier'],
+                    $row['mail'],
+                    $row['idRole']);
+            $lesPersonnes[] = $unePersonne;
+        }
+        return $lesPersonnes;
     }
 
 }

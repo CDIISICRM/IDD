@@ -6,20 +6,22 @@ require_once './admintest/modele/Modele.Travaille.php';
 include("include/banniere.php");
 include("include/connect.php");
 include("admintest/Modele/Modele.Personne.php");
+include("admintest/modele/Modele.Projet.php");
 ?>
 
 <?php
 //coucou   et re coucou yyy
- $connection = Connect::geptInstance();
-	$req = "SELECT titre, texte,p img, extension FROM contenus WHERE id=1";
-	$res = $connection->query($req); 
-	$table = $res->fetch_assoc();
-	$img = $table["img"].'.'.$table["extension"];
-
-	echo "<h1>".stripslashes($table["titre"])."</h1>";
-
-	echo '<div class="section"><p style="text-align:justify" ><img src='.$img.' alt="action association" style="float: left; border: 0; margin-right:10px ; margin-bottom:10px" \>'.stripslashes($table["texte"]).'</p></div>';
-	
+ $connection = Connect::getInstance();
+ 
+//	$req = "SELECT titre, texte,p img, extension FROM contenus WHERE id=1";
+//	$res = $connection->query($req); 
+//	$table = $res->fetch_assoc();
+//	$img = $table["img"].'.'.$table["extension"];
+//
+//	echo "<h1>".stripslashes($table["titre"])."</h1>";
+//
+//	echo '<div class="section"><p style="text-align:justify" ><img src='.$img.' alt="action association" style="float: left; border: 0; margin-right:10px ; margin-bottom:10px" \>'.stripslashes($table["texte"]).'</p></div>';
+//	
         
         
         
@@ -39,6 +41,10 @@ include("admintest/Modele/Modele.Personne.php");
 //        $travaille->ajouter($connection);
         //var_dump(date("Y-m-d"));
         //var_dump(date("Y-m-d", mktime(0,0,0,9,12,2014)));
+        
+        
+//        $unProjet = Projet::chercher($connection, 2);
+//        var_dump($unProjet);
 ?>
 
 	<!--<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu odio eu velit tincidunt cursus quis sodales mauris. Vestibulum egestas ultrices auctor. Duis adipiscing <a href="index.html">click here &gt;&gt;</a></h4>-->

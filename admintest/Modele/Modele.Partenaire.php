@@ -24,7 +24,7 @@ class Partenaire implements DAO{
         
     }
 
-    public function chercher($mysqli, $id) {
+    public static function chercher($mysqli, $id) {
         $sql = "SELECT * FROM partenaires WHERE id = ".$id;
         $res = $mysqli->query($sql);
         $row = $res->fetch_row();

@@ -25,11 +25,8 @@
 		* @return   id 
 	*/
 	
-    public function __construct($nom, $objectifs, $etatActuel, $dateDeb, $photo_1, $photo_2, $idProjet =0)
-       {
-		if($idProjet == 0)
-			{
-			$this->id=$idProjet;
+    public function __construct($nom=NULL, $objectifs=NULL, $etatActuel=NULL, $dateDeb=NULL, $photo_1=NULL, $photo_2=NULL, $idProjet =0, $mysqli=NULL){
+        $this->id=$idProjet;
 			$this->pNom=$nom;
 			$this->pObjectifs=$objectifs;
 			$this->pEtatActuel=$etatActuel;
@@ -38,13 +35,11 @@
 			//$this->listPersonne;
 			$this->photo_1=$photo_1;
 			$this->photo_2=$photo_2;
+		if($idProjet != 0){
 			
-			$listPartenaire= Partenaire::listerTout($GLOBALS['connection']);
-			$listPersonne= Personne::listerTout($GLOBALS['connection']);
-			}
-		else
-			{
-			$this->chercher($GLOBALS['connection'], $idProjet);
+			//$this->chercher($GLOBALS['connection'], $idProjet);
+                        //$listPartenaire= Partenaire::listerTout($GLOBALS['connection']);
+			$this->listPersonne= Personne::listerParIdProjet($mysqli ,$idProjet );
 			}
         }
 
@@ -163,27 +158,26 @@
         
     }
 
-    public function chercher($mysqli, $id) 
-		{
+    public static function chercher($mysqli, $id){
         $rqt = "SELECT * FROM projets WHERE id = ".$id;
         $resultat = $mysqli->query($rqt);
+        
         $data = $resultat->fetch_array();
-		// var_dump($data);
-        if(count($data)>0)
-			{
-            $this->id = $data['id'];
-            $this->pNom = $data['nom'];
-            $this->pObjectifs = $data['objectifs'];
-            $this->pEtatActuel = $data['etatActuel'];
-            $this->pDateDeb = $data['date_debut'];
-            $this->photo_1=$data['photo_proj1'];
-            $this->photo_2=$data['photo_proj2'];
-            }
+        $unProjet = new Projet(
+            
+            $data['nom'],
+            $data['objectifs'],
+            $data['etatActuel'],
+            $data['date_debut'],
+            $data['photo_proj1'],
+            $data['photo_proj2'],
+            $data['id'],
+            $mysqli);
+            
+            
                  
-		// A compléter
-		// charger la liste des membres en relation avec le projet
-		// changer la liste des partenaires en relation avec le projet
-		}
+	return $unProjet;
+    }
 
     public static function listerTout($mysqli) {
         $lesProjets = array();

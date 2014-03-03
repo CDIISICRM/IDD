@@ -49,7 +49,7 @@ class Role implements DAO{
         
     }
 
-    public function chercher($mysqli, $id) {
+    public static function chercher($mysqli, $id) {
         $sql = "SELECT * FROM roles WHERE id = ".$id;
         $res = $mysqli->query($sql);
         $table = $res->fetch_row();

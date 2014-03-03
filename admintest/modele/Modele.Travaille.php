@@ -66,7 +66,7 @@ class Travaille implements DAO{
         
     }
 
-    public function chercher($mysqli, $id) {
+    public static function chercher($mysqli, $id) {
         
     }
 
