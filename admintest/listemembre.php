@@ -23,18 +23,20 @@ echo '<table border="1" cellpadding="5" cellspacing="5">';
 	<td><b>Role</b></td>
 	<td></td>
 	<td></td></tr>";
-for($i=0; $i<count($array);$i++  ){
-	echo"<tr> ";
-	echo"<td>".$array[$i]->nom."  </td> ";
-	echo"<td>".$array[$i]->prenom."  </td> ";
-	echo"<td>".$array[$i]->metier."  </td> ";
-	$leRole=$temp->chercher($connection,$array[$i]->idRole);
-	echo"<td>".$leRole->getNomRole()."  </td> ";
-	echo'<td> <a href=modifier_membre.php?id='.$array[$i]->id.' target="_self">  modifier </a></td> ';
-	echo'<td> <a href=supprimer_membre.php?id='.$array[$i]->id.' target="_self">  supprimer </a></td> ';
-	
-	echo"</tr> ";
-	}
+	foreach($array AS $key => $personne)
+		{
+		$leRole = Role::chercher($connection, $personne->idRole);
+		echo"<tr> ";
+		echo"<td>".$personne->nom."  </td> ";
+		echo"<td>".$personne->prenom."  </td> ";
+		echo"<td>".$personne->metier."  </td> ";
+		
+		echo"<td>".$leRole->getNomRole()."  </td> ";
+		echo'<td> <a href=modifier_membre.php?id='.$personne->id.' target="_self">  modifier </a></td> ';
+		echo'<td> <a href=supprimer_membre.php?id='.$personne->id.' target="_self">  supprimer </a></td> ';
+		
+		echo"</tr> ";
+		}
 	
 	
 	echo"</table> ";

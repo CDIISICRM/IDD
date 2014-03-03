@@ -53,9 +53,8 @@ class Role implements DAO{
         $sql = "SELECT * FROM roles WHERE id = ".$id;
         $res = $mysqli->query($sql);
         $table = $res->fetch_row();
-        $this->id = $table['0'];
-        $this->nomRole = $table['1'];
-        return $this;
+		$objRole = new role($table[1], $table[0]);
+        return $objRole;
         
     }
 
