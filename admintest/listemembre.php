@@ -3,7 +3,7 @@
 require_once('header.php');
 include 'modele/Modele.DAO.php';
 include ("modele/Modele.Personne.php");
-include("../include/connect.php");
+// include("../include/connect.php");
 include("Modele/Modele.Role.php");
 
 $connection = Connect::getInstance();

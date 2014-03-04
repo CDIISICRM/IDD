@@ -1,7 +1,4 @@
 <?php
-
-require_once("../include/connect.php");
-
 class LoginModel 
 	{ 
 	public static $auth = array();
