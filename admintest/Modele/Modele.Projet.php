@@ -151,10 +151,10 @@
            
     public function ajouter($mysqli) {
         $rqt = 'INSERT INTO projets (`nom`, `objectifs`, `etatActuel`, 
-			`dateDeb`) VALUES ("'.$this->pNom.'", 
-			'.$this->pObjectifs.', '.$this->pEtatActuel.', 
-			'.$this->pDateDeb.')';
-       $mysqli>query($rqt);
+			`date_debut`, `photo_proj1`,`photo_proj2`) VALUES ("'.$this->pNom.'", 
+			"'.$this->pObjectifs.'", "'.$this->pEtatActuel.'", 
+			"'.$this->pDateDeb.'", "'.$this->photo_1.'" , "'.$this->photo_2.'")';
+       $mysqli->query($rqt);
         
     }
 
