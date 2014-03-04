@@ -12,12 +12,13 @@ require_once('modele/Modele.Partenaire.php');
 $mysqli = Connect::getInstance();
 
 $getid=$_GET['id'];
+$Partenaire=Partenaire::chercher($mysqli, $_GET['id']);
 /*echo"getid=".$getid;*/
 if(isset($_POST['valider'] ))
 { 
-	$partenaire1=new Partenaire($_POST['nom'],$_POST['site'],$_POST['sygle'],$_POST['logo'],$getid);
+	$partenaire1=new Partenaire($_POST['nom'],$_POST['site'],$_POST['sygle'],$Partenaire->logo,$getid);
 	$partenaire1->supprimer($mysqli);
-	unlink('../images/'.$_POST['logo']);
+	if (is_file('../images/'.$Partenaire->logo)) unlink('../images/'.$Partenaire->logo);
 	echo "<center><strong>La suppression a été enregistrée.</strong></center>";
 	echo '<meta http-equiv="refresh" content="2;URL=listepartenaire.php">';
 }
@@ -34,7 +35,7 @@ $texte=stripslashes($conteneur['2']);*/
 
 //$Partenaire = new Partenaire(NULL,NULL,NULL,NULL,$getid);
 
-$Partenaire=Partenaire::chercher($mysqli, $_GET['id']);
+
 
 
 echo"<table align='center'>
@@ -63,10 +64,11 @@ echo"<table align='center'>
 </tr>
 
 <tr>
-<td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>LOGO</font></td>
+<td align='right'>
+	<font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>Logo actuel
+</td>
 <td align='left'>
-<input type='text' readonly name='logo' value=\"".$Partenaire->logo."\" size='40' />
-
+	<img src='../images/".$Partenaire->logo."' alt='Logo' height='150px' />
 </td>
 </tr>
 

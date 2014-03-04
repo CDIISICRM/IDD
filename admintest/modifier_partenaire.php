@@ -31,7 +31,7 @@ if(isset($_POST['valider'] ))
 	   }
 	   else
 	   {
-			unlink('../images/'.$oldLogo);
+			if (is_file('../images/'.$oldLogo)) unlink('../images/'.$oldLogo);
 			$partenaire=new Partenaire($_POST['nom'],$_POST['site'],$obj->cGetNameFileFinal(true),$_POST['sygle'],$_GET['id']);
 	   }
 	}
@@ -88,7 +88,7 @@ echo"<table align='center'>
 	<font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>Logo actuel
 </td>
 <td align='left'>
-	<img src='../images/".$Partenaire->logo."' alt='Logo' height='50px' />
+	<img src='../images/".$Partenaire->logo."' alt='Logo' height='150px' />
 </td>
 </tr>
 <tr>
