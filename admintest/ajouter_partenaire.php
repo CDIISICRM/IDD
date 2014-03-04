@@ -3,7 +3,7 @@
 require_once('header.php');
 require_once('../include/connect.php'); 
 require_once('modele/Modele.Partenaire.php');
-
+require("../include/class_upload.php");
 ?>
 
 
@@ -47,14 +47,17 @@ echo"<table align='center'>
 </td>
 </tr>
 
+
+
 <tr>
-<td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>LOGO</font></td>
-<td align='left'>
-<input type='text' name='logo' size='40' />
-
-</td>
+		  <td align='right'>
+		  	<font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>Telecharger le logo
+		  </td>
+		  <td align='left'>
+			  <input type='file' name='fichierLogo' value='' placeholder='Placer le fichier ici'/>
+		  </td>
 </tr>
-
+			
 
 <tr>
 <td>
@@ -69,10 +72,41 @@ echo"<table align='center'>
 
 if (isset($_POST['valider']))
 {
-	$partenaire=new Partenaire($_POST['nom'],$_POST['site'],$_POST['sygle'],$_POST['logo']);
-	$partenaire->ajouter($mysqli);
-	echo "<center><strong>Les modifications ont bien été enregistrées.</strong></center>";
-	echo '<meta http-equiv="refresh" content="2;URL=listepartenaire.php">';
+	//var_dump($_POST);
+	//var_dump($_POST['fichierLogo']);
+	$obj = new upload('../images/','fichierLogo');
+	$obj->cl_taille_maxi = 49000000;
+	$obj->cl_extensions = array('.gif','.jpg','.png');
+	if (!$obj->uploadFichier())
+	 {
+			// affichage d'une erreur en cas d'echec
+			echo $obj->affichageErreur();
+	 }
+	 else
+	 {
+		$partenaire=new Partenaire($_POST['nom'],$_POST['site'],$obj->cGetNameFile(true),$_POST['sygle']);
+		$partenaire->ajouter($mysqli);
+		echo "<center><strong>Les modifications ont bien été enregistrées.</strong></center>";
+		echo '<meta http-equiv="refresh" content="12;URL=listepartenaire.php">';
+	 }
+	
+	
+	//Tentatvie d'upload à la main
+	
+	/*$target_path = "../images/";
+
+	//$target_path = $target_path . basename( $_FILES['fichierLogo']['name']);
+	$target_path = $target_path .'imgTest.jpg'; 
+	//var_dump($_FILES['fichierLogo']);
+	if(move_uploaded_file($_FILES['fichierLogo']['tmp_name'], $target_path)) {
+    	echo "The file ".  basename( $_FILES['fichierLogo']['name']). 
+    	" has been uploaded";
+	} 
+	else{
+    		echo "There was an error uploading the file, please try again!";
+		}*/
+
+	
 	
 }
 
