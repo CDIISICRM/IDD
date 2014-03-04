@@ -8,6 +8,9 @@
 A:link {color: black;text-decoration:none;} A:visited {color: black;text-decoration:none;} A:hover {color: red;text-decoration:underline;} 
 td{color:black;font-size:11px;font-family: Verdana, Arial, Helvetica}
 </style>
+<script language="javaScript" src="jQuery/jQuery.js"></script>
+<script language="javaScript" src="jQuery/jquery-ui-1.10.4.custom.min.js"></script>
+<link rel="stylesheet" href="css/smoothness/jquery-ui-1.10.4.custom.min.css" type="text/css">
 <script language="JavaScript" src="../fonctions.js"></script>
 </head>
 <body background="im/fond.gif">
