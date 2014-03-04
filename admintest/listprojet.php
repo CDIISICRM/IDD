@@ -7,7 +7,13 @@
  */
 require_once('header.php');
 include('modele/Modele.Projet.php');
+<<<<<<< HEAD
 include('../include/connect.php');
+=======
+
+ include('../include/connect.php');
+
+>>>>>>> df116f49d620dc5994b0e6ff49c7fe7eb881d650
 /**
  * Description of listProjet
  *

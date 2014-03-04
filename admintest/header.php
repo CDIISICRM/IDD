@@ -87,5 +87,5 @@ td{color:black;font-size:11px;font-family: Verdana, Arial, Helvetica}
 </table>
 
 </td>
-    <td valign="top"><center><font size="1"><strong><a href="http://www.mcda-asso.com" alt="http://www.mcda-asso.com">Voir le site</a> <a href="index.php">Accueil administration</a>&nbsp;|&nbsp;<a href="index.php?controller=Login&action=FinSession"><h3>Déconnexion</a></h3><br> <hr color="black"></strong></font></center><br><br>
+    <td valign="top"><center><font size="1"><strong><a href="http://www.mcda-asso.com" alt="http://www.mcda-asso.com">Voir le site</a>&nbsp|&nbsp <a href="index.php">Accueil administration</a>&nbsp;|&nbsp;<a href="index.php?controller=Login&action=FinSession"><h3>Déconnexion</a></h3><br> <hr color="black"></strong></font></center><br><br>
 
