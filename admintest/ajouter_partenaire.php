@@ -77,17 +77,17 @@ if (isset($_POST['valider']))
 	$obj = new upload('../images/','fichierLogo');
 	$obj->cl_taille_maxi = 49000000;
 	$obj->cl_extensions = array('.gif','.jpg','.png');
-	if (!$obj->uploadFichier())
+	if (!$obj->uploadFichier('aleatoire'))
 	 {
 			// affichage d'une erreur en cas d'echec
 			echo $obj->affichageErreur();
 	 }
 	 else
 	 {
-		$partenaire=new Partenaire($_POST['nom'],$_POST['site'],$obj->cGetNameFile(true),$_POST['sygle']);
+		$partenaire=new Partenaire($_POST['nom'],$_POST['site'],$obj->cGetNameFileFinal(true),$_POST['sygle']);
 		$partenaire->ajouter($mysqli);
 		echo "<center><strong>Les modifications ont bien été enregistrées.</strong></center>";
-		echo '<meta http-equiv="refresh" content="12;URL=listepartenaire.php">';
+		echo '<meta http-equiv="refresh" content="2;URL=listepartenaire.php">';
 	 }
 	
 	

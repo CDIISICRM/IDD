@@ -17,6 +17,7 @@ if(isset($_POST['valider'] ))
 { 
 	$partenaire1=new Partenaire($_POST['nom'],$_POST['site'],$_POST['sygle'],$_POST['logo'],$getid);
 	$partenaire1->supprimer($mysqli);
+	unlink('../images/'.$_POST['logo']);
 	echo "<center><strong>La suppression a été enregistrée.</strong></center>";
 	echo '<meta http-equiv="refresh" content="2;URL=listepartenaire.php">';
 }
