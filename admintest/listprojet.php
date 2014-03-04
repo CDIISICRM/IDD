@@ -51,7 +51,7 @@ $connection=Connect::getInstance();
 		$tableProjet .= '</tr>';
 		}
 	$tableProjet .= '</table>
-	<input type="button" value="Ajouter" onClick="Javascript: window.location.href=\'\'"/>';
+	<input type="button" value="Ajouter" onClick="Javascript: window.location.href=\'ajouter_projet.php\'"/>';
             
     echo $tableProjet;
             
