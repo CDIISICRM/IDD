@@ -3,8 +3,7 @@
 require_once('header.php');
 /*$civilite=$_COOKIE['civil'];
 $nom=$_COOKIE['nom']*/
-
-echo"Bienvenue  " .$civilite."  ".$nom."  sur l'interface d'administration du site MCDA  <br/>";
+echo"Bienvenue  sur l'interface d'administration du site MCDA  <br/>";
 /*$chaine=$_COOKIE['tableau_user'];
 echo($chaine);
 $tab_res=array();
@@ -26,11 +25,12 @@ $read=fread($id,50);
 fclose($id);
 $table=explode("=",$read,10);
 $affiche=$table[1];*/
-
+/*
 echo"<br />
 <br />
 <br />
 <p>Nombre de visiteurs : ".$affiche."</p>";
+*/
 include('footer.php');
 
 ?>

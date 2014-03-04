@@ -1,4 +1,23 @@
+<?php 
+session_start();
 
+include_once(dirname(__FILE__).'/modele/LoginModel.php');
+include_once(dirname(__FILE__).'/Controllers/LoginController.php'); 
+	
+if(!LoginModel::EstConnecte() && isset($_POST))
+	LoginController::SessionStart($_POST);
+	
+if((isset($_GET['action']) && $_GET['action'] = 'FinSession'))
+	{
+	unset($_SESSION);
+	echo '<meta http-equiv="refresh" content="0; url=login.phtml">';
+	exit();
+	}
+// $connecte = ? true :  
+
+// if (!$connecte)
+	// $logincontroller->viewcontroller->Vue("login.phtml","modeheader");    
+?>
 <html>
 <head>
 <title>Administration</title>
@@ -68,5 +87,5 @@ td{color:black;font-size:11px;font-family: Verdana, Arial, Helvetica}
 </table>
 
 </td>
-    <td valign="top"><center><font size="1"><strong><a href="index.php">Accueil administration</a>&nbsp;|&nbsp;<a href="javascript:;" onClick="alert('Pour vous dconnecter : pour certains navigateurs,\nvous devez cliquer sur la croix de fermeture en haut  droite!!!');window.close();">Dconnexion</a><br> <hr color="black"></strong></font></center><br><br>
+    <td valign="top"><center><font size="1"><strong><a href="index.php">Accueil administration</a>&nbsp;|&nbsp;<a href="index.php?controller=Login&action=FinSession">Déconnexion</a><br> <hr color="black"></strong></font></center><br><br>
 
