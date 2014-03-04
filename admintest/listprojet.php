@@ -7,7 +7,7 @@
  */
 require_once('header.php');
 include('modele/Modele.Projet.php');
-// include('../include/connect.php');
+include('../include/connect.php');
 /**
  * Description of listProjet
  *
@@ -15,61 +15,30 @@ include('modele/Modele.Projet.php');
  */
 
     //put your code here
-    $connection=Connect::getInstance();
+    $connet=Connect::getInstance();
     
     
-// $projet= new Projet(NULL,NULL,NULL,NULL,NULL, NULL, NULL, NULL, 0);
+$projet= new Projet(NULL,NULL,NULL,NULL,NULL, NULL, NULL, NULL, 0);
     
     
   //$long=$projet->ListProjet($connect, '', '');
-   $listeProjet = Projet::listerTout($connection);
-    
-	
-    $tableProjet = '<table border="1" cellpadding="5" cellspacing="5">
-	<tr>
-		<th>Nom du projet</th>
-		<th>Objectifs</th>
-		<th>&Eacute;tat actuel</th>
-		<th>Date de début</th>
-		<th>Photo 1</th>
-		<th>Photo 2</th>
-		<th>Edition</th>
-		<th>Suppression</th>
-	</tr>
-	';
+   $long=$projet->listerTout($connect);
+   echo 'test : ';
+    var_dump($long);
+    echo '<table border="1" cellpadding="5" cellspacing="5">';
 
-	for($i=0; $i<count($listeProjet);$i++)
-		{
-		// Coupé les chaine trop longue (> 100 carac)
-		$objectif = substr($listeProjet[$i]->getPObjectifs(), 0, 100);
-		$etatActuel = substr($listeProjet[$i]->getetatActuel(), 0, 100);
-		
-		$photo1 = "&nbsp;";
-		if($listeProjet[$i]->getPhoto_1() != '')
-			$photo1 = $listeProjet[$i]->getPhoto_1();
-			
-		$photo2 = "&nbsp;";
-		if($listeProjet[$i]->getPhoto_2() != '')
-			$photo2 = $listeProjet[$i]->getPhoto_1();
-		
-		$tableProjet .= '<tr>';
-		$tableProjet .= '<td> '.$listeProjet[$i]->getPNom().'</td>
-				<td> ' .$objectif. ' ...</td>
-				<td> ' .$etatActuel. ' ...</td>
-				<td> ' .$listeProjet[$i]->getDateDeb(). ' </td>
-				<td> ' .$photo1. ' </td>
-				<td> ' .$photo2. ' </td>
-				<td>
-					<a href="modifier_projet.php?id='.$listeProjet[$i]->getId().'">Modifier</a>
-				</td>
-				<td>
-					<a href="">Supprimer</a>
-				</td>';
-		$tableProjet .= '</tr>';
-		}
-	$tableProjet .= '</table>
-	<input type="button" value="Ajouter" onClick="Javascript: window.location.href=\'\'"/>';
+            for($i=0; $i<count($long);$i++){
+                echo "<tr> ".$long[$i]->getPNom()."<tr>
+                        <tr> " .$long[$i]->getPObjectifs(). " <tr>
+                        <tr> " .$long[$i]->getetatActuel(). " <tr>
+                        <tr> " .$long[$i]->getDateDeb(). " <tr>
+                        <tr> " .$long[$i]->getPhoto_1(). " <tr>
+                        <tr> " .$long[$i]->getPhoto_2(). " <tr>
+                        <tr> " .$long[$i]->getDateDebut(). " <tr>
+                        <tr> " .$long[$i]->getDateFin(). " <tr>";
+            }
+            echo'<td></table>';
             
-    echo $tableProjet;
+     
             
 ?>
