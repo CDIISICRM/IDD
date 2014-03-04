@@ -8,6 +8,8 @@
 require_once('header.php');
 include('modele/Modele.Projet.php');
 
+ include('../include/connect.php');
+
 /**
  * Description of listProjet
  *
