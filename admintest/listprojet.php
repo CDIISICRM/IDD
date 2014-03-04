@@ -8,7 +8,7 @@
 require_once('header.php');
 include('modele/Modele.Projet.php');
 
- include('../include/connect.php');
+
 
 /**
  * Description of listProjet
@@ -52,7 +52,7 @@ include('modele/Modele.Projet.php');
 			
 		$photo2 = "&nbsp;";
 		if($listeProjet[$i]->getPhoto_2() != '')
-			$photo2 = $listeProjet[$i]->getPhoto_1();
+			$photo2 = $listeProjet[$i]->getPhoto_2();
 		
 		$tableProjet .= '<tr>';
 		$tableProjet .= '<td> '.$listeProjet[$i]->getPNom().'</td>

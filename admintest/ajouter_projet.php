@@ -10,7 +10,6 @@ require_once('header.php');
 
 if(!empty($_POST['nomProjet']) && !empty($_POST['objectifs']) && !empty($_POST['etatActuel']) && !empty($_POST['dateDebut']) 
         && !empty($_FILES['photoProj1']) && !empty($_FILES['photoProj2']) && !empty($_POST['ajouterProjet'])){
-    echo 'ok';
     $mysqli = Connect::getInstance();
     $tailleMaxi = 49000000;
     $extensions = array('.gif','.jpg','.png');
@@ -30,7 +29,8 @@ if(!empty($_POST['nomProjet']) && !empty($_POST['objectifs']) && !empty($_POST['
             'media/'.$uploadPhoto1->cGetNameFileFinal(), 
             'media/'.$uploadPhoto2->cGetNameFileFinal());
     $leProjet->ajouter($mysqli);
-    var_dump($mysqli->error);
+    echo 'Projet ajouté';
+
 }
 ?>
 <form method="post" enctype="multipart/form-data" action="ajouter_projet.php">
