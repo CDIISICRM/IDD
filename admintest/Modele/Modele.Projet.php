@@ -38,7 +38,7 @@
 		if($idProjet != 0){
 			
 			//$this->chercher($GLOBALS['connection'], $idProjet);
-                        //$listPartenaire= Partenaire::listerTout($GLOBALS['connection']);
+                        $this->listPartenaire= Partenaire::listerParIdProjet($mysqli, $idProjet);
 			$this->listPersonne= Personne::listerParIdProjet($mysqli ,$idProjet );
 			}
         }

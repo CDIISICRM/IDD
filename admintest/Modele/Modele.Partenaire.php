@@ -29,7 +29,7 @@ class Partenaire implements DAO{
         $res = $mysqli->query($sql);
         $row = $res->fetch_row();
         
-		$partenaire = new Personne($row[1], $row[2], $row[4], $row[3], $row[0]);
+		$partenaire = new Partenaire($row[1], $row[2], $row[4], $row[3], $row[0]);
 		
 		return $partenaire;
     }
@@ -58,6 +58,25 @@ class Partenaire implements DAO{
         $sql = "DELETE FROM partenaires WHERE id = ".$this->id;
         $mysqli->query($sql);
         
+    }
+    
+    public static function listerParIdProjet($mysqli, $idProjet){
+        $lesPartenaires = array();
+        $sql = 'SELECT p.nom, p.siteInternet, p.logo, p.sygle, p.id FROM partenaires AS p, agit, projets  WHERE p.id = agit.idPartenaire '
+                . 'AND projets.id = agit.idProjet '
+                . 'AND agit.idProjet = '.$idProjet;
+        $res = $mysqli->query($sql);
+        var_dump($mysqli->error);
+        while ($row = $res->fetch_array()){
+            $unPartenaire = new Partenaire(
+                    $row['nom'],
+                    $row['siteInternet'],
+                    $row['logo'],
+                    $row['sygle'],
+                    $row['id']);
+            $lesPartenaires[] = $unPartenaire;
+        }
+        return $lesPartenaires;
     }
 
 }

@@ -52,8 +52,11 @@ class Travaille implements DAO{
     
     
     
-        function __construct() {
-        
+    function __construct($dateDebut=NULL, $dateFin=NULL, $idProjet=0, $idPersonne=0) {
+        $this->dateDebut = $dateDebut;
+        $this->dateFin = $dateFin;
+        $this->idPersonne = $idPersonne;
+        $this->idProjet = $idProjet;
     }
 
     
@@ -67,6 +70,7 @@ class Travaille implements DAO{
     }
 
     public static function chercher($mysqli, $id) {
+        //Ne pas utiliser. Utiliser cehercherParIdProjet() et chercherParIdPersonne()
         
     }
 
@@ -116,12 +120,14 @@ class Travaille implements DAO{
         $sql = "SELECT * FROM travaille WHERE idPersonne=".$idPersonne;
         $res = $mysqli->query($sql);
         while ($row = $res->fetch_array()){
-            $this->idPersonne = $row['idPersonne'];
-            $this->idProjet = $row['idProjet'];
-            $this->dateDebut = $row['dateDeb'];
-            $this->dateFin = $row['dateFin'];
+            $unTravail = new Travail(
             
-            $lesTravaux[] = $this;
+            $row['dateDeb'],
+            $row['dateFin'],
+            $row['idPersonne'],
+            $row['idProjet']);
+            
+            $lesTravaux[] = $unTravail;
         }
         return $lesTravaux;
     }
@@ -132,12 +138,14 @@ class Travaille implements DAO{
         $sql = "SELECT * FROM travaille WHERE idProjet=".$idProjet;
         $res = $mysqli->query($sql);
         while ($row = $res->fetch_array()){
-            $this->idPersonne = $row['idPersonne'];
-            $this->idProjet = $row['idProjet'];
-            $this->dateDebut = $row['dateDeb'];
-            $this->dateFin = $row['dateFin'];
+            $unTravail = new Travail(
             
-            $lesTravaux[] = $this;
+            $row['dateDeb'],
+            $row['dateFin'],
+            $row['idPersonne'],
+            $row['idProjet']);
+            
+            $lesTravaux[] = $unTravail;
         }
         return $lesTravaux;
     }
