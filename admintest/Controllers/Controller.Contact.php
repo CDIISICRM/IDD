@@ -21,13 +21,35 @@ class Contact
 			$msgError = '<ul>'.$error.'</ul>';
 			
 			
-		echo $msgError.'	<form action="index.php?controller=Contact&action=EnvoyerFormulaire" method="POST">
-				<label for="nom">Nom : </label><input type="text" name="nom" id="nom" value="'.$nom.'" />
-				<label for="prenom">Prénom : </label><input type="text" name="prenom" id="prenom" value="'.$prenom.'" />
-				<label for="mail">Courriel : </label><input type="text" name="mail" id="mail" value="'.$mail.'" />
-				<label for="message">Message : </label><textarea name="message" id="message" cols="20" rows="10" >'.$mail.'</textarea>
-				<input type="submit" name="Valider" value="Envoyer le message" />
-				</form>';
+		echo '<div id="contact_container">
+			<h1>Formulaire de contact</h1>
+			'.$msgError.'	
+			<form action="index.php?controller=Contact&action=EnvoyerFormulaire" method="POST">
+			<table id="formTable">
+				<tr>
+					<td><label for="nom">Nom : </label></td>
+					<td><input type="text" name="nom" id="nom" value="'.$nom.'" /></td>
+				</tr>
+				<tr>
+					<td><label for="prenom">Prénom : </label></td>
+					<td><input type="text" name="prenom" id="prenom" value="'.$prenom.'" /></td>
+				</tr>
+				<tr>
+					<td><label for="mail">Courriel : </label></td>
+					<td><input type="text" name="mail" id="mail" value="'.$mail.'" /></td>
+				</tr>
+				<tr>
+					<td><label for="message">Message : </label></td>
+					<td><textarea name="message" id="message" cols="50" rows="10" >'.$mail.'</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit" name="Valider" value="Envoyer le message" style="float: right"/>
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>';
 				
 	}
 	
@@ -47,7 +69,7 @@ class Contact
 		{
 			$error.='<li class="error">Veuillez saisir votre Courriel.</li>';
 		}
-		else if($this->VerifierAdresseMail($_POST['mail']))
+		else if(!$this->VerifierAdresseMail($_POST['mail']))
 		{
 			$error.='<li class="error">Veuillez saisir une adresse mail valide.</li>';
 		}
@@ -83,7 +105,7 @@ class Contact
 		{
 		//Adresse mail trop longue (254 octets max)
 		if(strlen($adresse)>254)
-			return '<p>Votre adresse est trop longue.</p>';
+			return false;
 
 		//Caractères non-ASCII autorisés dans un nom de domaine .eu :
 		$nonASCII='ďđēĕėęěĝğġģĥħĩīĭįıĵķĺļľŀłńņňŉŋōŏőoeŕŗřśŝsťŧ';

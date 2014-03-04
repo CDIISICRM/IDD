@@ -458,3 +458,16 @@ p a:hover {
 th {
 	font-size: 14px;
 }
+
+/* formulaire de contact */
+#contact_container {
+	margin: auto;
+}
+
+#formTable {
+	margin:auto;
+}
+
+#formTable td{
+	vertical-align: top;
+}
