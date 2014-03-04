@@ -70,7 +70,7 @@ class Travaille implements DAO{
     }
 
     public static function chercher($mysqli, $id) {
-        
+        //Ne pas utiliser. Utiliser cehercherParIdProjet() et chercherParIdPersonne()
         
     }
 
