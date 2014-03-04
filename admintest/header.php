@@ -1,6 +1,7 @@
 <?php 
 session_start();
 
+require_once("../include/connect.php");
 include_once(dirname(__FILE__).'/modele/LoginModel.php');
 include_once(dirname(__FILE__).'/Controllers/LoginController.php'); 
 	

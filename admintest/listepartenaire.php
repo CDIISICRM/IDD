@@ -2,7 +2,7 @@
 
 require_once('header.php');
 include ("modele/Modele.Partenaire.php");
-include("../include/connect.php");
+// include("../include/connect.php");
 
 
 $connection = Connect::getInstance();
