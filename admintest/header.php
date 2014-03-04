@@ -13,10 +13,6 @@ if((isset($_GET['action']) && $_GET['action'] = 'FinSession'))
 	echo '<meta http-equiv="refresh" content="0; url=login.phtml">';
 	exit();
 	}
-// $connecte = ? true :  
-
-// if (!$connecte)
-	// $logincontroller->viewcontroller->Vue("login.phtml","modeheader");    
 ?>
 <html>
 <head>
