@@ -1,7 +1,7 @@
 <?php
 
 require_once('header.php');
-require_once('../include/connect.php'); 
+//require_once('../include/connect.php'); 
 require_once('modele/Modele.Partenaire.php');
 require("../include/class_upload.php");
 ?>

@@ -1,7 +1,7 @@
 <?php
 
 require_once('header.php');
-require_once('../include/connect.php'); 
+//require_once('../include/connect.php'); 
 require_once('modele/Modele.Partenaire.php');
 
 ?>
@@ -32,9 +32,9 @@ $date=datefr($conteneur['0']);
 $titre=stripslashes($conteneur['1']);
 $texte=stripslashes($conteneur['2']);*/
 
-$Partenaire = new Partenaire(NULL,NULL,NULL,NULL,$getid);
+//$Partenaire = new Partenaire(NULL,NULL,NULL,NULL,$getid);
 
-$Partenaire->chercher($mysqli, $_GET['id']);
+$Partenaire=Partenaire::chercher($mysqli, $_GET['id']);
 
 
 echo"<table align='center'>

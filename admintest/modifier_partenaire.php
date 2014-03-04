@@ -1,7 +1,7 @@
 <?php
 
 require_once('header.php');
-require_once('../include/connect.php'); 
+//require_once('../include/connect.php'); 
 require_once('modele/Modele.Partenaire.php');
 require("../include/class_upload.php");
 ?>
@@ -12,9 +12,9 @@ require("../include/class_upload.php");
 $mysqli = Connect::getInstance();
 
 $getid=$_GET['id'];
-$Partenaire = new Partenaire(NULL,NULL,NULL,NULL,$getid);
+//$Partenaire = new Partenaire(NULL,NULL,NULL,NULL,$getid);
 
-$Partenaire->chercher($mysqli, $_GET['id']);
+$Partenaire=Partenaire::chercher($mysqli, $_GET['id']);
 /*echo"getid=".$getid;*/
 if(isset($_POST['valider'] ))
 { 
@@ -83,13 +83,20 @@ echo"<table align='center'>
  
 </td>
 </tr>
-
+<tr>
+<td align='right'>
+	<font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>Logo actuel
+</td>
+<td align='left'>
+	<img src='../images/".$Partenaire->logo."' alt='Logo' height='50px' />
+</td>
+</tr>
 <tr>
 	  <td align='right'>
 		<font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>Telecharger le logo
 	  </td>
 	  <td align='left'>
-		  <input type='file' name='fichierLogo' value='' placeholder='Placer le fichier ici'/>
+		  <input type='file' name='fichierLogo' value='' placeholder='Modifier le fichier ici'/>
 	  </td>
 </tr>
 

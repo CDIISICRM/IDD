@@ -14,16 +14,20 @@ $array= $partenaire->listerTout($connection);*/
 
 echo '<table border="1" cellpadding="5" cellspacing="5">';
 echo"<tr>
-	<td><b>Nom</b></td>
-	<td><b>Site internet</b></td>
-	<td></td>
-	<td></td>
+	<th>Nom</th>
+	<th>Site internet</th>
+	<th>Sigle</th>
+	<th>Logo</th>
+	<th><th/>
+	<th></th>
 	</tr>";
 
 for($i=0; $i<count($array);$i++  ){
 	echo"<tr> ";
 	echo"<td>".$array[$i]->nom."  </td> ";
 	echo"<td>".$array[$i]->siteInternet."  </td> ";
+	echo"<td>".$array[$i]->sygle."  </td> ";
+	echo"<td><img src='../images/".$array[$i]->logo."' alt='Logo' height='50px' /></td>";
 	echo'<td> <a href=modifier_partenaire.php?id='.$array[$i]->id.' target="_self">  modifier </a></td> ';
 	echo'<td> <a href=supprimer_partenaire.php?id='.$array[$i]->id.' target="_self">  supprimer </a></td> ';
 	echo"</tr> ";
