@@ -6,11 +6,11 @@ include_once(dirname(__FILE__).'/Controllers/LoginController.php');
 	
 if(!LoginModel::EstConnecte() && isset($_POST))
 	LoginController::SessionStart($_POST);
-	
-if((isset($_GET['action']) && $_GET['action'] = 'FinSession'))
+
+if((isset($_GET['action']) && $_GET['action'] = 'FinSession') || !LoginModel::EstConnecte())
 	{
-	unset($_SESSION);
-	echo '<meta http-equiv="refresh" content="0; url=login.phtml">';
+	session_unset();
+	echo '<meta http-equiv="refresh" content="0; url=login.html">';
 	exit();
 	}
 ?>
