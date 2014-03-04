@@ -17,7 +17,7 @@ class index
 	echo '<div class="section"><p style="text-align:justify" ><img src='.$img.' alt="action association" style="float: left; border: 0; margin-right:10px ; margin-bottom:10px" \>'.stripslashes($table["texte"]).'</p></div>';
 		
 		include("include/news.php");
-		include("include/footer.php");
+		//include("include/footer.php");
 	}
 	
 }

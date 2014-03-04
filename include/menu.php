@@ -13,7 +13,7 @@
 					<a href="index.php">Accueil & Présentation</a>
 				</li>
 				<li>
-                    <a href="projet.php?page=1&pagination=5">Réalisations</a>
+                    <a href="projets.php?page=1&pagination=5">Réalisations</a>
 				</li>
 				<li>
 					<a href="index.php?controller=Presse&action=Presse_info">Presse et partenaires</a>
