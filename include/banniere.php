@@ -1,11 +1,39 @@
 <div id="contents">
-	<div id="intro">
+			<div id="intro">
+				<img src="media/photo.jpg" alt="Img" height="444" width="630">
+				<div class="info">
+					<h1>MCDA Qui sommes nous?</h1>
+					<p align="justify">
+						MCDA, association franco-marocaine, est créée en 1995 par des immigrés de la région Sud Alsace et des français d'origine, tous soucieux d'un meilleur développement des pays du Sud.
+La démarche globale de MCDA est fondée sur la mobilisation et l'organisation des immigrés autour de projets concrets de développement local, soit collectifs tels que l'électrification, la recherche de l'eau, l'aménagement d'écoles ou de dispensaires, soit individuels tels que la création d'entreprise (artisanat, services, élevage...). 
+					</p>
+					<a href="index.html" class="more">Pour en savoir plus</a>
+				</div>
+			</div>
+            
+<?php
+	$controller='index';
+	$action='afficher_index';
+	$id='';
+	if (!empty($_GET['controller']))
+	{
+		$controller=$_GET['controller'];
+		if (!empty($_GET['action']))
+		{
+			$action=$_GET['action'];
+			if (!empty($_GET['id']))
+			{
+				$id=$_GET['id'];
+			}
+		}
+	}
+	if (is_file('admintest/Controllers/Controller.'.$controller.'.php'))
+	{
+		include 'admintest/Controllers/Controller.'.$controller.'.php';
+		$class=$controller;
+		$objet=new $class();
+		$objet->$action($id);
+	}
 		
-		<img src="./images/glider.jpg" alt="Img" height="444" width="630"/>
-		<div class="info">
-			<h1>MCDA Qui sommes nous?</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu ante in enim hendrerit lobortis sit amet eget magna. Fusce tincidunt, dolor ut tempor pharetra, dolor turpis volutpat neque, non consectetur est arcu in velit. Maecenas in rutrum quam. Duis mauris nisi, aliquet sit amet pellentesque id, vulputate id nunc. Morbi viverra rutrum faucibus. Nam sit amet nunc vitae nisi suscipit consequat hendrerit sed metus. Quisque ac tellus eget enim posuere elementum. Sed id justo elit. Etiam et sapien</p>
-			<a href="index.html" class="more">Click here for more</a>
-		</div>
-	</div>
-<!-- /#intro -->
+?>
+			<!-- /#intro -->

@@ -13,13 +13,13 @@
 					<a href="index.php">Accueil & Présentation</a>
 				</li>
 				<li>
-                    <a href="projets.php">Réalisations</a>
+                    <a href="projet.php?page=1&pagination=5">Réalisations</a>
 				</li>
 				<li>
-					<a href="presse_et_partenaire.php">Presse et partenaires</a>
+					<a href="index.php?controller=Presse&action=Presse_info">Presse et partenaires</a>
 				</li>
 				<li>
-					<a href="contact.php">Contact</a>
+					<a href="index.php?controller=Contact&action=FormulaireContact">Contact</a>
 				</li>
 			</ul>
 		</div>

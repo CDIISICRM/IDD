@@ -1,0 +1,31 @@
+﻿Merge branch 'master' of https://github.com/CDIISICRM/IDD
+
+Conflicts:
+	admintest/ajouter_projet.php
+	admintest/listprojet.php
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 3 and 8 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#   (use "git commit" to conclude merge)
+#
+# Changes to be committed:
+#
+#	modified:   admintest/Modele/Modele.Projet.php
+#	modified:   admintest/ajouter_projet.php
+#	new file:   media/MVC.PNG
+#	new file:   media/Strategie.PNG
+#
+# 
+Résolution des conflits
