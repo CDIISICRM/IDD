@@ -1,50 +1,58 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 require_once('header.php');
 include('modele/Modele.Projet.php');
-<<<<<<< HEAD
-include('../include/connect.php');
-=======
 
- include('../include/connect.php');
+$connection=Connect::getInstance();
+    
 
->>>>>>> df116f49d620dc5994b0e6ff49c7fe7eb881d650
-/**
- * Description of listProjet
- *
- * @author crm
- */
+   $listeProjet = Projet::listerTout($connection);
+    
+	
+    $tableProjet = '<table border="1" cellpadding="5" cellspacing="5">
+	<tr>
+		<th>Nom du projet</th>
+		<th>Objectifs</th>
+		<th>&Eacute;tat actuel</th>
+		<th>Date de début</th>
+		<th>Photo 1</th>
+		<th>Photo 2</th>
+		<th>Edition</th>
+		<th>Suppression</th>
+	</tr>
+	';
 
-    //put your code here
-    $connet=Connect::getInstance();
-    
-    
-$projet= new Projet(NULL,NULL,NULL,NULL,NULL, NULL, NULL, NULL, 0);
-    
-    
-  //$long=$projet->ListProjet($connect, '', '');
-   $long=$projet->listerTout($connect);
-   echo 'test : ';
-    var_dump($long);
-    echo '<table border="1" cellpadding="5" cellspacing="5">';
-
-            for($i=0; $i<count($long);$i++){
-                echo "<tr> ".$long[$i]->getPNom()."<tr>
-                        <tr> " .$long[$i]->getPObjectifs(). " <tr>
-                        <tr> " .$long[$i]->getetatActuel(). " <tr>
-                        <tr> " .$long[$i]->getDateDeb(). " <tr>
-                        <tr> " .$long[$i]->getPhoto_1(). " <tr>
-                        <tr> " .$long[$i]->getPhoto_2(). " <tr>
-                        <tr> " .$long[$i]->getDateDebut(). " <tr>
-                        <tr> " .$long[$i]->getDateFin(). " <tr>";
-            }
-            echo'<td></table>';
+	for($i=0; $i<count($listeProjet);$i++)
+		{
+		// Coupé les chaine trop longue (> 100 carac)
+		$objectif = substr($listeProjet[$i]->getPObjectifs(), 0, 100);
+		$etatActuel = substr($listeProjet[$i]->getetatActuel(), 0, 100);
+		
+		$photo1 = "&nbsp;";
+		if($listeProjet[$i]->getPhoto_1() != '')
+			$photo1 = $listeProjet[$i]->getPhoto_1();
+			
+		$photo2 = "&nbsp;";
+		if($listeProjet[$i]->getPhoto_2() != '')
+			$photo2 = $listeProjet[$i]->getPhoto_2();
+		
+		$tableProjet .= '<tr>';
+		$tableProjet .= '<td> '.$listeProjet[$i]->getPNom().'</td>
+				<td> ' .$objectif. ' ...</td>
+				<td> ' .$etatActuel. ' ...</td>
+				<td> ' .$listeProjet[$i]->getDateDeb(). ' </td>
+				<td> ' .$photo1. ' </td>
+				<td> ' .$photo2. ' </td>
+				<td>
+					<a href="modifier_projet.php?id='.$listeProjet[$i]->getId().'">Modifier</a>
+				</td>
+				<td>
+					<a href="">Supprimer</a>
+				</td>';
+		$tableProjet .= '</tr>';
+		}
+	$tableProjet .= '</table>
+	<input type="button" value="Ajouter" onClick="Javascript: window.location.href=\'\'"/>';
             
-     
+    echo $tableProjet;
             
 ?>
