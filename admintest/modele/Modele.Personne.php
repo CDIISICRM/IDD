@@ -84,7 +84,7 @@ class Personne implements DAO{
                 . 'AND travaille.idProjet = projets.id '
                 . 'AND travaille.idProjet = '.$idProjet;
         $res = $mysqli->query($sql);
-        var_dump($res);
+        
         while($row = $res->fetch_array()){
             $unePersonne = new Personne($row['nom'],
                     $row['prenom'],

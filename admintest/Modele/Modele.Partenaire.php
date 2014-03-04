@@ -66,7 +66,7 @@ class Partenaire implements DAO{
                 . 'AND projets.id = agit.idProjet '
                 . 'AND agit.idProjet = '.$idProjet;
         $res = $mysqli->query($sql);
-        var_dump($mysqli->error);
+       
         while ($row = $res->fetch_array()){
             $unPartenaire = new Partenaire(
                     $row['nom'],
