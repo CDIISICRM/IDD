@@ -8,6 +8,17 @@ require_once('modele/Modele.Projet.php');
 
 $connection = Connect::getInstance();
 $getid=$_GET['id'];
+$idProjet=$getid;
+$projet;
+$projet;
+$nomProjet;
+$objectifProjet;
+$etatProjet;
+$dateDebut;
+$photo1;
+$photo2;
+$listeMembre;
+$listePartenaire;
 
 if(isset($_POST['valider'] ))
 	{
@@ -30,15 +41,14 @@ if(isset($_POST['valider'] ))
 if(empty($formOk) || $formOk == false)
 	{
 	// Affichage du formulaire
-	$listeMembre = Personne::listerTout($connection);
-	$listePartenaire = Partenaire::listerTout($connection);
+	
 	
 	// Générer les champs du formulaire
 	if(empty($formOk))
 		{
 		// Si on charge les données la classe Projet (donnée de la BDD)
-		$idProjet = $getid;
-		$projet = new Projet(NULL,NULL,NULL,NULL,NULL, NULL, NULL, NULL, $idProjet);
+//		$idProjet = $getid;
+		$projet = Projet::chercher($connection, $idProjet);
 		
 		$nomProjet = $projet->getPNom();
 		$objectifProjet = $projet->getPObjectifs();
@@ -46,6 +56,9 @@ if(empty($formOk) || $formOk == false)
 		$dateDebut = $projet->getDateDeb();
 		$photo1 = $projet->getPhoto_1();
 		$photo2 = $projet->getPhoto_2();
+                $listeMembre = $projet->getListPersonne();
+                $listePartenaire = $projet->getListPartenaire();
+                
 		}
 	else
 		{
@@ -75,13 +88,13 @@ if(empty($formOk) || $formOk == false)
 			<tr>
 				<td>Objectif(s)</td>
 				<td>
-					<input type="text" name="obj_projet" id="obj_projet" value="'.$objectifProjet.'"/>
+                                    <textarea  name="obj_projet" id="obj_projet" >'.$objectifProjet.'</textarea>
 				</td>
 			</tr>
 			<tr>
-				<td>&Eactue;tat actuel</td>
+				<td>&Eacute;tat actuel</td>
 				<td>
-					<input type="text" name="etat_projet" id="etat_projet" value="'.$etatProjet.'"/>
+                                    <textarea  name="etat_projet" id="etat_projet" value="">'.$etatProjet.'</textarea>
 				</td>
 			</tr>
 			<tr>
@@ -93,13 +106,13 @@ if(empty($formOk) || $formOk == false)
 			<tr>
 				<td>Photo 1</td>
 				<td>
-					'.$photo1.' <input type="file" name="photo_1" id="photo_1" value="'.$photo1.'"/>
+					'.$photo1.' <input type="file" name="photo_1" id="photo_1" value="default"/>
 				</td>
 			</tr>
 			<tr>
 				<td>Photo 2</td>
 				<td>
-					'.$photo2.' <input type="file" name="photo_2" id="photo_2" value="'.$photo2.'"/>
+					'.$photo2.' <input type="file" name="photo_2" id="photo_2" value="default"/>
 				</td>
 			</tr>
 			<tr>
@@ -107,9 +120,12 @@ if(empty($formOk) || $formOk == false)
 					<input type="button" value="Annuler" onClick="Javascript: window.location.href=\'listprojet.php\'"/>&nbsp;&nbsp;&nbsp;<input type="submit" name="valider" value="Valider"/>
 		</table>
 	</form>
+        <script>$("#date_debut").datepicker({dateFormat : "yy-mm-dd"});</script>
 	';
+        
 	}
-
 echo $formProjet;
+
 include('footer.php');
 ?>
+                        

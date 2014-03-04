@@ -79,6 +79,23 @@
 		* @desc   change la valeur de l'attribut pObjectifs aprés la validation
 		* @param   	str $value valeur de l'attribut pObjectifs
 	*/
+       public function getListPartenaire() {
+           return $this->listPartenaire;
+       }
+
+       public function getListPersonne() {
+           return $this->listPersonne;
+       }
+
+       public function setListPartenaire($listPartenaire) {
+           $this->listPartenaire = $listPartenaire;
+       }
+
+       public function setListPersonne($listPersonne) {
+           $this->listPersonne = $listPersonne;
+       }
+
+               
 	public function setPObjectifs($value){
 		if(is_numeric($value)){
 			$this->pObjectifs = $value;
