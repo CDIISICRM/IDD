@@ -1,7 +1,7 @@
 <?php
 
 require_once('header.php');
-require_once('../include/connect.php'); 
+//require_once('../include/connect.php'); 
 require_once('modele/Modele.Partenaire.php');
 require("../include/class_upload.php");
 ?>
@@ -77,7 +77,7 @@ if (isset($_POST['valider']))
 	$obj = new upload('../images/','fichierLogo');
 	$obj->cl_taille_maxi = 49000000;
 	$obj->cl_extensions = array('.gif','.jpg','.png');
-	if (!$obj->uploadFichier('aleatoire'))
+	if ((!$obj->uploadFichier('aleatoire'))&&($obj->cGetNameFile(true)!=''))
 	 {
 			// affichage d'une erreur en cas d'echec
 			echo $obj->affichageErreur();

@@ -2,7 +2,7 @@
 
 include 'modele/Modele.DAO.php';
 require_once('header.php');
-require_once('../include/connect.php'); 
+//require_once('../include/connect.php'); 
 require_once('modele/Modele.Personne.php');
 require_once('modele/Modele.Role.php');
 ?>
@@ -31,8 +31,8 @@ $date=datefr($conteneur['0']);
 $titre=stripslashes($conteneur['1']);
 $texte=stripslashes($conteneur['2']);*/
 
-$personne = new Personne(NULL,NULL,NULL,NULL,NULL, 0);
-$personne->chercher($mysqli, $_GET['id']);
+//$personne = new Personne(NULL,NULL,NULL,NULL,NULL, 0);
+$personne=Personne::chercher($mysqli, $_GET['id']);
 
 
 $leRole = new Role(NULL,NULL);

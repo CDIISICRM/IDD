@@ -2,7 +2,7 @@
 
 include ('modele/Modele.DAO.php');
 require_once('header.php');
-require_once('../include/connect.php'); 
+//require_once('../include/connect.php'); 
 require_once('modele/Modele.Role.php');
 
 ?>
@@ -40,9 +40,9 @@ $date=datefr($conteneur['0']);
 $titre=stripslashes($conteneur['1']);
 $texte=stripslashes($conteneur['2']);*/
 
-$role = new Role(NULL,$getid);
+//$role = new Role(NULL,$getid);
 
-$role->chercher($mysqli, $_GET['id']);
+$role=Role::chercher($mysqli, $_GET['id']);
 
 
 echo"<table align='center'>
