@@ -214,15 +214,15 @@
 	UPDATE Projets 
 	SET 
 		nom = "'.$this->pNom.'", 
-        objectifs = '.$this->pObjectifs.', 
-		etatActuel = '.$this->pEtatActuel.', 
-		dateDeb = '.$this->pDateDeb.', 
-		photo_proj1 = '.$this->photo_1.', 
-		photo_proj2 = '.$this->photo_2.', 		
-	WHERE 
+        objectifs = "'.$this->pObjectifs.'", 
+		etatActuel = "'.$this->pEtatActuel.'", 
+		date_debut = "'.$this->pDateDeb.'", 
+		photo_proj1 = "'.$this->photo_1.'", 
+		photo_proj2 = "'.$this->photo_2.'" 		
+	 WHERE 
 		id = '.$this->id;
 		
-       // $mysqli->query($rqt);
+        $mysqli->query($rqt);
         
     }
 
