@@ -29,56 +29,59 @@ foreach($lesRoles as $unRole)
 	}
 
 
-echo"<table align='center'>
+echo '
 <caption>Ajouter un membre </caption>
-<form action='ajouter_membre.php' method='post' name='form1' enctype='multipart/form-data'>
-<tr>
-<td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>NOM</font></td>
-<td align='left'>
-<input type='text' name='nom' size='40' />
-
-<tr>
-<td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>Pr&eacute;nom</font></td>
-<td align='left'>
-<input type='text' name='prenom' size='40' />
-
-</td>
-</tr>
-
-<tr>
-<td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>email</font></td>
-<td align='left'>
-<input type='text' name='email' size='40' />
-
-</td>
-</tr>
-
-<tr>
-<td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>M&eacute;tier</font></td>
-<td align='left'>
-<input type='text' name='metier' size='40' />
-</td>
-</tr>
-
-<tr>
-<td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>ROLE</font></td>
-<td align='left'>
-<select name=\"idRole\" id=\"idRole\">
-	".$options."
-</select>
-</td>
-</tr>
-
-<tr>
-<td>
-</td>
-<td align='left'>
-<input type='submit' name=\"valider\" value='ajouter' /> 
-</td>
-</tr>
-
-</form>  
-</table>";
+<form action="ajouter_membre.php" method="post" name="form1" enctype="multipart/form-data">
+<table align="center">
+	<tr>
+		<td align="right">
+			<font color="#663300" face="Arial, Helvetica, sans-serif" size="+1">Nom</font>
+		</td>
+		<td align="left">
+			<input type="text" name="nom" size="40" />
+		</td>
+	</tr>
+	<tr>
+		<td align="right">
+			<font color="#663300" face="Arial, Helvetica, sans-serif" size="+1">Pr&eacute;nom</font>
+		</td>
+		<td align="left">
+			<input type="text" name="prenom" size="40" />
+		</td>
+	</tr>
+	<tr>
+		<td align="right">
+			<font color="#663300" face="Arial, Helvetica, sans-serif" size="+1">Adresse mail</font>
+		</td>
+		<td align="left">
+			<input type="text" name="email" size="40" />
+		</td>
+	</tr>
+	<tr>
+		<td align="right">
+			<font color="#663300" face="Arial, Helvetica, sans-serif" size="+1">Métier</font>
+		</td>
+		<td align="left">
+			<input type="text" name="metier" size="40" />
+		</td>
+	</tr>
+	<tr>
+		<td align="right">
+			<font color="#663300" face="Arial, Helvetica, sans-serif" size="+1">Rôle</font>
+		</td>
+		<td align="left">
+			<select name="idRole" id="idRole">
+				'.$options.'
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td align="left" colspan="2">
+		<input type="submit" name=\"valider\" value="ajouter" /> 
+		</td>
+	</tr>
+</table>
+</form>';
 
 if (isset($_POST['valider']))
 {
