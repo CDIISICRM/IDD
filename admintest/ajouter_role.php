@@ -1,60 +1,41 @@
 <?php
-
-include ('modele/Modele.DAO.php');
+require_once('modele/Modele.DAO.php');
 require_once('header.php');
-//require_once('../include/connect.php'); 
 require_once('modele/Modele.Role.php');
 
-?>
-
-
-
-<?php
 $mysqli = Connect::getInstance();
 
-	
-/*$rq="select date,titre,texte from evenements where id=".$_GET['id'];											
-$rquery=@mysql_db_query($base,$rq);  
-$conteneur=mysql_fetch_row($rquery);
-$date=datefr($conteneur['0']);
-$titre=stripslashes($conteneur['1']);
-$texte=stripslashes($conteneur['2']);*/
-
-
-
-
-echo"<table align='center'>
-<caption>Ajouter un Role d'un projet </caption>
-<form action='ajouter_role.php' method='post' name='form1' enctype='multipart/form-data'>
-<tr>
-<td align='right'><font color='#663300' face='Arial, Helvetica, sans-serif' size='+1'>Nom du Role</font></td>
-<td align='left'>
-<input type='text' name='nomRole' size='40' />
-
-
-
-<tr>
-<td>
-</td>
-<td align='left'>
-<input type='submit' name=\"valider\" value='ajouter' /> 
-</td>
-</tr>
-
-</form>  
-</table>";
-
 if (isset($_POST['valider']))
-{
+	{
 	$role=new Role($_POST['nomRole']);
 	$role->ajouter($mysqli);
-	echo "<center><strong>Les modifications ont bien été enregistrées.</strong></center>";
+	echo "<center><strong>Le rôle a bien été ajouté.</strong></center>";
 	echo '<meta http-equiv="refresh" content="2;URL=listerole.php">';
-	
-}
+	}
+else
+	{
+	echo '
+	<form action="ajouter_role.php" method="post" name="form1">
+		<table align="center" id="formRole">
+			<caption>Ajouter un Role d"un projet </caption>
+			<tr>
+				<td class="label">
+					<span>Nom du Role</span>
+				</td>
+				<td>
+					<input type="text" name="nomRole" size="40" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label" colspan="2">
+					<input type="button" value="Retour" onClick="Javascript: window.history.back();"/>
+					&nbsp;&nbsp;
+					<input type="submit" name="valider" value="Ajouter" /> 
+				</td>
+			</tr>
+		</table>
+	</form> ';
+	}
 
-?>
-
-<?php
 include('./footer.php');
 ?>
