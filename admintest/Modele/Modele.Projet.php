@@ -233,6 +233,21 @@
         
     }
 
+    public static function listerAlea($mysqli) {
+        $lesProjets = array();
+        $sql = "SELECT * FROM projets ORDER BY date_debut";
+        $res = $mysqli->query($sql);
+		$i=0;
+        while($row = $res->fetch_array()){
+            
+         
+            $lesProjet[$i] = $row;
+			$i++;
+        }
+		
+		return $lesProjet;
+    }
+
     public function supprimer($mysqli) {
         
         $rqt = 'DELETE FROM Projets WHERE id = '.$this->id;

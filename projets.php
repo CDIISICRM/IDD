@@ -53,7 +53,7 @@ echo'
 
 for($i=($pageCourante -1)*$nompreItems; $i<=($pageCourante * $nompreItems -1);$i++)
 {
-	if($tableau[$i][0] != "" || $tableau[$i][0] != NULL){
+	if(@$tableau[$i][0] != "" || @$tableau[$i][0] != NULL){
 	echo'<h3 style="padding-left:30px">'.$tableau[$i][1].'</h3><div>';
  echo ("<p class='demoHeaders'>".$tableau[$i][2].'</p><br />
 </div>');
