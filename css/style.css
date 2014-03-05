@@ -471,3 +471,26 @@ th {
 #formTable td{
 	vertical-align: top;
 }
+
+/* Style détail des projets */
+.projetContainer {
+	position: relative;
+	margin:0px;
+	padding:0px;	
+}
+
+.projetContainer h2 {
+	color: #ea8312;
+}
+
+.projetContainer p {
+	text-align: justify;
+}
+
+.projetImg1 {
+		float:left;
+}
+
+.projetImg2 {
+		float:right;
+}
