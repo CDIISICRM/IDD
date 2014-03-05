@@ -25,6 +25,10 @@ $photo2;
 $listeMembre;
 $listePartenaire;
 $projetAModifier;
+$tailleMaxi = 49000000;
+$extensions = array('.gif','.jpg','.png');
+$dossier = '../media/';
+$dossierAbs = 'media/';
 
 if(isset($_POST['valider']) && !empty($_POST['valider'])
         && isset($_POST['nom_projet']) && !empty($_POST['nom_projet'])
@@ -33,71 +37,63 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])
         && isset($_POST['date_debut']) && !empty($_POST['date_debut'])
         && isset($_POST['id_projet']) && !empty($_POST['id_projet'])){
     
-   
+        $projetAModifier = new Projet($_POST['nom_projet'], $_POST['obj_projet'], $_POST['etat_projet'], $_POST['date_debut'], NULL, NULL, $_POST['id_projet'], $connection);
+
     //TODO A Voir
-    
-    if(!empty($_FILES['photo_1']['name']) && !empty($_FILES['photo_2']['name'])){
-        
-        $tailleMaxi = 49000000;
-        $extensions = array('.gif','.jpg','.png');
-        $dossier = '../media/';
+    var_dump($_FILES['photo_1']['name']);
+    var_dump($_FILES['photo_2']['name']);
+    if(!empty($_FILES['photo_1']['name'])){
+        echo '1';
         $uploadPhoto1 = new upload($dossier, 'photo_1');
-        $uploadPhoto2 = new upload($dossier, 'photo_2');
         $uploadPhoto1->cl_extensions = $extensions;
-        $uploadPhoto2->cl_extensions = $extensions;
         $uploadPhoto1->cl_taille_maxi = $tailleMaxi;
-        $uploadPhoto2->cl_taille_maxi = $tailleMaxi;
         $uploadPhoto1->uploadFichier();
-        $uploadPhoto2->uploadFichier();
-    
-        $projetAModifier = new Projet($_POST['nom_projet'], $_POST['obj_projet'], $_POST['etat_projet'], $_POST['date_debut'], $uploadPhoto1->cGetNameFileFinal(), $uploadPhoto2->cGetNameFileFinal(), $_POST['id_projet'], $connection);
-    }  else {
+        $projetAModifier->setPhoto_1($dossierAbs.$uploadPhoto1->cGetNameFileFinal());
+        $photo1 = $projetAModifier->getPhoto_1();
         
+    } if (!empty($_FILES['photo_2']['name'])) {
+        echo '2';
+        $uploadPhoto2 = new upload($dossier, 'photo_2');
+        $uploadPhoto2->cl_extensions = $extensions;
+        $uploadPhoto2->cl_taille_maxi = $tailleMaxi;
+        $uploadPhoto2->uploadFichier();
+        $projetAModifier->setPhoto_2($dossierAbs.$uploadPhoto2->cGetNameFileFinal());
+        $photo2 = $projetAModifier->getPhoto_2();
+    } if($_FILES['photo_1']['name'] ==''){
+        echo '3';
         $photo1 = $_POST['anciennePhoto1'];
+
+        $projetAModifier->setPhoto_1($photo1);
+        
+    } if($_FILES['photo_2']['name'] == ''){
+        echo '4';
         $photo2 = $_POST['anciennePhoto2'];
         
-        $projetAModifier = new Projet($_POST['nom_projet'], $_POST['obj_projet'], $_POST['etat_projet'], $_POST['date_debut'], $photo1, $photo2, $_POST['id_projet'], $connection);
+        $projetAModifier->setPhoto_2($photo2);
     }
     // Enregistrement des donneés
-    $formOk = false;
+   
    
     $projetAModifier->modifier($connection);
 
-    $formOk = true;
-    // Vérification
 
-    // Enregistre et redirection en cas de succès
-//    if($formOk == true)
-//            {
-//            //MODIF
-//            $personne1=new Personne($_POST['nom'],$_POST['prenom'],$_POST['metier'],$_POST['email'],$_POST['idRole'],$getid);
-//            $personne1->modifier($connection);
-//            echo "<center><strong>Les modifications ont bien été enregistrées.</strong></center>";
-//            echo '<meta http-equiv="refresh" content="2;URL=listemembre.php">';
-//            }
+   
     }
         
  
 	
 	
-//if(empty($formOk) || $formOk == false)
-//	{
-//	// Affichage du formulaire
-//	
-//	
 
-            // Si on charge les données la classe Projet (donnée de la BDD)
-//		$idProjet = $getid;
-            $projet = Projet::chercher($connection, $idProjet);
+$projet = Projet::chercher($connection, $idProjet);
 
-            $nomProjet = $projet->getPNom();
-            $objectifProjet = $projet->getPObjectifs();
-            $etatProjet = $projet->getEtatActuel();
-            $dateDebut = $projet->getDateDeb();
-            $photo1 = $projet->getPhoto_1();
-            $photo2 = $projet->getPhoto_2();
-            $listeMembre = $projet->getListPersonne();
-            $listePartenaire = $projet->getListPartenaire();
+$nomProjet = $projet->getPNom();
+$objectifProjet = $projet->getPObjectifs();
+$etatProjet = $projet->getEtatActuel();
+$dateDebut = $projet->getDateDeb();
+$photo1 = $projet->getPhoto_1();
+$photo2 = $projet->getPhoto_2();
+$listeMembre = $projet->getListPersonne();
+$listePartenaire = $projet->getListPartenaire();
 
         
   

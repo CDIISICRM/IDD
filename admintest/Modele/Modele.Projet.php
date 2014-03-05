@@ -104,8 +104,15 @@
 			$ErrorAttribut[] = "pOjectifs";
 		}
 	}
-        
-        public function  getPhoto_1()
+        public function setPhoto_1($photo_1) {
+            $this->photo_1 = $photo_1;
+        }
+
+        public function setPhoto_2($photo_2) {
+            $this->photo_2 = $photo_2;
+        }
+
+                public function  getPhoto_1()
         {
             
         return $this->photo_1;
