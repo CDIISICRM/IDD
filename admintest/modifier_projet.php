@@ -40,10 +40,9 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])
         $projetAModifier = new Projet($_POST['nom_projet'], $_POST['obj_projet'], $_POST['etat_projet'], $_POST['date_debut'], NULL, NULL, $_POST['id_projet'], $connection);
 
     //TODO A Voir
-    var_dump($_FILES['photo_1']['name']);
-    var_dump($_FILES['photo_2']['name']);
+
     if(!empty($_FILES['photo_1']['name'])){
-        echo '1';
+  
         $uploadPhoto1 = new upload($dossier, 'photo_1');
         $uploadPhoto1->cl_extensions = $extensions;
         $uploadPhoto1->cl_taille_maxi = $tailleMaxi;
@@ -52,7 +51,7 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])
         $photo1 = $projetAModifier->getPhoto_1();
         
     } if (!empty($_FILES['photo_2']['name'])) {
-        echo '2';
+      
         $uploadPhoto2 = new upload($dossier, 'photo_2');
         $uploadPhoto2->cl_extensions = $extensions;
         $uploadPhoto2->cl_taille_maxi = $tailleMaxi;
@@ -60,13 +59,13 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])
         $projetAModifier->setPhoto_2($dossierAbs.$uploadPhoto2->cGetNameFileFinal());
         $photo2 = $projetAModifier->getPhoto_2();
     } if($_FILES['photo_1']['name'] ==''){
-        echo '3';
+ 
         $photo1 = $_POST['anciennePhoto1'];
 
         $projetAModifier->setPhoto_1($photo1);
         
     } if($_FILES['photo_2']['name'] == ''){
-        echo '4';
+
         $photo2 = $_POST['anciennePhoto2'];
         
         $projetAModifier->setPhoto_2($photo2);
