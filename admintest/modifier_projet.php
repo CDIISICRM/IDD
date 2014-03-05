@@ -74,10 +74,11 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])
    
    
     $projetAModifier->modifier($connection);
-
+    echo '<center><strong>Projet modifié</center></strong>';
 
    
-    }
+    } else{
+        
         
  
 	
@@ -152,6 +153,7 @@ $listePartenaire = $projet->getListPartenaire();
     
 echo $formProjet;
 
+    }
 include('footer.php');
 ?>
                         
