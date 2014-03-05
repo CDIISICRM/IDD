@@ -104,8 +104,15 @@
 			$ErrorAttribut[] = "pOjectifs";
 		}
 	}
-        
-        public function  getPhoto_1()
+        public function setPhoto_1($photo_1) {
+            $this->photo_1 = $photo_1;
+        }
+
+        public function setPhoto_2($photo_2) {
+            $this->photo_2 = $photo_2;
+        }
+
+                public function  getPhoto_1()
         {
             
         return $this->photo_1;
@@ -214,15 +221,15 @@
 	UPDATE Projets 
 	SET 
 		nom = "'.$this->pNom.'", 
-        objectifs = '.$this->pObjectifs.', 
-		etatActuel = '.$this->pEtatActuel.', 
-		dateDeb = '.$this->pDateDeb.', 
-		photo_proj1 = '.$this->photo_1.', 
-		photo_proj2 = '.$this->photo_2.', 		
-	WHERE 
+        objectifs = "'.$this->pObjectifs.'", 
+		etatActuel = "'.$this->pEtatActuel.'", 
+		date_debut = "'.$this->pDateDeb.'", 
+		photo_proj1 = "'.$this->photo_1.'", 
+		photo_proj2 = "'.$this->photo_2.'" 		
+	 WHERE 
 		id = '.$this->id;
 		
-       // $mysqli->query($rqt);
+        $mysqli->query($rqt);
         
     }
 
