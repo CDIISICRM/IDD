@@ -67,18 +67,34 @@ else
 	echo " Projet non trouvé ";
 	}
 
-$dimRes1=resize($img1);
-$dimRes2=resize($img2);
+$photo1 = '';
+$photo2 = '';
+$specialSize = '';
+
+if(is_file($img1))
+	{
+	$dimRes1=resize($img1);
+	$photo1 = '<img class="image projetImg1" width="'.$dimRes1[0].'" height="'.$dimRes1[1].'"  src="'.$img1.'" alt="Photo 1 du projet '.$nom.'" />';
+	$specialSize = ' style="min-height:'.intval($dimRes1[1]+11).'px;"';
+	}
+	
+if(is_file($img1))
+	{
+	$dimRes2=resize($img2);
+	$photo2 = '<img class="image projetImg2" width="'.$dimRes2[0].'" height="'.$dimRes2[1].'" src="'.$img2.'" alt="Photo 2 du projet '.$nom.'" />';
+	}
+	
+	
 echo ('
 <div class="projetContainer">
 	<h1 align="center">'.$nom.'</h1>
-	<div style="min-height:'.intval($dimRes1[1]+11).'px;">     
-		<img class="image projetImg1" width="'.$dimRes1[0].'" height="'.$dimRes1[1].'"  src="'.$img1.'" alt="Photo 1 du projet '.$nom.'" />
+	<div '.$specialSize.'>     
+		'.$photo1.'
 		<h2>Objectif: </h2>
 		<p>'.$objectifs .'</p>
 	</div>
 	<div>  
-	  <img class="image projetImg2" width="'.$dimRes2[0].'" height="'.$dimRes2[1].'" src="'.$img2.'" alt="Photo 2 du projet '.$nom.'" />
+	  '.$photo2.'
 	  <h2>Date : </h2>
 	  <p>'.formatDate($date).'</p>
 	  <h2>Description de l\'état du projet: </h2>
