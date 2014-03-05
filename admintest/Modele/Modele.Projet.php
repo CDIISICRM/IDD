@@ -246,7 +246,7 @@
         }
 		
 		return $lesProjet;
-    }
+    } 
 
     public function supprimer($mysqli) {
         
