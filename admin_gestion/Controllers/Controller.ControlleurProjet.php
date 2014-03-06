@@ -1,5 +1,5 @@
 <?php
-require_once ('admin/modele/Modele.Projet.php');
+require_once ('admin_gestion/modele/Modele.Projet.php');
 class ControlleurProjet
 {
 // controller=Projet&action=AfficherTousProjets&page=1&pagination=5
