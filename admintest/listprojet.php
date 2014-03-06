@@ -46,7 +46,7 @@ $connection=Connect::getInstance();
 					<a href="modifier_projet.php?id='.$listeProjet[$i]->getId().'">Modifier</a>
 				</td>
 				<td>
-					<a href="">Supprimer</a>
+					<a href="supprimer_projet.php?id='.$listeProjet[$i]->getId().'">Supprimer</a>
 				</td>';
 		$tableProjet .= '</tr>';
 		}
@@ -54,5 +54,5 @@ $connection=Connect::getInstance();
 	<input type="button" value="Ajouter" onClick="Javascript: window.location.href=\'ajouter_projet.php\'"/>';
             
     echo $tableProjet;
-            
+    include('footer.php');       
 ?>
