@@ -26,9 +26,9 @@ La démarche globale de MCDA est fondée sur la mobilisation et l'organisation d
 			}
 		}
 	}
-	if (is_file('admintest/Controllers/Controller.'.$controller.'.php') && strpos($_SERVER['REQUEST_URI'], 'index.php') !== false)
+	if (is_file('admin/Controllers/Controller.'.$controller.'.php'))
 	{
-		include 'admintest/Controllers/Controller.'.$controller.'.php';
+		include 'admin/Controllers/Controller.'.$controller.'.php';
 		$class=$controller;
 		$objet=new $class();
 		$objet->$action($id);
