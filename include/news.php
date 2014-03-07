@@ -6,11 +6,23 @@
 		$table= $connection->query($rq);
 		while( $row=$table-> fetch_row())
 			{
-			echo "<li><h5>".formatDate($row[1])."</h5>";
+			$objectif = substr($row[3], 0, 100).'...'; 
+			
 			echo '
-			<p>
-				<a href="index.php?controller=ControlleurProjet&action=DetailProjet&projet='.$row[0].'">'.$row[2].'</a>
-			</p>
+			<li class="projet_accueil">
+				<h3 class="lien_projet">
+					<a href="index.php?controller=ControlleurProjet&action=DetailProjet&projet='.$row[0].'">'.$row[2].'</a>
+				</h3>
+				<p class="date_projet">
+					'.formatDate($row[1]).'
+				</p>
+				<p class="objectif_projet">
+					<span class="titreObjectif">Objectif(s) : </span><br/>
+					'.$objectif.'
+				</p><br/>
+				<p class="lire_suite">
+					<a href="index.php?controller=ControlleurProjet&action=DetailProjet&projet='.$row[0].'">Lire la suite >></a>
+				</p>
 			</li>';
 			}			
 		?>

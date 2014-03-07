@@ -26,7 +26,7 @@ class ControlleurProjet
 		$pagination ='';
 		for($j=1 ; $j<=$nombreDePages; $j++)
 			{
-			$pagination .='<a href="index.php?controller=ControlleurProjet&action=AfficherTousProjets&page='.$j.'&pagination='.$nompreItems.'">| Page '.$j.' |</a>';	
+			$pagination .='<a class="liens_pagination" href="index.php?controller=ControlleurProjet&action=AfficherTousProjets&page='.$j.'&pagination='.$nompreItems.'">| Page '.$j.' |</a>';	
 			}
 		
 		$pageCourante = $_GET['page'];

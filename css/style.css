@@ -454,6 +454,41 @@ p a:hover {
 	text-shadow: none;
 }
 
+/* Page d'accueil */
+.lien_projet a{
+	color: #EA8312;
+	font: bold 18px/24px 'OpenSans';
+	text-decoration: none;
+}
+
+.projet_accueil a {
+	color: #EA8312;
+	text-decoration: none;
+}
+
+.projet_accueil a:hover{
+	text-decoration: underline;
+}
+
+.lire_suite {
+	text-align: right;
+}
+
+.objectif_projet {
+	text-align: justify;
+	height: 50px;
+}
+
+/* Qui sommes-nous ? */
+.info .titre_qsn {
+	color: #F8F9F6;
+	font: bold 30px/30px 'OpenSans';
+	margin: 10px 0px 24px;
+	text-shadow: 1px 0px #FDE0C1;
+	text-align: center;
+	margin-bottom: 0;
+}
+
 /* Administration */
 th {
 	font-size: 14px;
@@ -493,4 +528,13 @@ th {
 
 .projetImg2 {
 		float:right;
+}
+
+#pagination a {
+	color: #EA8312;
+	text-decoration: none;
+}
+
+#pagination a:hover{
+	text-decoration: underline;
 }

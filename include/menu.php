@@ -3,7 +3,7 @@ $accueilSelected = '';
 $projetSelected = '';
 $presseSelected = '';
 $contactSelected = '';
-		
+$indexPage = false;		
 if(strpos($_SERVER['REQUEST_URI'], 'ControlleurProjet') !== false)
 	$projetSelected = ' class="selected"';
 else if(strpos($_SERVER['REQUEST_URI'], 'Presse') !== false)
@@ -11,9 +11,10 @@ else if(strpos($_SERVER['REQUEST_URI'], 'Presse') !== false)
 else if(strpos($_SERVER['REQUEST_URI'], 'Contact') !== false)
 	$contactSelected = ' class="selected"';
 else
+	{
+	$indexPage = true;	
 	$accueilSelected = ' class="selected"';
-	
-	
+	}
 ?>
 <body>
 	<div id="page">
