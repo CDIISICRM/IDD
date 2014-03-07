@@ -9,7 +9,7 @@
 			echo "<li><h5>".formatDate($row[1])."</h5>";
 			echo '
 			<p>
-				<a href="detail_projet.php?projet='.$row[0].'">'.$row[2].'</a>
+				<a href="index.php?controller=ControlleurProjet&action=DetailProjet&projet='.$row[0].'">'.$row[2].'</a>
 			</p>
 			</li>';
 			}			
