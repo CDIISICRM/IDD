@@ -33,7 +33,7 @@ else
                     <a href="index.php?controller=ControlleurProjet&action=AfficherTousProjets&page=1&pagination=5">Réalisations</a>
 				</li>
 				<li<?php echo $presseSelected; ?>>
-					<a href="index.php?controller=Presse&action=Presse_info">Presse et partenaires</a>
+					<a href="index.php?controller=Presse&action=Presse_info">Presse</a>
 				</li>
 				<li<?php echo $contactSelected; ?>>
 					<a href="index.php?controller=Contact&action=FormulaireContact">Contact</a>
