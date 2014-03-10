@@ -86,6 +86,9 @@ if((isset($_GET['action']) && $_GET['action'] = 'FinSession') || !LoginModel::Es
 												<li>
 													<a href="listprojet.php">Gerer les projets</a>
 												</li>
+                                                <li>
+													<a href="listearticles.php ">Gerer les aticles de Presse </a>
+												</li>
 											</ul>
 										</td>
 									</tr>
