@@ -96,6 +96,8 @@ p a {
 p a:hover {
 	color: #eb983e;
 }
+
+
 /*------------------------------ Sprites ------------------------------*/
 .searchbar input, .more, .select, #connect a {
 	background: url(../images/interface.png) no-repeat;
@@ -552,6 +554,16 @@ th {
 
 .projetImg2 {
 		float:right;
+}
+
+.afficheArticles h2 {
+	color: #6C6E69;
+}
+
+.afficheArticles p {
+	color: #6C6E69;
+	font-family: Verdana,Geneva,sans-serif;
+	font-size: 0.8em;
 }
 
 #pagination a {
