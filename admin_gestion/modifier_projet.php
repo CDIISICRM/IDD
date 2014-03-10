@@ -23,7 +23,7 @@ $dateDebut;
 $photo1;
 $photo2;
 $listeMembre;
-$listePartenaire;
+$listePartenaire = Partenaire::listerParIdProjet($connection, $idProjet);
 $projetAModifier;
 $tailleMaxi = 49000000;
 $extensions = array('.gif','.jpg','.png');
@@ -39,7 +39,7 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])
         && isset($_POST['partenaires']) && !empty($_POST['partenaires'])
         ){
     $idsDesPartenaires = $_POST['partenaires'];
-    var_dump($idsDesPartenaires);
+    
     $listePartenaire = array();
             foreach ($idsDesPartenaires as $id){
                 
@@ -47,7 +47,7 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])
                 $listePartenaire[] = $unPartenaire;
             }
     $projetAModifier = new Projet($_POST['nom_projet'], $_POST['obj_projet'], $_POST['etat_projet'], $_POST['date_debut'], NULL, NULL, $_POST['id_projet'], $connection);
-    $projetAModifier->setListPartenaire($listPartenaire);
+    $projetAModifier->setListPartenaire($listePartenaire);
 
     //TODO A Voir
 
@@ -143,12 +143,13 @@ $tousLesPartenaires = Partenaire::listerTout($connection);
                     <tr>
                     <tr>
                         <td>Liste des partenaires</td><td>
-                            <select name="partenaires" multiple size=5>';
+                            <select name="partenaires[]" multiple size=5>';
     $selectPartenaires = '';
                                 foreach ($tousLesPartenaires as $partenaire){
                                     $selected = '';
                                     foreach ($listePartenaire as $lesPartenaires){
-                                        if($lesPartenaires == $partenaire){$selected = 'selected';}
+                                        if($lesPartenaires->equals($partenaire)){$selected = 'selected="selected"';}
+
                                     }
                                          $selectPartenaires .= '<option value='.$partenaire->id.' '.$selected.'.>'.$partenaire->nom.'</option>';
                                     

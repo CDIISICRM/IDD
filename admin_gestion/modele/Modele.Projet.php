@@ -237,9 +237,10 @@
             $sql = 'DELETE FROM agit WHERE idProjet='.$this->id;
             $mysqli->query($sql);
             foreach ($this->listPartenaire as $unPartenaire){
-                $sql2 = 'INSERT INTO agit.idProjet, agit.idPartenaire VALUES('.$this->id.', '.$unPartenaire->getId().')';
+                $sql2 = 'INSERT INTO agit (idProjet, idPartenaire) VALUES('.$this->id.', '.$unPartenaire->id.')';
                 $mysqli->query($sql2);
             }
+           
         }
 		
         

@@ -79,6 +79,16 @@ class Partenaire implements DAO{
         return $lesPartenaires;
     }
 
+    public function equals($partenaire){
+        if ($this->id == $partenaire->id
+                 && $this->logo == $partenaire->logo
+                 && $this->siteInternet == $partenaire->siteInternet
+                 && $this->nom == $partenaire->nom
+                 && $this->sygle == $partenaire->sygle)
+        {
+        return true;    
+        }else{return false;}
+    }
 }
 
 ?>
