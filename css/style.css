@@ -532,6 +532,11 @@ th {
 	margin:0px;
 	padding:0px;	
 }
+.projetContainer li {
+	color: #6C6E69;
+	font-family: Verdana,Geneva,sans-serif;
+	font-size: 0.8em;	
+}
 
 .projetContainer h2 {
 	color: #ea8312;

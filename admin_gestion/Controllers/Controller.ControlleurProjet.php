@@ -1,7 +1,7 @@
 <?php
 require_once ('admin_gestion/modele/Modele.Projet.php');
 class ControlleurProjet
-{
+	{
 // controller=Projet&action=AfficherTousProjets&page=1&pagination=5
 
 	public function AfficherTousProjets($id,$page=1,$pagination=5)
@@ -44,68 +44,92 @@ class ControlleurProjet
 					</div>';
 				}
 		}
-			
+		
+		$comboPagination = '';
+		for($i = 5; $i <= 10; $i++)
+			{
+			$selected = '';
+			if(isset($_GET['pagination']) && $_GET['pagination'] == $i)
+				$selected = ' selected';
+			$comboPagination .= '<option value="'.$i.'"'.$selected.'>'.$i.' projets / page</option>';
+			}
+		
 		require_once('Views/projet/afficher_tous_projets.view.php');		
 		}
 	
 	public function DetailProjet($id)
-	{
+		{
 	
-	
-	
+		
+		
 
 
 
-$connection = Connect::getInstance();
-$contenu = '';
-$projet = '';
-if(isset($_GET['projet']))
-	$projet = $_GET['projet'];
+		$connection = Connect::getInstance();
+		$contenu = '';
+		$projet = '';
+		if(isset($_GET['projet']))
+			$projet = $_GET['projet'];
 
-$rq = 'SELECT id,nom,objectifs,etatActuel,date_debut,photo_proj1,photo_proj2 FROM projets WHERE id='.$projet;
+		$rq = 'SELECT id,nom,objectifs,etatActuel,date_debut,photo_proj1,photo_proj2 FROM projets WHERE id='.$projet;
 
-$res=$connection->query($rq); 
-$tab=$res->fetch_array();	
+		$res=$connection->query($rq); 
+		$tab=$res->fetch_array();	
 
-if ($tab != null)
-	{
-	$date=stripslashes($tab['date_debut']);
-	$nom=stripslashes($tab['nom']);
-	$objectifs=stripslashes($tab['objectifs']);
-	$etatActuel=stripslashes($tab['etatActuel']);		
-	$etatActuel= preg_replace("((\r\n)|(\n)|(\r))","<br/>",$etatActuel);
-	$objectifs= preg_replace("((\r\n)|(\n)|(\r))","<br/>",$objectifs);
-	$img1= $tab['photo_proj1'];
-	$img2= $tab['photo_proj2'];
-	}
-else 
-	{
-	$contenu.='<p>Projet non trouvé</p>';
-	}
-
-$photo1 = '';
-$photo2 = '';
-$specialSize = '';
-
-
-if(is_file($img1))
-	{
-			$dimRes1=$this->resize($img1);
-			$photo1 = '<img class="image projetImg1" width="'.$dimRes1[0].'" height="'.$dimRes1[1].'"  src="'.$img1.'" alt="Photo 1 du projet '.$nom.'" />';
-			$specialSize = ' style="min-height:'.intval($dimRes1[1]+11).'px;"';
+		if ($tab != null)
+			{
+			$date=stripslashes($tab['date_debut']);
+			$nom=stripslashes($tab['nom']);
+			$objectifs=stripslashes($tab['objectifs']);
+			$etatActuel=stripslashes($tab['etatActuel']);		
+			$etatActuel= preg_replace("((\r\n)|(\n)|(\r))","<br/>",$etatActuel);
+			$objectifs= preg_replace("((\r\n)|(\n)|(\r))","<br/>",$objectifs);
+			$img1= $tab['photo_proj1'];
+			$img2= $tab['photo_proj2'];
 			}
-			
+		else 
+			{
+			$contenu.='<p>Projet non trouvé</p>';
+			}
+
+		$photo1 = '';
+		$photo2 = '';
+		$specialSize = '';
+
+
 		if(is_file($img1))
 			{
-			$dimRes2=$this->resize($img2);
-			$photo2 = '<img class="image projetImg2" width="'.$dimRes2[0].'" height="'.$dimRes2[1].'" src="'.$img2.'" alt="Photo 2 du projet '.$nom.'" />';
-			}
+				$dimRes1=$this->resize($img1);
+				$photo1 = '<img class="image projetImg1" width="'.$dimRes1[0].'" height="'.$dimRes1[1].'"  src="'.$img1.'" alt="Photo 1 du projet '.$nom.'" />';
+				$specialSize = ' style="min-height:'.intval($dimRes1[1]+11).'px;"';
+				}
+				
+			if(is_file($img1))
+				{
+				$dimRes2=$this->resize($img2);
+				$photo2 = '<img class="image projetImg2" width="'.$dimRes2[0].'" height="'.$dimRes2[1].'" src="'.$img2.'" alt="Photo 2 du projet '.$nom.'" />';
+				}
+				
 			
+			$connection = Connect::getInstance();
+			$req = "SELECT p.nom, p.logo, p.sygle FROM partenaires AS p, agit AS a WHERE p.id = a.idPartenaire AND a.idProjet=".$projet;
 			
-		require_once('Views/projet/detail_projet.view.php');
-		
-	
-	}
+			$query = $connection->query($req);
+						
+			$listePartenaire = '<li>Aucun partenaire participant.</li>';
+			if($query->num_rows > 0)
+				{
+				$listePartenaire = '';
+				while($data = $query->fetch_array())
+					{
+					$listePartenaire .= '<li>'.$data[0].' - <img alt="'.$data[2].'" src="'.$data[1].'" width="30"/></li>';
+					}
+				}
+			// idPartenaire
+			// idProjet
+			
+			require_once('Views/projet/detail_projet.view.php');
+		}
 	
 	public function resize($image)
 	{
