@@ -18,17 +18,21 @@ echo "<tr><td><b>Titre</b></td>
 			<td><b>Source</b></td>
 			<td><b>Auteur</b></td>
 			<td><b>Lien</b></td>
+			<td><b>pdf</b></td>
 			<td><b>Date Parution</b></td>
 	<td></td></tr>";
 
 for($i=0; $i<count($array);$i++  ){
 	echo"<tr> ";
 	echo"<td>".$array[$i]->titre."  </td> ";
-echo"<td>".$array[$i]->source."  </td> ";
-echo"<td>".$array[$i]->auteur."  </td> ";
-echo"<td>".$array[$i]->lien."  </td> ";
-echo"<td>".$array[$i]->dateParution."  </td> ";
+	echo"<td>".$array[$i]->source."  </td> ";
+	echo"<td>".$array[$i]->auteur."  </td> ";
+	echo"<td>".$array[$i]->lien."  </td> ";
+	echo"<td>".$array[$i]->pdf."</td>";
+	echo"<td>".$array[$i]->dateParution."  </td> ";
 
+	echo'<td> <a href=modifier_article.php?id='.$array[$i]->id.' target="_self">  modifier </a></td> ';
+	echo'<td> <a href=supprimer_article.php?id='.$array[$i]->id.' target="_self">  supprimer </a></td> ';
 	echo"</tr> ";
 	}
 	

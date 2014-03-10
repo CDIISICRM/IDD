@@ -10,12 +10,13 @@ class Presse implements DAO{
 	public $lien;
     public $dateParution;
     
-    function __construct($titre, $source, $auteur, $lien, $dateParution, $id=0) {
+    function __construct($titre, $source, $auteur, $lien,$pdf, $dateParution, $id=0) {
         $this->id = $id;
         $this->titre = $titre;
         $this->source = $source;
         $this->auteur = $auteur;
 		$this->lien = $lien;
+		$this->pdf=$pdf;
 		$this->dateParution = $dateParution;
     }
 
@@ -26,13 +27,15 @@ class Presse implements DAO{
 		VALUES
 			(
 			'', 
-			'".$this->titre."', 
-			'".$this->source."', 
-			'".$this->auteur."', 
+			'".addslashes($this->titre)."', 
+			'".addslashes($this->source)."', 
+			'".addslashes($this->auteur)."', 
 			'".$this->lien."', 
+			'".addslashes($this->pdf)."',
 			'".$this->dateParution."'
 			)";
 			
+			//echo $sql.'<br/>';
 		$mysqli->query($sql);
         $this->id = $mysqli->insert_id;
         
@@ -43,7 +46,7 @@ class Presse implements DAO{
         $res = $mysqli->query($sql);
         $row = $res->fetch_row();
         
-		$presse = new Presse($row[1], $row[2], $row[3], $row[4], $row[5], $row[0]);
+		$presse = new Presse($row[1], $row[2], $row[3], $row[4], $row[5],$row[6], $row[0]);
 		
 		return $presse;
     }
@@ -54,7 +57,7 @@ class Presse implements DAO{
         $res = $mysqli->query($sql);
         while($row = $res->fetch_array()){
             
-            $unArticle = new Presse($row[1], $row[2], $row[3], $row[4], $row[5], $row[0]);
+            $unArticle = new Presse($row[1], $row[2], $row[3], $row[4], $row[5],$row[6], $row[0]);
             $lesArticles[] = $unArticle;
             
         }
@@ -66,7 +69,8 @@ class Presse implements DAO{
 		  titre = "'.addslashes($this->titre).'", 
 		  source = "'.addslashes($this->source).'", 
 		  auteur = "'.addslashes($this->auteur).'", 
-		  lien = "'.addslashes($this->lien).'", 
+		  lien = "'.addslashes($this->lien).'",
+		  pdf="'.addslashes($this->pdf).'", 
 		  dateParution = "'.addslashes($this->dateParution).'" 
 		  WHERE id='.$this->id;
 		  
