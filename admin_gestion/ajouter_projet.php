@@ -41,7 +41,8 @@ if(!empty($_POST['nomProjet']) && !empty($_POST['objectifs']) && !empty($_POST['
     $leProjet->setListPartenaire($lesPartenairesDuProjet);
     $leProjet->ajouter($mysqli);
 
-    echo 'Projet ajouté';
+	echo "<center><strong>Les modifications ont bien été enregistrées.</strong></center>";
+	echo '<meta http-equiv="refresh" content="2;URL=listprojet.php">';
 
 }
 ?>

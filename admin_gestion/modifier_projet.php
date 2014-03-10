@@ -84,7 +84,9 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])
    
    
     $projetAModifier->modifier($connection);
-    echo '<center><strong>Projet modifié</center></strong>';
+    
+	echo "<center><strong>Les modifications ont bien été enregistrées.</strong></center>";
+	echo '<meta http-equiv="refresh" content="2;URL=listprojet.php">';
 
    
     } else{

@@ -48,12 +48,8 @@ if((isset($_GET['action']) && $_GET['action'] = 'FinSession') || !LoginModel::Es
 									<tr>
 										<td>
 											<ul>
-												<li>
-													<a href="add_portfolio.php">Ajouter au portfolio</a>
-												</li>
-												<li>
-													<a href="portfolio.php">Modifier le portfolio</a>
-												</li>
+												<li>Ajouter au portfolio</li>
+												<li>Modifier le portfolio</li>
 											</ul>
 										</td>
 									</tr>
