@@ -179,6 +179,14 @@
 			"'.$this->pObjectifs.'", "'.$this->pEtatActuel.'", 
 			"'.$this->pDateDeb.'", "'.$this->photo_1.'" , "'.$this->photo_2.'")';
        $mysqli->query($rqt);
+       $this->id = $mysqli->insert_id;
+       if(!empty($this->listPartenaire) && $this->listPartenaire != ''){
+           foreach ($this->listPartenaire as $unPertenaire){
+               $sql = 'INSERT INTO agit (idPartenaire, idProjet) VALUES('.$unPertenaire->id.', '.$this->id.')';
+               $mysqli->query($sql);
+               
+           }
+       }
         
     }
 
@@ -265,8 +273,11 @@
     public function supprimer($mysqli) {
         
         $rqt = 'DELETE FROM Projets WHERE id = '.$this->id;
-		
+    
        $mysqli->query($rqt);
+       
+       $sql = 'DELETE FROM agit WHERE idProjet = '.$this->id;
+       $mysqli->query($sql);
     }
 
 }
