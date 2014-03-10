@@ -53,7 +53,7 @@ class Presse implements DAO{
 
     static public function listerTout($mysqli) {
         $lesArticles = array();
-        $sql = "SELECT * FROM presses ";
+        $sql = "SELECT * FROM presses order by dateParution desc";
         $res = $mysqli->query($sql);
         while($row = $res->fetch_array()){
             
