@@ -19,27 +19,36 @@ if($indexPage == true)
 	</div>
             
 <?php
+$mvc = true;
+if(strpos($_SERVER['SCRIPT_NAME'], 'rechercher.php') !== false)
+	{
+	$mvc = false;
+	}
+
+if($mvc)
+	{
 	$controller='index';
 	$action='afficher_index';
 	$id='';
 	if (!empty($_GET['controller']))
-	{
+		{
 		$controller=$_GET['controller'];
 		if (!empty($_GET['action']))
-		{
+			{
 			$action=$_GET['action'];
 			if (!empty($_GET['id']))
-			{
+				{
 				$id=$_GET['id'];
+				}
 			}
 		}
-	}
 	if (is_file('admin_gestion/Controllers/Controller.'.$controller.'.php'))
-	{
+		{
 		include 'admin_gestion/Controllers/Controller.'.$controller.'.php';
 		$class=$controller;
 		$objet=new $class();
 		$objet->$action($id);
+		}
 	}
 		
 ?>
