@@ -1,8 +1,8 @@
 <?php
 class Contact
-{
-	public function FormulaireContact($val = false, $error = '')
 	{
+	public function FormulaireContact($val = false, $error = '')
+		{
 		$nom="";
 		$prenom="";
 		$mail="";
@@ -20,41 +20,11 @@ class Contact
 		if($error != '')
 			$msgError = '<ul>'.$error.'</ul>';
 			
-			
-		echo '<div id="contact_container">
-			<h1>Formulaire de contact</h1>
-			'.$msgError.'	
-			<form action="index.php?controller=Contact&action=EnvoyerFormulaire" method="POST">
-			<table id="formTable">
-				<tr>
-					<td><label for="nom">Nom : </label></td>
-					<td><input type="text" name="nom" id="nom" value="'.$nom.'" /></td>
-				</tr>
-				<tr>
-					<td><label for="prenom">Prénom : </label></td>
-					<td><input type="text" name="prenom" id="prenom" value="'.$prenom.'" /></td>
-				</tr>
-				<tr>
-					<td><label for="mail">Courriel : </label></td>
-					<td><input type="text" name="mail" id="mail" value="'.$mail.'" /></td>
-				</tr>
-				<tr>
-					<td><label for="message">Message : </label></td>
-					<td><textarea name="message" id="message" cols="50" rows="10" >'.$mail.'</textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<input type="submit" name="Valider" value="Envoyer le message" style="float: right"/>
-					</td>
-				</tr>
-			</table>
-			</form>
-		</div>';
-				
-	}
+		require_once('Views/Contact/formulaire_contact.view.php');			
+		}
 	
 	public function EnvoyerFormulaire()
-	{
+		{
 	
 		$error = false;
 		
@@ -82,24 +52,23 @@ class Contact
 		
 		//verifier si il il a des error de saisie dans les champs obligatoires.
 		if($error)
-		{
+			{
 			$this->FormulaireContact($_POST, $error);
-		
-		
-		}else{
-		
-				$to      = $_POST['mail'];
-				$subject = 'Message du site : '.$_POST['nom'].' '.$_POST['prenom'] ;
-				$message = $_POST['message'];
-				$headers = 'From: baptiste.derouin@free.fr' . "\r\n" .
-					'Reply-To: baptiste.derouin@free.fr' . "\r\n" .
-					'X-Mailer: PHP/' . phpversion();
-				// @ ne vas pas afficher le message d'error en local
-				@mail($to, $subject, $message, $headers);
-				
-				echo'<p>Nous avons pris en considération votre message.</p>';
+			}
+		else
+			{
+			$to      = $_POST['mail'];
+			$subject = 'Message du site : '.$_POST['nom'].' '.$_POST['prenom'] ;
+			$message = $_POST['message'];
+			$headers = 'From: baptiste.derouin@free.fr' . "\r\n" .
+				'Reply-To: baptiste.derouin@free.fr' . "\r\n" .
+				'X-Mailer: PHP/' . phpversion();
+			// @ ne vas pas afficher le message d'error en local
+			@mail($to, $subject, $message, $headers);
+			
+			echo'<p>Nous avons pris en considération votre message.</p>';
+			}
 		}
-	}
 	
 	public function VerifierAdresseMail($adresse)
 		{

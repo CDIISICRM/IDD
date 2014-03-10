@@ -373,6 +373,25 @@ p a:hover {
 	font: 26px/30px 'OpenSans-Light';
 	text-align: center;
 }
+
+.contactContainer {
+	position: relative;
+	width: 425px;
+	margin: auto;
+	margin-bottom: 20px;
+	font-family: Arial;
+}
+
+.contactContainer label{
+	position: relative;
+	display: inline-block;
+	width: 100px;
+}
+
+.contactContainer #Valider{
+	float: right;
+}
+
 /*------------------------------ FOOTER ------------------------------*/
 #footer {
 	background-color: #040404;
