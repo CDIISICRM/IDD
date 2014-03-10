@@ -197,7 +197,7 @@
             $data['photo_proj2'],
             $data['id'],
             $mysqli);
-            
+            $unProjet->setListPartenaire(Partenaire::listerParIdProjet($mysqli, $id));
             
                  
 	return $unProjet;
@@ -210,6 +210,7 @@
         while($row = $res->fetch_array())
 			{
             $unProjet = new Projet($row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[0], $GLOBALS['connection']);
+            $unProjet->setListPartenaire(Partenaire::listerParIdProjet($mysqli, $row[0]))  ;
             $lesProjet[] = $unProjet;
 			}
 		return $lesProjet;
@@ -217,19 +218,31 @@
 
     public function modifier($mysqli) {
           
-    $rqt = '
-	UPDATE Projets 
-	SET 
-		nom = "'.$this->pNom.'", 
-        objectifs = "'.$this->pObjectifs.'", 
-		etatActuel = "'.$this->pEtatActuel.'", 
-		date_debut = "'.$this->pDateDeb.'", 
-		photo_proj1 = "'.$this->photo_1.'", 
-		photo_proj2 = "'.$this->photo_2.'" 		
-	 WHERE 
-		id = '.$this->id;
-		
+        $rqt = '
+            UPDATE Projets 
+            SET 
+                    nom = "'.$this->pNom.'", 
+            objectifs = "'.$this->pObjectifs.'", 
+                    etatActuel = "'.$this->pEtatActuel.'", 
+                    date_debut = "'.$this->pDateDeb.'", 
+                    photo_proj1 = "'.$this->photo_1.'", 
+                    photo_proj2 = "'.$this->photo_2.'" 		
+             WHERE 
+                    id = '.$this->id;
+        
         $mysqli->query($rqt);
+        
+        
+        if(!empty($this->listPartenaire) && $this->listPartenaire != ''){
+            $sql = 'DELETE FROM agit WHERE idProjet='.$this->id;
+            $mysqli->query($sql);
+            foreach ($this->listPartenaire as $unPartenaire){
+                $sql2 = 'INSERT INTO agit.idProjet, agit.idPartenaire VALUES('.$this->id.', '.$unPartenaire->getId().')';
+                $mysqli->query($sql2);
+            }
+        }
+		
+        
         
     }
 

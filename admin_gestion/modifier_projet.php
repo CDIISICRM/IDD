@@ -35,9 +35,19 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])
         && isset($_POST['obj_projet']) && !empty($_POST['obj_projet'])
         && isset($_POST['etat_projet']) && !empty($_POST['etat_projet'])
         && isset($_POST['date_debut']) && !empty($_POST['date_debut'])
-        && isset($_POST['id_projet']) && !empty($_POST['id_projet'])){
-    
-        $projetAModifier = new Projet($_POST['nom_projet'], $_POST['obj_projet'], $_POST['etat_projet'], $_POST['date_debut'], NULL, NULL, $_POST['id_projet'], $connection);
+        && isset($_POST['id_projet']) && !empty($_POST['id_projet'])
+        && isset($_POST['partenaires']) && !empty($_POST['partenaires'])
+        ){
+    $idsDesPartenaires = $_POST['partenaires'];
+    var_dump($idsDesPartenaires);
+    $listePartenaire = array();
+            foreach ($idsDesPartenaires as $id){
+                
+                $unPartenaire = Partenaire::chercher($connection, $id);
+                $listePartenaire[] = $unPartenaire;
+            }
+    $projetAModifier = new Projet($_POST['nom_projet'], $_POST['obj_projet'], $_POST['etat_projet'], $_POST['date_debut'], NULL, NULL, $_POST['id_projet'], $connection);
+    $projetAModifier->setListPartenaire($listPartenaire);
 
     //TODO A Voir
 
@@ -94,6 +104,7 @@ $photo1 = $projet->getPhoto_1();
 $photo2 = $projet->getPhoto_2();
 $listeMembre = $projet->getListPersonne();
 $listePartenaire = $projet->getListPartenaire();
+$tousLesPartenaires = Partenaire::listerTout($connection);
 
         
   
@@ -130,6 +141,21 @@ $listePartenaire = $projet->getListPartenaire();
                             </td>
                     </tr>
                     <tr>
+                    <tr>
+                        <td>Liste des partenaires</td><td>
+                            <select name="partenaires" multiple size=5>';
+    $selectPartenaires = '';
+                                foreach ($tousLesPartenaires as $partenaire){
+                                    $selected = '';
+                                    foreach ($listePartenaire as $lesPartenaires){
+                                        if($lesPartenaires == $partenaire){$selected = 'selected';}
+                                    }
+                                         $selectPartenaires .= '<option value='.$partenaire->id.' '.$selected.'.>'.$partenaire->nom.'</option>';
+                                    
+                                };
+                                
+ $finform =                               '</select></td>
+                    </tr>
                             <td>Photo 1</td>
                             <td>
                                     '.$photo1.' <input type="file" name="photo_1" id="photo_1" />
@@ -151,7 +177,7 @@ $listePartenaire = $projet->getListPartenaire();
         
 	
     
-echo $formProjet;
+echo $formProjet.$selectPartenaires.$finform;
 
     }
 include('footer.php');
