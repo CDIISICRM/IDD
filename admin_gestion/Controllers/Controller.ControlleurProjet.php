@@ -59,12 +59,6 @@ class ControlleurProjet
 	
 	public function DetailProjet($id)
 		{
-	
-		
-		
-
-
-
 		$connection = Connect::getInstance();
 		$contenu = '';
 		$projet = '';

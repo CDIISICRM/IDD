@@ -22,8 +22,8 @@ else
 			<div id="logo">
 				<a href="index.php"><img src="images/logo.png" alt="LOGO"></a>
 			</div>
-			<form action="rechercher.php" method="post" class="searchbar">
-				<input type="text" value="Search" onFocus="this.select();" onMouseUp="return false;">
+			<form method="POST" action="index.php?controller=Rechercher&action=RechercherProjet" class="searchbar">
+				<input type="text" name="keyword" value="Search" onFocus="this.select();" onMouseUp="return false;">
 				<input type="submit" value="Go">
 			</form>
 			<ul id="navigation">

@@ -569,3 +569,23 @@ th {
 	font-size:16px;
 	color:#EA8312;	
 	}
+	
+#resultat_rechercher a{
+
+	color: #EA8312;
+	text-decoration: none;
+
+}
+
+
+#resultat_rechercher a:houver{
+	text-decoration: underline;
+
+}
+
+#resultat_rechercher li{
+	color: #6C6E69;
+	font-family: Verdana,Geneva,sans-serif;
+	font-size: 0.8em;
+
+}
