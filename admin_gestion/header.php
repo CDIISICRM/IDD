@@ -52,8 +52,12 @@ if((isset($_GET['action']) && $_GET['action'] = 'FinSession') || !LoginModel::Es
 									<tr>
 										<td>
 											<ul>
-												<li>Ajouter au portfolio</li>
-												<li>Modifier le portfolio</li>
+												<li>
+													<a href="add_portfolio.php">Ajouter au portfolio</a>
+												</li>
+												<li>
+													<a href="portfolio.php">Modifier le portfolio</a>
+												</li>
 											</ul>
 										</td>
 									</tr>
@@ -86,13 +90,7 @@ if((isset($_GET['action']) && $_GET['action'] = 'FinSession') || !LoginModel::Es
 												<li>
 													<a href="listprojet.php">Gerer les projets</a>
 												</li>
-<<<<<<< HEAD
-                                                <li>
-													<a href="listearticles.php ">Gerer les aticles de Presse </a>
-												</li>
-=======
                                                                                                 <?php echo AdminSiteVue::Menu(AdminSiteModel::$id); ?>
->>>>>>> MAJ Login
 											</ul>
 										</td>
 									</tr>

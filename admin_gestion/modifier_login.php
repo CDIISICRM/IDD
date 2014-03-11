@@ -6,23 +6,21 @@ require_once('header.php');
 require_once('modele/Modele.Presse.php');
 
 
-$error = false;
+$true = false;
        if(isset($_POST['valider'])) {
-          $error = LoginController::Modifier($_POST);
+          $true = LoginController::Modifier($_POST);
      
-       if(!$error)
-       {
-	echo "<center><strong>Les modifications ont bien été enregistrées.</strong></center>";
+       if($true)
+
 	echo '<meta http-equiv="refresh" content="2;URL=index.php">';
        }
-       }
-       
- if(empty($_POST['valider']) || $error)
+    
+ if(empty($_POST['valider']) || !$true)
  {
      $AdminSite = new AdminSiteModel();
      
        $adminsite = LoginModel::VerifierLogin($_SESSION['Auth']); 
-        $content = $error;
+        $content = $true;
         $content .= '<table align="center"><caption>Modification du login</caption>';
         $content .= '<form method="post" action="modifier_login.php" name="form1" enctype="multipart/form-data">';
         $content .= '<tr><td><input type="hidden" name="id" value="'.$AdminSite::$id.'" /></td></tr>';       

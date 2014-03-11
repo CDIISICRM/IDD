@@ -67,7 +67,7 @@ class LoginController{
                     return NULL;
                     }    
            else {
-                   // echo '<center><h2><font color="green">Les modifications ont bien été enregistrées.</font></h2></center>';
+                    echo '<center><h2><font color="green">Les modifications ont bien été enregistrées.</font></h2></center>';
                     $error = LoginModel::Modifier($post); 
                     return $error;
            }
