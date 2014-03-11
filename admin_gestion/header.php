@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-require_once("../include/connect.php");
+/*
 include_once(dirname(__FILE__).'/modele/LoginModel.php');
 include_once(dirname(__FILE__).'/Controllers/LoginController.php'); 
 	
@@ -12,8 +12,9 @@ if((isset($_GET['action']) && $_GET['action'] = 'FinSession') || !LoginModel::Es
 	{
 	session_unset();
 	echo '<meta http-equiv="refresh" content="0; url=login.html">';
+ * '<script type="text/javascript">window.location = "?'.$ech.'"</script>';
 	exit();
-	}
+	}*/
 ?>
 <html>
 	<head>
@@ -28,7 +29,10 @@ if((isset($_GET['action']) && $_GET['action'] = 'FinSession') || !LoginModel::Es
 		<link rel="stylesheet" href="css/smoothness/jquery-ui-1.10.4.custom.min.css" type="text/css">
 		<script language="JavaScript" src="../fonctions.js"></script>
 	</head>
-	<body background="im/fond.gif">
+        <body background="im/fond.gif"><center><h1>M C D A</h1></center>
+            <?php require_once("Login.php"); 
+            if (!LoginModel::EstConnecte()) {    LoginVue::Login(); exit();  }
+            ?>
 		<table width="100%" border="1" cellspacing="0" cellpadding="0" bordercolor="#000000" bgcolor="#FFFFFF">
 			<tr>
 				<td>
@@ -82,9 +86,13 @@ if((isset($_GET['action']) && $_GET['action'] = 'FinSession') || !LoginModel::Es
 												<li>
 													<a href="listprojet.php">Gerer les projets</a>
 												</li>
+<<<<<<< HEAD
                                                 <li>
 													<a href="listearticles.php ">Gerer les aticles de Presse </a>
 												</li>
+=======
+                                                                                                <?php echo AdminSiteVue::Menu(AdminSiteModel::$id); ?>
+>>>>>>> MAJ Login
 											</ul>
 										</td>
 									</tr>
@@ -98,7 +106,7 @@ if((isset($_GET['action']) && $_GET['action'] = 'FinSession') || !LoginModel::Es
 											<span>&nbsp;|&nbsp;</span>
 											<a href="index.php">Accueil administration</a>
 											<span>&nbsp;|&nbsp;</span>
-											<a href="index.php?controller=Login&action=FinSession">Déconnexion</a>
+											<a href="index.php?TypeDeClasse=controller&NomDeClasse=Login&Methode=FinSession">Déconnexion</a>
 										</strong>
 									</font>
 								</center>
