@@ -1,0 +1,42 @@
+<h1>Ajouter un nouveau produit</h1>
+<form id="form1" method="post">
+	<table>
+		<tr><td>Nom : </td>
+			<td>
+				<input type="text" id="Nom" name="Nom" value="<?php echo $this->viewData['personne']->getNom();?>"/>
+				<span id="erreur"><?php echo $this->viewData['personne']->ValidationMessage("personne"); ?></span>
+			</td>
+		</tr>
+		<tr><td>Prenom : </td>
+			<td>
+				<input type="text" id="prenom" name="prenom" 
+			value="<?php echo $this->viewData['personne']->getPrenom();?>"/>
+				<span id="erreur">
+				<?php 
+				echo $this->viewData['personne']->ValidationMessage("prenom");
+				?></span>
+			</td>
+		</tr>
+		<tr><td>Mail : </td>
+			<td><input type="text" id="mail" name="mail" value="<?php echo $this->viewData['personne']->getMail();?>"/>
+			<span id="erreur"><?php echo $this->viewData['personne']->ValidationMessage("mail"); ?></span>
+		</td>
+		</tr>
+		<tr><td>Role : </td>
+			<td>
+				<select id="role" name="role">
+				<?php 
+					foreach($this->viewData['listRoles'] as $role)
+						echo '<option value="'.$role['id'].'">'.$role['role'].'</option>';
+				?>
+				</select>
+			</td>
+		</tr>
+                 <tr><td>Metier : </td>
+			<td><input type="text" id="quantite" name="metier" value="<?php echo $this->viewData['personne']->getMetier();?>"/>
+			<span id="erreur"><?php echo $this->viewData['personne']->ValidationMessage("metier"); ?></span>
+		</td>
+		</tr>
+		<tr><td colspan='2'><input type="submit" value="Ajouter" /></td></tr>
+	</table>
+</form>

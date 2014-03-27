@@ -1,0 +1,115 @@
+th {
+	font-size: 12px;
+}
+
+A:link {
+	color: black;
+	text-decoration:none;
+} 
+
+A:visited {
+	color: black;
+	text-decoration:none;
+} 
+
+A:hover {
+	color: red;
+	text-decoration:underline;
+} 
+
+td {
+	color:black;
+	font-size:11px;
+	font-family: Verdana, Arial, Helvetica;
+}
+
+#zoneIdentification {
+	margin: auto;
+	text-align: left;
+	margin-top: 200px;
+	width: 400px;
+}
+
+#mainContent {
+	position: relative;
+}
+
+/* Gestion des membres */
+#formMembre {
+	margin: auto;
+	text-align: left;
+}
+
+#formMembre .label{
+	margin: auto;
+	text-align: right;
+	font-size: large;
+}
+
+#formMembre span{
+	color: #663300;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Gesion de rôles */
+#formRole {
+	margin: auto;
+	text-align: left;
+}
+
+#formRole .label{
+	margin: auto;
+	text-align: right;
+	font-size: large;
+}
+
+#formRole span{
+	color: #663300;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Gesion de rôles */
+#formPartenaire {
+	margin: auto;
+	text-align: left;
+}
+
+#formPartenaire .label{
+	margin: auto;
+	text-align: right;
+	font-size: large;
+}
+
+#formPartenaire span{
+	color: #663300;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Gesion des projets */
+#formProjet {
+	margin: auto;
+	text-align: left;
+}
+
+#formProjet .label{
+	margin: auto;
+	text-align: right;
+	font-size: large;
+}
+
+#formProjet span{
+	color: #663300;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.image{ margin-top:15px;
+  margin-bottom:20px;  
+float:inherit;
+border:1px solid #333;
+/*	box-shadow: 1px 1px 12px #aaa;
+  -moz-box-shadow: 1px 1px 12px #aaa;
+  -webkit-box-shadow: 1px 1px 12px #aaa;*/
+  	box-shadow: 6px 6px 10px #aaa;
+  -moz-box-shadow: 6px 6px 10px #aaa;
+  -webkit-box-shadow: 6px 6px 10px #aaa;
+   background-color:#FFF;
+ }

@@ -1,0 +1,30 @@
+<! DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Page d'authentification</title>
+		<link rel="stylesheet" href="css/style.css">
+    </head>
+	<body background="im/fond.gif" style="text-align: center;"><!-- action="./../Adminsite/Menu.phtml" -->
+		<fieldset id="zoneIdentification">
+			<legend>AUTHENTIFICATION</legend>
+			<form  method="post" action="index.php">
+				<table>
+					<tr>
+						<td><label>Login :</label></td>
+						<td><input class="post" id="login" type="text" name="login"  required="required" value="" autocomplete="off" /></td>
+					</tr>
+					<tr>
+						<td><label>Mot de passe :</label></td>
+						<td><input  class="post" id="pwd" type="password" name="pwd" required="required" value="" autocomplete="off" /></td>
+					</tr>
+					<tr>
+						<td colspan="2"><input type="submit" name="action" value="connection"/></td>
+					</tr>
+				</table>
+			</form>
+		</fieldset>
+	</body>
+</html>
+
+

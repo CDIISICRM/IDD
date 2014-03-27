@@ -1,0 +1,280 @@
+-- phpMyAdmin SQL Dump
+-- version OVH
+-- http://www.phpmyadmin.net
+--
+-- Client: mysql51-113.perso
+-- Généré le : Jeu 27 Mars 2014 à 09:54
+-- Version du serveur: 5.1.66
+-- Version de PHP: 5.3.8
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de données: `mcdaassomag`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `adminSite`
+--
+
+CREATE TABLE IF NOT EXISTS `adminSite` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idPersonne` int(11) NOT NULL,
+  `login` varchar(45) CHARACTER SET utf8 NOT NULL,
+  `pwd` varchar(70) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idPersonne` (`idPersonne`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `adminSite`
+--
+
+INSERT INTO `adminSite` (`id`, `idPersonne`, `login`, `pwd`) VALUES
+(1, 1, 'tryphon', 'tournesol'),
+(2, 1, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `agit`
+--
+
+CREATE TABLE IF NOT EXISTS `agit` (
+  `idPartenaire` int(11) NOT NULL,
+  `idProjet` int(11) NOT NULL,
+  PRIMARY KEY (`idPartenaire`,`idProjet`),
+  KEY `fk_agit_partenaire_idx` (`idPartenaire`),
+  KEY `fk_agit_projet_idx` (`idProjet`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Contenu de la table `agit`
+--
+
+INSERT INTO `agit` (`idPartenaire`, `idProjet`) VALUES
+(1, 2),
+(2, 1),
+(4, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contenus`
+--
+
+CREATE TABLE IF NOT EXISTS `contenus` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(45) CHARACTER SET utf8 NOT NULL,
+  `texte` text CHARACTER SET utf8 NOT NULL,
+  `idPosteur` int(11) NOT NULL,
+  `img` varchar(250) CHARACTER SET utf8 NOT NULL,
+  `extension` varchar(4) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_contenu_posteur_idx` (`idPosteur`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `contenus`
+--
+
+INSERT INTO `contenus` (`id`, `titre`, `texte`, `idPosteur`, `img`, `extension`) VALUES
+(1, 'Co-développement en Alsace', '<p style="text-align: justify;">\r\n	<strong>MCDA, association franco-marocaine,</strong> est cr&eacute;&eacute;e en 1995 par des immigr&eacute;s de la r&eacute;gion Sud Alsace et des fran&ccedil;ais d&#39;origine, tous soucieux d&#39;un meilleur d&eacute;veloppement des pays du Sud.L&#39;association a pour but de regrouper, en France ou hors de France, toute personne physique ou morale int&eacute;ress&eacute;e, pour organiser ou participer &agrave; des actions de d&eacute;veloppement dans les zones d&#39;origine de l&#39;immigration, permettant, entre autres, d&#39;enrayer l&#39;exode et l&#39;immigration et de mettre en valeur la dynamique de l&#39;immigration comme force de d&eacute;veloppement entre les deux rives de la M&eacute;diterran&eacute;e.</p>\r\n<p style="text-align: justify;">\r\n	La d&eacute;marche globale de MCDA est fond&eacute;e sur la mobilisation et l&#39;organisation des immigr&eacute;s autour de projets concrets de d&eacute;veloppement local, soit collectifs tels que l&#39;&eacute;lectrification, la recherche de l&#39;eau, l&#39;am&eacute;nagement d&#39;&eacute;coles ou de dispensaires, soit individuels tels que la cr&eacute;ation d&#39;entreprise (artisanat, services, &eacute;levage...).</p>\r\n<p style="text-align: justify;">\r\n	Ici, MCDA organise diverses manifestations tout au long de l&#39;ann&eacute;e &agrave; la fois pour faire conna&icirc;tre l&#39;association mais aussi pour r&eacute;colter quelques moyens financiers. Citons :</p>\r\n<p style="text-align: justify;">\r\n	Soir&eacute;e de projection d&#39;un film et discussion autour d&#39;un repas marocain<br />\r\n	Soir&eacute;e dansante avec musique locale traditionnelle<br />\r\n	March&eacute; de No&euml;l<br />\r\n	F&ecirc;te du monde<br />\r\n	F&ecirc;tes de quartiers</p>\r\n<p style="text-align: justify;">\r\n	MCDA a des contacts r&eacute;guliers avec un<strong> r&eacute;seau d&#39;associations amies &agrave; Mulhouse </strong>(CCDF), Soultz (Agir Ensemble), Strasbourg (IDDA) et Paris (IDD), voir la page d&eacute;di&eacute;e &agrave; nos partenaires L&agrave; bas, MCDA a entrepris des actions de &quot;Co-D&eacute;veloppement&quot; &agrave; Ouled Ftata, village rural de 4&#39;000 habitants, dans la province de Khouribga au centre du Maroc.</p>\r\n', 1, 'media/photo2', 'jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `partenaires`
+--
+
+CREATE TABLE IF NOT EXISTS `partenaires` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  `siteInternet` varchar(90) CHARACTER SET utf8 DEFAULT NULL,
+  `sygle` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  `logo` varchar(70) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=7 ;
+
+--
+-- Contenu de la table `partenaires`
+--
+
+INSERT INTO `partenaires` (`id`, `nom`, `siteInternet`, `sygle`, `logo`) VALUES
+(1, 'Immigration Développement Démocratie', 'http://www.idd-reseau.org/', 'IDD', 'BB'),
+(2, 'test', 'http://www.google.com/', 'test', ''),
+(4, 'test', 'http://fr.openclassrooms.com', 'test', 'test');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `personnes`
+--
+
+CREATE TABLE IF NOT EXISTS `personnes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  `prenom` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  `mail` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  `idRole` int(11) NOT NULL,
+  `metier` varchar(45) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_personnes_roles_idx` (`idRole`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
+
+--
+-- Contenu de la table `personnes`
+--
+
+INSERT INTO `personnes` (`id`, `nom`, `prenom`, `mail`, `idRole`, `metier`) VALUES
+(1, ' Larzillière', 'Yves', 'yvon@lecole.com', 1, 'Ingénieur'),
+(2, 'M''Barek', 'Wahid', 'wahid@lesso.com', 5, 'électricien'),
+(5, 'Zimmer', 'Claude', 'Claude@Zimmer.fr', 3, 'Directeur de centre social'),
+(6, 'Trop Long', 'Ludo', 'info@koupix', 7, 'Concepteur');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `presses`
+--
+
+CREATE TABLE IF NOT EXISTS `presses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(250) NOT NULL,
+  `source` varchar(250) NOT NULL,
+  `auteur` varchar(250) NOT NULL,
+  `lien` varchar(250) NOT NULL,
+  `pdf` varchar(250) NOT NULL,
+  `dateParution` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+
+--
+-- Contenu de la table `presses`
+--
+
+INSERT INTO `presses` (`id`, `titre`, `source`, `auteur`, `lien`, `pdf`, `dateParution`) VALUES
+(11, 'Solidarité nord-sud', 'L''alsace', 'F.M.', '', 'Solidarité nord-sud.pdf', '1996-01-01'),
+(12, 'Développement par la formation au Maroc', 'L''Alsace', 'Thibaut Lemoine', '', 'Développement par la formation au Maroc.pdf', '2001-06-30'),
+(13, 'Migrations et Développement', 'Dernières Nouvelles d''Alsace', 'R.B.', '', 'Migrations et Développement.pdf', '2001-02-16'),
+(14, 'Rixheim : du courant pour le Maroc', 'L''Alsace', 'Thibaut Lemoine', '', 'Rixheim.pdf', '2001-03-11'),
+(15, 'Rencontre du réseau à Mehdia 24/01/2014', 'Immigration Développement Démocratie', 'IDD', '', 'Publication-Mehdia_final-webMD.pdf', '2014-02-02');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `projets`
+--
+
+CREATE TABLE IF NOT EXISTS `projets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  `objectifs` text CHARACTER SET utf8,
+  `etatActuel` text CHARACTER SET utf8,
+  `date_debut` datetime DEFAULT NULL,
+  `photo_proj1` varchar(250) CHARACTER SET utf8 DEFAULT NULL,
+  `photo_proj2` varchar(250) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=19 ;
+
+--
+-- Contenu de la table `projets`
+--
+
+INSERT INTO `projets` (`id`, `nom`, `objectifs`, `etatActuel`, `date_debut`, `photo_proj1`, `photo_proj2`) VALUES
+(1, 'projet1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt ut massa at ultrices. Donec dignissim, lacus varius congue vehicula, justo purus volutpat nisi, sit amet aliquam justo tellus non quam. Praesent non sollicitudin turpis, at sodales elit. Aenean rutrum hendrerit consectetur. Morbi nec fringilla nisl. Donec bibendum quam ac elit aliquet, non porta neque euismod. Aenean ac sapien sed dolor ultricies hendrerit. Morbi nunc purus, sollicitudin a lobortis id, lobortis non lacus. Mauris placerat diam lacinia sem luctus, id accumsan odio rhoncus. Maecenas luctus justo auctor mi rutrum convallis. Phasellus rutrum semper justo sit amet viverra. Curabitur fermentum egestas nisl vitae tempor. Etiam nec faucibus elit. ', ' Morbi laoreet aliquam turpis ut pretium. Aliquam convallis dictum massa, a sodales quam elementum eget. In a purus nisi. Sed ac vulputate enim. Quisque sed nisl sem. In in sagittis odio. In hendrerit varius libero sed vulputate. Curabitur ac lobortis ligula. Aliquam erat volutpat.\r\n\r\nProin et egestas diam. In hac habitasse platea dictumst. Sed consectetur nunc et faucibus dictum. Curabitur rutrum magna volutpat, posuere felis pretium, pretium lacus. Pellentesque eu lacus eget enim rhoncus semper et non nisl. Maecenas eu lectus vel sapien facilisis accumsan. Nam bibendum semper accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut fringilla varius nulla non molestie. ', '2014-02-17 00:00:00', 'media/projet1.jpg', 'media/projet2.jpg'),
+(2, 'projet2', ' Phasellus porttitor ullamcorper metus in molestie. Praesent tortor augue, faucibus nec neque nec, ultrices scelerisque sapien. Ut cursus rhoncus urna, a semper arcu dapibus non. Ut vel malesuada eros. Curabitur blandit tempor ipsum non pharetra. Donec imperdiet in nulla vel accumsan. Etiam sodales vestibulum magna eu aliquet.\r\n\r\nIn pharetra ultrices quam, ut elementum ipsum bibendum ac. Donec cursus, erat vitae aliquam congue, justo nulla pharetra orci, et mattis nisl ligula nec odio. Morbi facilisis dolor at porttitor vestibulum. Nam id augue nec enim vehicula consequat ut congue lectus. Sed volutpat lacus id tortor adipiscing imperdiet. Suspendisse pulvinar tellus id massa tincidunt viverra. Morbi vel cursus odio. Nulla gravida dolor vitae nunc viverra, sed vestibulum turpis adipiscing. Sed vestibulum ligula eu urna congue fringilla. Maecenas malesuada felis sed neque tincidunt, at ullamcorper mi ultricies. Curabitur convallis mauris quis volutpat fermentum. Donec tempor neque at euismod adipiscing. Aenean pretium augue sodales, facilisis lectus ut, pretium nisi. Etiam ornare nunc leo, at luctus elit gravida ullamcorper. Donec fermentum id nulla eu lobortis. ', ' Morbi laoreet aliquam turpis ut pretium. Aliquam convallis dictum massa, a sodales quam elementum eget. In a purus nisi. Sed ac vulputate enim. Quisque sed nisl sem. In in sagittis odio. In hendrerit varius libero sed vulputate. Curabitur ac lobortis ligula. Aliquam erat volutpat.\r\n\r\nProin et egestas diam. In hac habitasse platea dictumst. Sed consectetur nunc et faucibus dictum. Curabitur rutrum magna volutpat, posuere felis pretium, pretium lacus. Pellentesque eu lacus eget enim rhoncus semper et non nisl. Maecenas eu lectus vel sapien facilisis accumsan. Nam bibendum semper accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut fringilla varius nulla non molestie. ', '2014-02-16 00:00:00', 'media/projet3.jpg', 'media/projet4.jpg'),
+(5, 'projet3', 'Morbi laoreet aliquam turpis ut pretium. Aliquam convallis dictum massa, a sodales quam elementum eget. In a purus nisi. Sed ac vulputate enim. Quisque sed nisl sem. In in sagittis odio. In hendrerit varius libero sed vulputate. Curabitur ac lobortis ligula. Aliquam erat volutpat. ', 'Proin et egestas diam. In hac habitasse platea dictumst. Sed consectetur nunc et faucibus dictum. Curabitur rutrum magna volutpat, posuere felis pretium, pretium lacus. Pellentesque eu lacus eget enim rhoncus semper et non nisl. Maecenas eu lectus vel sapien facilisis accumsan. Nam bibendum semper accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut fringilla varius nulla non molestie. ', '2014-02-08 00:00:00', NULL, NULL),
+(7, 'Projet 001', 'Objectif : Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Etat : Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2014-02-03 00:00:00', 'photo2.jpg', 'photo2.jpg'),
+(8, 'Projet 002', 'Objectif : Projet 002 - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Etat : Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2014-02-04 00:00:00', 'photo2.jpg', 'photo3.jpg'),
+(9, 'Projet 003', 'Objectif : Projet 003 - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Etat : Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2014-02-05 00:00:00', 'photo2.jpg', 'photo3.jpg'),
+(10, 'Projet 004', 'Objectif : Projet 004 - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Etat : Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2014-02-06 00:00:00', 'photo2.jpg', 'photo3.jpg'),
+(11, 'Projet 005', 'Objectif : Projet 005 - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Etat : Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2014-02-07 00:00:00', 'photo2.jpg', 'photo3.jpg'),
+(12, 'Projet 006', 'Objectif : Projet 006 - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Etat : Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2014-02-08 00:00:00', 'photo2.jpg', 'photo3.jpg'),
+(13, 'Projet 007', 'Objectif : Projet 007 - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Etat : Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2014-02-09 00:00:00', 'photo2.jpg', 'photo3.jpg'),
+(14, 'Projet 008', 'Objectif : Projet 008 - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Etat : Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2014-02-10 00:00:00', 'photo2.jpg', 'photo3.jpg'),
+(15, 'Projet 009', 'Objectif : Projet 009 - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Etat : Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2014-02-11 00:00:00', 'photo2.jpg', 'photo3.jpg'),
+(16, 'Projet 010', 'Objectif : Projet 010 - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Etat : Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2014-02-12 00:00:00', 'photo2.jpg', 'photo3.jpg'),
+(17, 'projet 014', 'test', 'test', '2014-03-03 00:00:00', NULL, NULL),
+(18, 'test', 'test', 'test', '2014-03-19 00:00:00', 'media/photo3.jpg', 'media/photo2.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `roles`
+--
+
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nomRole` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=11 ;
+
+--
+-- Contenu de la table `roles`
+--
+
+INSERT INTO `roles` (`id`, `nomRole`) VALUES
+(1, 'Président'),
+(2, 'Vice Président'),
+(3, 'Secrétaire'),
+(4, 'Secrétaire Adjoint'),
+(5, 'Trésorier'),
+(6, 'Vice Trésorier'),
+(7, 'Salarié'),
+(8, 'Membre');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `travaille`
+--
+
+CREATE TABLE IF NOT EXISTS `travaille` (
+  `idPersonne` int(11) NOT NULL,
+  `idProjet` int(11) NOT NULL,
+  `dateDeb` date NOT NULL,
+  `dateFin` date DEFAULT NULL,
+  PRIMARY KEY (`idPersonne`,`idProjet`),
+  KEY `fk_travaille_personne_idx` (`idPersonne`),
+  KEY `fk_travaille_projet_idx` (`idProjet`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `adminSite`
+--
+ALTER TABLE `adminSite`
+  ADD CONSTRAINT `fk_adminSite_personne` FOREIGN KEY (`idPersonne`) REFERENCES `personnes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `agit`
+--
+ALTER TABLE `agit`
+  ADD CONSTRAINT `fk_agit_partenaire` FOREIGN KEY (`idPartenaire`) REFERENCES `partenaires` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_agit_projet` FOREIGN KEY (`idProjet`) REFERENCES `projets` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `contenus`
+--
+ALTER TABLE `contenus`
+  ADD CONSTRAINT `fk_contenu_posteur` FOREIGN KEY (`idPosteur`) REFERENCES `adminSite` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `personnes`
+--
+ALTER TABLE `personnes`
+  ADD CONSTRAINT `fk_personne_role` FOREIGN KEY (`idRole`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `travaille`
+--
+ALTER TABLE `travaille`
+  ADD CONSTRAINT `fk_travaille_personne` FOREIGN KEY (`idPersonne`) REFERENCES `personnes` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_travaille_projet` FOREIGN KEY (`idProjet`) REFERENCES `projets` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
